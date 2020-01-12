@@ -17,7 +17,7 @@ const styles = {
   }
 }
 
-export const Input = ({ name, label, value, onChange }) => {
+export const Input = ({ name, value, onChange }) => {
   return (
     <InputGroup>
       <FormControl
@@ -32,6 +32,39 @@ export const Input = ({ name, label, value, onChange }) => {
           {name === 'password' ? <VisibilityIcon /> : null}
         </InputGroup.Text>
       </InputGroup.Append>
+    </InputGroup>
+  )
+}
+export const PasswordInput = ({ props, name, value, onChange }) => {
+  return (
+    <InputGroup>
+      <FormControl
+        name='password'
+        value={props.account.password}
+        label='Password'
+        onChange={onChange}
+        onClick={() => this.handlePassword()}
+        style={styles.searchField}
+      />
+      <InputGroup.Append>
+        <InputGroup.Text style={styles.icon} onClick={props.onClick}>
+          {props.showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+        </InputGroup.Text>
+      </InputGroup.Append>
+    </InputGroup>
+  )
+}
+
+export const EmailInput = ({ name, value, onChange }) => {
+  return (
+    <InputGroup>
+      <FormControl
+        type={name}
+        name={name}
+        value={value}
+        onChange={onChange}
+        style={styles.searchField}
+      />
     </InputGroup>
   )
 }
