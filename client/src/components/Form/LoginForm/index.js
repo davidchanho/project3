@@ -13,7 +13,7 @@ const styles = {
     margin: 'auto',
     width: 800
   },
-  searchField: {
+  inputField: {
     borderRight: 0,
     boxShadow: 'none',
     borderColor: '#d5dadf'
@@ -21,6 +21,9 @@ const styles = {
   icon: {
     borderLeft: 0,
     backgroundColor: 'white'
+  },
+  switch: {
+    float: 'left'
   }
 }
 
@@ -57,7 +60,7 @@ export class LoginForm extends Component {
               type='email'
               label='Email Address'
               onChange={this.handleChange}
-              style={styles.searchField}
+              style={styles.inputField}
             />
           </InputGroup>
         </Form.Group>
@@ -70,7 +73,7 @@ export class LoginForm extends Component {
               type={this.state.showPassword ? 'input' : 'password'}
               label='Password'
               onChange={this.handleChange}
-              style={styles.searchField}
+              style={styles.inputField}
             />
             <InputGroup.Append>
               <InputGroup.Text
@@ -87,6 +90,7 @@ export class LoginForm extends Component {
           </InputGroup>
         </Form.Group>
         <Form.Check
+          style={styles.switch}
           type='switch'
           id='remember-password'
           label='Remember Password'
