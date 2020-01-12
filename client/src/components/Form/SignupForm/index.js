@@ -31,13 +31,13 @@ export class LoginForm extends Component {
           name='email'
           value={account.email}
           label='Email Address'
-          onChange={this.handleChange}
+          onChange={this.state.handleChange}
         />
         <Input
           name='password'
           value={account.password}
           label='Password'
-          onChange={this.handleChange}
+          onChange={this.state.handleChange}
         />
         <Form.Check
           type='switch'

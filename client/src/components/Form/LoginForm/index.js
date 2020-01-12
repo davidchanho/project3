@@ -9,6 +9,10 @@ import { Btns } from 'components'
 
 // import './styles.scss'
 const styles = {
+  form: {
+    margin: 'auto',
+    width: 800
+  },
   searchField: {
     borderRight: 0,
     boxShadow: 'none',
@@ -19,9 +23,11 @@ const styles = {
     backgroundColor: 'white'
   }
 }
+
 export class LoginForm extends Component {
   state = {
-    account: { email: '', password: '' },
+    email: '',
+    password: '',
     showPassword: false
   }
 
@@ -31,46 +37,55 @@ export class LoginForm extends Component {
     this.setState({ showPassword: !this.state.showPassword })
   }
 
-  handleChange = ({ currentTarget: input }) => {
-    const account = { ...this.state.account }
-    account[input.type] = input.value
-    this.setState({ account })
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   render() {
-    const { account } = this.state
+    const { email, password } = this.state
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form style={styles.form} onSubmit={this.handleSubmit}>
         <h1>Login</h1>
-        <InputGroup>
-          <FormControl
-            name='email'
-            value={this.state.account.email}
-            label='Email Address'
-            onChange={this.handleChange}
-            style={styles.searchField}
-          />
-        </InputGroup>
-
-        <InputGroup>
-          <FormControl
-            name='password'
-            value={this.state.account.password}
-            label='Password'
-            onChange={this.handleChange}
-            style={styles.searchField}
-          />
-          <InputGroup.Append>
-            <InputGroup.Text style={styles.icon} onClick={this.handlePassword}>
-              {this.state.showPassword ? (
-                <VisibilityIcon />
-              ) : (
-                <VisibilityOffIcon />
-              )}
-            </InputGroup.Text>
-          </InputGroup.Append>
-        </InputGroup>
+        <br />
+        <Form.Group>
+          <Form.Label>Email Address</Form.Label>
+          <InputGroup>
+            <FormControl
+              name='email'
+              value={email}
+              type='email'
+              label='Email Address'
+              onChange={this.handleChange}
+              style={styles.searchField}
+            />
+          </InputGroup>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Password</Form.Label>
+          <InputGroup>
+            <FormControl
+              name='password'
+              value={password}
+              type={this.state.showPassword ? 'input' : 'password'}
+              label='Password'
+              onChange={this.handleChange}
+              style={styles.searchField}
+            />
+            <InputGroup.Append>
+              <InputGroup.Text
+                style={styles.icon}
+                onClick={this.handlePassword}
+              >
+                {this.state.showPassword ? (
+                  <VisibilityIcon />
+                ) : (
+                  <VisibilityOffIcon />
+                )}
+              </InputGroup.Text>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form.Group>
         <Form.Check
           type='switch'
           id='remember-password'
