@@ -3,8 +3,6 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Col from 'react-bootstrap/Col'
 import InputGroup from 'react-bootstrap/InputGroup'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import Button from 'react-bootstrap/Button'
 import { Btns } from 'components'
 // import { Input, PasswordInput } from '../Input'
@@ -107,8 +105,8 @@ export class SignupForm extends Component {
         </Form.Row>
         <Form.Check style={styles.switch} type='switch' id='show-password' label='Show Password' />
         <Btns.Signup />
-        <Button>Sign in with GitHub</Button>
-        <Button>Sign in with Google</Button>
+        <Button>Sign up with GitHub</Button>
+        <Button>Sign up with Google</Button>
       </Form>
     )
   }

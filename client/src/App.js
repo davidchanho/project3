@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Footer, Navbars } from 'components'
-import { Login, Signup, Trend } from './pages'
+import { Home, About, User, Login, Signup, Trend, Watchlist, PageNotFound } from './pages'
 import './App.scss'
 
 class App extends Component {
@@ -12,9 +12,14 @@ class App extends Component {
 
         <Router>
           <Switch>
-            <Route exact path='/' component={Login} />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/Watchlist' component={Watchlist} />
+            <Route exact path='/About' component={About} />
+            <Route exact path='/User' component={User} />
+            <Route exact path='/Login' component={Login} />
             <Route exact path='/Signup' component={Signup} />
             <Route exact path='/Trend' component={Trend} />
+            <Route component={PageNotFound} />
           </Switch>
         </Router>
 

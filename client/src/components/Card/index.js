@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Card from 'react-bootstrap/Card'
-import tests from 'model/test.json'
+import tests from '../../model/testSector.json'
 import { CircleBar } from 'components'
 
 import './styles.scss'

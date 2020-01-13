@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -96,6 +97,8 @@ export class LoginForm extends Component {
           label='Remember Password'
         />
         <Btns.Login />
+        <Button>Sign up with GitHub</Button>
+        <Button>Sign up with Google</Button>
       </Form>
     )
   }

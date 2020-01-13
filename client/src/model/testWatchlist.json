@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "ticker": "$TSLA",
+    "sector": "Technology",
+    "marketCap": "Technology",
+    "health": 81,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 2,
+    "ticker": "$APPL",
+    "sector": "Technology",
+    "marketCap": "Technology",
+    "health": 95,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 3,
+    "ticker": "$GOOGL",
+    "sector": "Technology",
+    "marketCap": "Software",
+    "health": 88,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 4,
+    "ticker": "$BTC.X",
+    "sector": "Technology",
+    "marketCap": "Cypto Currencies",
+    "health": 52,
+    "ma": "5% 10% 15%",
+    "option": "N/A"
+  },
+  {
+    "id": 5,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  }
+]
