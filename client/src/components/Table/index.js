@@ -28,7 +28,7 @@ export class WatchTable extends Component {
 
   TableData() {
     return this.state.tests.map((test, index) => {
-      const { id, ticker, sector, marketCap, health, option, ma } = test //destructuring
+      const { id, ticker, sector, marketCap, health, option, ma } = test
       return (
         <tr key={id}>
           <td>{id}</td>

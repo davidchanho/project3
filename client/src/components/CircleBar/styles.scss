@@ -1,4 +1,4 @@
-.ldBar{
+.ldBar {
   width: 150%;
 }
 
@@ -11,6 +11,11 @@
 .ldBar path.baseline {
   stroke-width: 14;
   stroke: #f1f2f3;
-  stroke-linecap: round;
-  filter: url(#custom-shadow);
+}
+
+.ldBar-label {
+  color: #09f;
+  font-family: 'varela round';
+  font-size: 1em;
+  font-weight: 900;
 }
