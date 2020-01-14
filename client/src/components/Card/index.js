@@ -4,12 +4,7 @@ import Card from 'react-bootstrap/Card'
 import tests from '../../model/testSector.json'
 import { CircleBar } from 'components'
 
-
-const styles = {
-  card: {
-    textAlign: 'center',
-  }
-}
+import './styles.scss'
 
 export class TrendCard extends Component {
   state = {
@@ -17,10 +12,10 @@ export class TrendCard extends Component {
   }
 
   render() {
-    return (
+    return (  
       <>
         {tests.map(test => (
-          <Card key={test.id} style={styles.card}>
+          <Card key={test.id} className='card'>
             <Card.Title>
               {test.Company}
               <br />
