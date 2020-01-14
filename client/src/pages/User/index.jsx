@@ -1,5 +1,5 @@
 import React from 'react'
 
 export const User = () => {
-  return <h1>USER</h1>
+  return <h1>User</h1>
 }

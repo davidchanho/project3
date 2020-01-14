@@ -12,13 +12,13 @@ export const Navbars = () => {
         <TrendingUpIcon fontSize='large' />
         Trend Health
       </h1>
-      <Nav className='mr-auto'>
+      <Nav className='ml-auto'>
         <Nav.Link href='/'>Home</Nav.Link>
         <Nav.Link href='/About'>About</Nav.Link>
         <Nav.Link href='/Login'>Login</Nav.Link>
         <Nav.Link href='/Signup'>Signup</Nav.Link>
         <Nav.Link href='/Watchlist'>WatchList</Nav.Link>
-        <Nav.Link href='/Trend'>Trend</Nav.Link>
+        <Nav.Link href='/User'>User</Nav.Link>
       </Nav>
     </Navbar>
   )
