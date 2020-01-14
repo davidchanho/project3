@@ -11,8 +11,8 @@ export class WatchTable extends Component {
   }
 
   handleDelete = test => {
-    const tests = this.state.tests.filter(t => t._id !== test._id)
-    this.setState({ test })
+    const tests = this.state.tests.filter(t => t.id !== test.id)
+    this.setState({ tests })
   }
 
   TableHeader = () => {
@@ -38,13 +38,15 @@ export class WatchTable extends Component {
           <td>{health}</td>
           <td>{ma}</td>
           <td>{option}</td>
-          <Button
-            variant='danger'
-            onDelete={() => this.handleDelete(test)}
-            size='sm'
-          >
-            X
-          </Button>
+          <td>
+            <Button
+              variant='danger'
+              onClick={() => this.handleDelete(test)}
+              size='sm'
+            >
+              X
+            </Button>
+          </td>
         </tr>
       )
     })
