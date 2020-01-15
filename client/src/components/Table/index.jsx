@@ -6,8 +6,7 @@ import './styles.scss'
 
 export class WatchTable extends Component {
   state = {
-    tests,
-    info: 'info'
+    tests
   }
 
   handleDelete = test => {
@@ -64,11 +63,11 @@ export class WatchTable extends Component {
   render() {
     return (
       <>
-        <Table id='table' striped >
+        <Table id='table' striped>
           <thead>{this.TableHeader()}</thead>
           <tbody>{this.TableData()}</tbody>
         </Table>
       </>
-    ) 
+    )
   }
 }
