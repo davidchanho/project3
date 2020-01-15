@@ -16,7 +16,7 @@ export class WatchTable extends Component {
   }
 
   TableHeader = () => {
-    let header = Object.keys(tests[0])
+    let header = ['id', 'ticker', 'sector', 'market cap', ' health', 'MA', 'Option', '']
     return header.map((key, index) => {
       return (
         <th key={index} className={key}>
