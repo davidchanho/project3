@@ -18,7 +18,7 @@ export class TrendCard extends Component {
         {tests.map(({id, Company, Stock, Health}) => (
           <Card key={id} className='card shadow-sm'>
             <Card.Title>{Company}</Card.Title>
-            <Card.Text>{Stock}</Card.Text>
+            <Card.Text>({Stock})</Card.Text>
             <Card.Body>
               <CircleBar health={Health} />
             </Card.Body>

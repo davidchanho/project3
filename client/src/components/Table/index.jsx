@@ -16,7 +16,16 @@ export class WatchTable extends Component {
   }
 
   TableHeader = () => {
-    let header = ['id', 'ticker', 'sector', 'market cap', ' health', 'MA', 'Option', '']
+    let header = [
+      'id',
+      'ticker',
+      'sector',
+      'market cap',
+      ' health',
+      'MA',
+      'Option',
+      ''
+    ]
     return header.map((key, index) => {
       return (
         <th key={index} className={key}>
@@ -55,11 +64,11 @@ export class WatchTable extends Component {
   render() {
     return (
       <>
-        <Table id='tests'>
-          {this.TableHeader()}
-          {this.TableData()}
+        <Table id='table' striped >
+          <thead>{this.TableHeader()}</thead>
+          <tbody>{this.TableData()}</tbody>
         </Table>
       </>
-    )
+    ) 
   }
 }

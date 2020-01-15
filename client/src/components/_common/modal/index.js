@@ -1,8 +1,8 @@
 import Modal from 'react-bootstrap/Modal'
-
+import InfoIcon from '@material-ui/icons/Info'
 import Button from 'react-bootstrap/Button'
 
-function MyVerticallyCenteredModal(props) {
+function InfoModal(props, { children }) {
   return (
     <Modal
       {...props}
@@ -15,14 +15,7 @@ function MyVerticallyCenteredModal(props) {
           Modal heading
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
+      <Modal.Body>{children}</Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
@@ -36,13 +29,10 @@ export const ModalBtn = () => {
   return (
     <>
       <Button variant='primary' onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
+        <InfoIcon />
       </Button>
 
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <InfoModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   )
 }
