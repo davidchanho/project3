@@ -5,7 +5,7 @@ import './styles.scss'
 export const CircleBar = props => {
   return (
     <>
-      <div
+      <span
         data-preset='circle'
         className='ldBar label-center'
         data-value={props.health}

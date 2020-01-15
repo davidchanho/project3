@@ -21,7 +21,7 @@ const styles = {
     borderLeft: 0,
     backgroundColor: 'white'
   },
-  switch:{
+  switch: {
     float: 'left'
   }
 }
@@ -103,10 +103,16 @@ export class SignupForm extends Component {
             </InputGroup>
           </Form.Group>
         </Form.Row>
-        <Form.Check style={styles.switch} type='switch' id='show-password' label='Show Password' />
-        <Btns.Signup />
-        <Button>Sign up with GitHub</Button>
-        <Button>Sign up with Google</Button>
+        <Form.Check
+          style={styles.switch}
+          type='switch'
+          id='show-password'
+          label='Show Password'
+        />
+        <Button>Sign Up</Button>
+        <Button>GitHub</Button>
+        <Button>Google</Button>
+        <Form.Text>Login</Form.Text>
       </Form>
     )
   }

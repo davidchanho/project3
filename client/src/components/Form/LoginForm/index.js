@@ -96,9 +96,10 @@ export class LoginForm extends Component {
           id='remember-password'
           label='Remember Password'
         />
-        <Btns.Login />
-        <Button>Sign up with GitHub</Button>
-        <Button>Sign up with Google</Button>
+        <Button>Login</Button>
+        <Button>GitHub</Button>
+        <Button>Google</Button>
+        <Form.Text><a>Sign Up</a></Form.Text>
       </Form>
     )
   }
