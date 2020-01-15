@@ -15,12 +15,12 @@ export class TrendCard extends Component {
   render() {
     return (
       <>
-        {tests.map(test => (
-          <Card key={test.id} className='card shadow-sm'>
-            <Card.Title>{test.Company}</Card.Title>
-            <Card.Text>{test.Stock}</Card.Text>
+        {tests.map(({id, Company, Stock, Health}) => (
+          <Card key={id} className='card shadow-sm'>
+            <Card.Title>{Company}</Card.Title>
+            <Card.Text>{Stock}</Card.Text>
             <Card.Body>
-              <CircleBar health={test.Health} />
+              <CircleBar health={Health} />
             </Card.Body>
             <InfoIcon />
           </Card>
