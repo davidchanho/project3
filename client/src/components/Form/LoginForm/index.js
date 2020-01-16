@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import { Btns } from 'components'
-// import { Input, PasswordInput } from '../Input'
+import auth from '../../../services/authService'
 
 // import './styles.scss'
 const styles = {
@@ -35,7 +35,25 @@ export class LoginForm extends Component {
     showPassword: false
   }
 
-  handleSubmit = e => e.preventDefault()
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { email, password } = this.state;
+      const userResponse = await auth.login(email, password);
+ 
+      if (userResponse) {
+        alert(userResponse);
+      } else {
+        window.location = "/";
+      }
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.username = ex.response.data;
+        this.setState({ errors });
+      }
+    }
+  }
 
   handlePassword = () => {
     this.setState({ showPassword: !this.state.showPassword })
@@ -84,8 +102,8 @@ export class LoginForm extends Component {
                 {this.state.showPassword ? (
                   <VisibilityIcon />
                 ) : (
-                  <VisibilityOffIcon />
-                )}
+                    <VisibilityOffIcon />
+                  )}
               </InputGroup.Text>
             </InputGroup.Append>
           </InputGroup>
