@@ -4,7 +4,7 @@ import FormControl from 'react-bootstrap/FormControl'
 import Col from 'react-bootstrap/Col'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
-import { Btns } from 'components'
+
 // import { Input, PasswordInput } from '../Input'
 
 // import './styles.scss'

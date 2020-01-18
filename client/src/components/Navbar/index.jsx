@@ -3,7 +3,6 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import TrendingUpIcon from '@material-ui/icons/TrendingUp'
-import './styles.scss'
 
 export const Navbars = () => {
   return (

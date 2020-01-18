@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Footer, Navbars } from 'components'
+import { Footer, SideNav } from 'components'
 import {
   About,
   User,
@@ -10,14 +10,26 @@ import {
   Watchlist,
   PageNotFound
 } from './pages'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import './App.scss'
 
-class App extends Component {
-  render() {
-    return (
-      <div className='App'>
-        <Navbars />
+export default function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light'
+        }
+      }),
+    [prefersDarkMode]
+  )
 
+  return (
+    <ThemeProvider theme={theme}>
+      <SideNav>
         <Router>
           <Switch>
             <Route exact path='/' component={Signup} />
@@ -29,11 +41,8 @@ class App extends Component {
             <Route component={PageNotFound} />
           </Switch>
         </Router>
-
-        <Footer />
-      </div>
-    )
-  }
+      </SideNav>
+      <Footer />
+    </ThemeProvider>
+  )
 }
-
-export default App

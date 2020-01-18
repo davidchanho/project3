@@ -5,7 +5,6 @@ import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
-import { Btns } from 'components'
 // import { Input, PasswordInput } from '../Input'
 
 // import './styles.scss'

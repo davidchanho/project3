@@ -1,31 +1,25 @@
-import React, { Component } from 'react'
-
+import React from 'react'
 import Card from 'react-bootstrap/Card'
-import tests from '../../model/testSector.json'
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@material-ui/icons/Info'
+import ClearIcon from '@material-ui/icons/Clear'
 import { CircleBar } from 'components'
 
 import './styles.scss'
 
-export class TrendCard extends Component {
-  state = {
-    tests
-  }
+export const TrendCard = props => {
+  const { test } = props
 
-  render() {
-    return (
-      <>
-        {tests.map(({id, Company, Stock, Health}) => (
-          <Card key={id} className='card shadow-sm'>
-            <Card.Title>{Company}</Card.Title>
-            <Card.Text>({Stock})</Card.Text>
-            <Card.Body>
-              <CircleBar health={Health} />
-            </Card.Body>
-            <InfoIcon />
-          </Card>
-        ))}
-      </>
-    )
-  }
+  return (
+    <>
+      <Card key={test.id} className='card shadow-sm'>
+        <ClearIcon className='close' onClick={() => props.onDelete(test)} />
+        <Card.Title>{test.Company}</Card.Title>
+        <Card.Text>({test.Stock})</Card.Text>
+        <Card.Body>
+          <CircleBar health={test.Health} />
+        </Card.Body>
+        <InfoIcon />
+      </Card>
+    </>
+  )
 }
