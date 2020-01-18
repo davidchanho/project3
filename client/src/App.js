@@ -1,32 +1,74 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Footer, Navbars } from 'components'
-import Logout from "./components/Logout/logout"
+<<<<<<< HEAD
+import { Footer, SideNav } from 'components'
+import Logout from './components/Logout/index'
+=======
+import { Footer } from 'components'
+>>>>>>> 8f7a21129f65e0fceefbfa1fb85484f60ee87611
+import {
+  About,
+  User,
+  Login,
+  Signup,
+  Trend,
+  Watchlist,
+  PageNotFound,
+<<<<<<< HEAD
+
+} from './pages'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import auth from "./services/authService"
-import { Home, About, User, Login, Signup, Trend, Watchlist, PageNotFound } from './pages'
-// import { ToastContainer } from 'react-toastify';
 import './App.scss'
-// import 'react-toastify/dist/ReactToastify.css';
 
-class App extends Component {
+export default function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  const [user, setUser] = useState();
 
-  state = {};
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light'
+        }
+      }),
+    [prefersDarkMode]
+=======
+  Layout
+} from './pages'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { DarkMode } from 'components/_common/DarkMode'
 
-  componentDidMount() {
-    const user = auth.getCurrentUser();
-    this.setState({ user })
-  }
+export default function App() {
+  const theme = React.useMemo(() =>
+    createMuiTheme({
+      palette: {
+        type: 'dark'
+      }
+    })
+>>>>>>> 8f7a21129f65e0fceefbfa1fb85484f60ee87611
+  )
 
-  render() {
-    return (
-      <div className='App'>
-        <Navbars user={this.state.user} />
+  useEffect(() => {
+    try {
+      const user = auth.getCurrentUser();
+      setUser({ user });
+      console.log(user);
+    } catch (ex) { }
+  }, []);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Layout>
         <Router>
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/Watchlist' component={Watchlist} />
+            <Route exact path='/' component={Trend} />
             <Route exact path='/About' component={About} />
             <Route exact path='/User' component={User} />
+            <Route exact path='/Sector' component={Trend} />
+            <Route exact path='/Watchlist' component={Watchlist} />
             <Route exact path='/Login' component={Login} />
             <Route exact path='/Logout' component={Logout} />
             <Route exact path='/Signup' component={Signup} />
@@ -34,12 +76,9 @@ class App extends Component {
             <Route component={PageNotFound} />
           </Switch>
         </Router>
+      </Layout>
+      <Footer />
+    </ThemeProvider>
 
-        <Footer />
-      </div>
-
-    )
-  }
+  )
 }
-
-export default App

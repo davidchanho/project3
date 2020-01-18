@@ -43,5 +43,68 @@
     "health": 75,
     "ma": "5% 10% 15%",
     "option": "Feeling Risky"
+  },
+  {
+    "id": 6,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 7,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 8,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 9,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 10,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 11,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
+  },
+  {
+    "id": 12,
+    "ticker": "$BABA",
+    "sector": "Technology",
+    "marketCap": "China",
+    "health": 75,
+    "ma": "5% 10% 15%",
+    "option": "Feeling Risky"
   }
 ]
