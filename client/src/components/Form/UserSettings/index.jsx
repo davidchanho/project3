@@ -3,7 +3,6 @@ import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import AveragePeriod from './AveragePeriod'
 import Weighting from './Weighting'
-import './styles.scss'
 
 export function UserSettings() {
   const [key, setKey] = useState('AveragePeriod')

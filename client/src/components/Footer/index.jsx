@@ -1,13 +1,11 @@
 import React from 'react'
-
-import Navbar from 'react-bootstrap/Navbar'
-
-import './styles.scss'
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography'
 
 export const Footer = () => {
   return (
-    <Navbar className='footer justify-content-center' expand='lg'>
-      <small>©Trend Health</small>
-    </Navbar>
+    <AppBar>
+      <Typography>©Trend Health</Typography>
+    </AppBar>
   )
 }

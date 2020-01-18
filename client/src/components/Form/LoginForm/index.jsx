@@ -8,7 +8,6 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import { Btns } from 'components'
 import auth from '../../../services/authService'
 
-// import './styles.scss'
 const styles = {
   form: {
     margin: 'auto',

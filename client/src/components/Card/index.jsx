@@ -1,25 +1,43 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
-import InfoIcon from '@material-ui/icons/Info'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
 import ClearIcon from '@material-ui/icons/Clear'
-import { CircleBar } from 'components'
+import InfoIcon from '@material-ui/icons/Info'
+import { CircleBar } from './CircleBar'
 
-import './styles.scss'
+const useStyles = makeStyles({
+  card: {
+    minWidth: 275,
+    textAlign: 'center',
+    margin: 20
+  },
+  title: {
+    fontSize: 28
+  }
+})
 
 export const TrendCard = props => {
+  const classes = useStyles()
   const { test } = props
 
   return (
-    <>
-      <Card key={test.id} className='card shadow-sm'>
-        <ClearIcon className='close' onClick={() => props.onDelete(test)} />
-        <Card.Title>{test.Company}</Card.Title>
-        <Card.Text>({test.Stock})</Card.Text>
-        <Card.Body>
-          <CircleBar health={test.Health} />
-        </Card.Body>
+    <Card key={test.id} className={classes.card}>
+      <CardActions>
+        <ClearIcon
+          className='close'
+          onClick={() => props.onDelete(test)}
+          color='action'
+        />
         <InfoIcon />
-      </Card>
-    </>
+      </CardActions>
+      <CardContent>
+        <Typography className={classes.title}>{test.Company}</Typography>
+        <Typography>({test.Stock})</Typography>
+        <CircleBar health={test.Health} />
+      </CardContent>
+    </Card>
   )
 }

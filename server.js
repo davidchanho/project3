@@ -33,6 +33,7 @@ app.get("*", function (req, res) {
 });
 
 
+<<<<<<< HEAD
 app.use(routes);
 
 
@@ -46,5 +47,8 @@ mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true 
 
 
 app.listen(PORT, function () {
+=======
+app.listen(PORT, function() {
+>>>>>>> 8f7a21129f65e0fceefbfa1fb85484f60ee87611
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
