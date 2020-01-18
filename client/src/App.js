@@ -1,11 +1,7 @@
 import React, { Component, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-<<<<<<< HEAD
 import { Footer, SideNav } from 'components'
 import Logout from './components/Logout/index'
-=======
-import { Footer } from 'components'
->>>>>>> 8f7a21129f65e0fceefbfa1fb85484f60ee87611
 import {
   About,
   User,
@@ -14,48 +10,29 @@ import {
   Trend,
   Watchlist,
   PageNotFound,
-<<<<<<< HEAD
-
-} from './pages'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import auth from "./services/authService"
-import './App.scss'
-
-export default function App() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  const [user, setUser] = useState();
-
-  const theme = React.useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: prefersDarkMode ? 'dark' : 'light'
-        }
-      }),
-    [prefersDarkMode]
-=======
   Layout
 } from './pages'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { DarkMode } from 'components/_common/DarkMode'
+import auth from "./services/authService"
 
 export default function App() {
+  const [user, setUser] = useState();
+
   const theme = React.useMemo(() =>
     createMuiTheme({
       palette: {
         type: 'dark'
       }
     })
->>>>>>> 8f7a21129f65e0fceefbfa1fb85484f60ee87611
   )
 
   useEffect(() => {
     try {
-      const user = auth.getCurrentUser();
-      setUser({ user });
-      console.log(user);
+      const userData = auth.getCurrentUser();
+      setUser({ userData });
+      console.log(userData);
     } catch (ex) { }
   }, []);
 

@@ -32,10 +32,7 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-
-<<<<<<< HEAD
 app.use(routes);
-
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -47,8 +44,5 @@ mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true 
 
 
 app.listen(PORT, function () {
-=======
-app.listen(PORT, function() {
->>>>>>> 8f7a21129f65e0fceefbfa1fb85484f60ee87611
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
