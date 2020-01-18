@@ -1,15 +1,9 @@
-import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import { Columns, Filter } from 'components'
+import React, { Component, useState } from 'react'
+import Grid from '@material-ui/core/Grid'
+import { Filter } from 'components/Menu/Filter_Menu'
+import { Columns } from 'components/Card/_Template'
 import tests from '../../model/testSector.json'
 
-const styles = {
-  row: {
-    height: '100%'
-  }
-}
 export class Trend extends Component {
   state = {
     tests
@@ -21,18 +15,17 @@ export class Trend extends Component {
   }
 
   render() {
+    const { tests } = this.state
     return (
       <>
-        <Container>
-          <Row style={styles.row}>
-            <Col>
-              <Filter tests={this.state.tests} />
-            </Col>
-            <Col>
-              <Columns tests={this.state.tests} onDelete={this.handleDelete} />
-            </Col>
-          </Row>
-        </Container>
+        <Grid container spacing={1}>
+          <Grid item xs={2}>
+            <Filter tests={tests} />
+          </Grid>
+          <Grid item>
+            <Columns tests={tests} onDelete={this.handleDelete} />
+          </Grid>
+        </Grid>
       </>
     )
   }

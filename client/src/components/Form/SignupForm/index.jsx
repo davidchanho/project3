@@ -5,9 +5,6 @@ import Col from 'react-bootstrap/Col'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 
-// import { Input, PasswordInput } from '../Input'
-
-// import './styles.scss'
 const styles = {
   form: {
     margin: 'auto',

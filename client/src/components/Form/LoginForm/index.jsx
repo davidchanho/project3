@@ -5,9 +5,7 @@ import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
-// import { Input, PasswordInput } from '../Input'
 
-// import './styles.scss'
 const styles = {
   form: {
     margin: 'auto',

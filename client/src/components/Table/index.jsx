@@ -22,7 +22,7 @@ export function WatchTable() {
 
   return (
     <MaterialTable
-      title='Sector'
+      title='Watch List'
       columns={state.columns}
       data={state.data}
       editable={{
