@@ -4,7 +4,9 @@ import FormControl from 'react-bootstrap/FormControl'
 import Col from 'react-bootstrap/Col'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
-
+import { Btns } from 'components'
+import * as userService from '../../../services/userService';
+import auth from "../../../services/authService"
 // import { Input, PasswordInput } from '../Input'
 
 // import './styles.scss'
@@ -34,7 +36,18 @@ export class SignupForm extends Component {
     verifyPassword: ''
   }
 
-  handleSubmit = e => e.preventDefault()
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const {data:jwt} = await userService.register(this.state);
+      auth.loginWithJwt(jwt);
+      window.location =  "/";
+    } catch (ex) {
+      if (ex.response) {
+        alert(ex.response.data)
+      }
+    }
+  }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
@@ -42,7 +55,6 @@ export class SignupForm extends Component {
 
   render() {
     const { email, password, verifyEmail, verifyPassword } = this.state
-
     return (
       <Form style={styles.form} onSubmit={this.handleSubmit}>
         <h1>Sign Up</h1>
@@ -109,7 +121,7 @@ export class SignupForm extends Component {
           id='show-password'
           label='Show Password'
         />
-        <Button>Sign Up</Button>
+        <Button type="submit">Sign Up</Button>
         <Button>GitHub</Button>
         <Button>Google</Button>
         <Form.Text>Login</Form.Text>
