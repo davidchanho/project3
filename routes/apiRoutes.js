@@ -56,4 +56,15 @@ router.route("/api/auth").post((req, res, next) => {
         })
 })
 
+router.route("/api/watchList").post((req, res, next) => {
+    db.User.findOneAndUpdate({email},{watchlist})
+        .then(function () {
+            //add response for User watchlist update
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        })
+})
+
 module.exports = router;
