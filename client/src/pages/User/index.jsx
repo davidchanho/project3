@@ -1,6 +1,6 @@
 import React from 'react'
 import { UserSettings } from 'components'
 
-export const User = () => {
-  return <UserSettings />
+export const User = ({user}) => {
+  return <UserSettings user={user} />
 }

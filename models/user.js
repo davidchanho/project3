@@ -6,7 +6,16 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
     email: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
-    name: { type: String, required: false }
+    name: { type: String, required: false },
+    userSettings: {
+        fastSMA: {type:Number, required:false},
+        slowSMA: {type:Number, required:false},
+        fastWeight: {type:Number, required:false},
+        slowWeight: {type:Number, required:false},
+        fastToSlowWeight: {type:Number, required:false},
+        MACDWeight: {type:Number, required:false},
+        ADXWeight: {type:Number, required:false}
+    }
 });
 
 

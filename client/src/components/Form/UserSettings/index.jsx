@@ -4,9 +4,9 @@ import Tabs from 'react-bootstrap/Tabs'
 import AveragePeriod from './AveragePeriod'
 import Weighting from './Weighting'
 
-export function UserSettings() {
+export function UserSettings({ user }) {
   const [key, setKey] = useState('AveragePeriod')
-
+  
   return (
     <>
       <h1>User Settings</h1>
@@ -16,7 +16,7 @@ export function UserSettings() {
         onSelect={k => setKey(k)}
       >
         <Tab eventKey='AveragePeriod' title='Average Period (Weekly)'>
-          <AveragePeriod />
+          <AveragePeriod user={user} />
         </Tab>
         <Tab eventKey='Weighting' title='Weighting (%)'>
           <Weighting />

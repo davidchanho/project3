@@ -31,8 +31,7 @@ export default function App() {
   useEffect(() => {
     try {
       const userData = auth.getCurrentUser();
-      setUser({ userData });
-      console.log(userData);
+      setUser(userData);
     } catch (ex) { }
   }, []);
 
@@ -43,7 +42,9 @@ export default function App() {
           <Switch>
             <Route exact path='/' component={Trend} />
             <Route exact path='/About' component={About} />
-            <Route exact path='/User' component={User} />
+            <Route exact path="/User"
+              render={props => <User {...props} user={user} />}
+            />
             <Route exact path='/Sector' component={Trend} />
             <Route exact path='/Watchlist' component={Watchlist} />
             <Route exact path='/Login' component={Login} />
