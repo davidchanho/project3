@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const Weighting = ({user}) => {
-  console.log(user)
+const Weighting = ({ user, onWeightChange }) => {
   const [fastWeight, setFastWeight] = useState();
   const [slowWeight, setSlowWeight] = useState();
   const [fastToSlowWeight, setFastToSlowWeight] = useState();
@@ -13,13 +12,46 @@ const Weighting = ({user}) => {
 
   useEffect(() => {
     try {
-      setFastWeight(user.userSettings.fastWeight);
-      setSlowWeight(user.userSettings.slowWeight);
-      setFastToSlowWeight(user.userSettings.fastToSlowWeight);
-      setMACDWeight(user.userSettings.MACDWeight);
-      setADXWeight(user.userSettings.ADXWeight);
+      if (!fastWeight && !slowWeight && !fastToSlowWeight && !MACDWeight && !ADXWeight) {
+        setFastWeight(user.userSettings.fastWeight);
+        setSlowWeight(user.userSettings.slowWeight);
+        setFastToSlowWeight(user.userSettings.fastToSlowWeight);
+        setMACDWeight(user.userSettings.MACDWeight);
+        setADXWeight(user.userSettings.ADXWeight);
+      }
     } catch (ex) { }
   });
+
+  const handleChange = (e) => {
+      switch (e.target.id) {
+        case "FastSMA":
+          e.target.value ? setFastWeight(parseInt(e.target.value)) : setFastWeight(0);
+          break;
+        case "SlowSMA":
+          e.target.value ? setSlowWeight(parseInt(e.target.value)) : setSlowWeight(0);
+          break;
+        case "FasterSlowSMA":
+          e.target.value ? setFastToSlowWeight(parseInt(e.target.value)) : setFastToSlowWeight(0);
+          break;
+        case "MACD":
+          e.target.value ? setMACDWeight(parseInt(e.target.value)) : setMACDWeight(0);
+          break;
+        case "ADX":
+          e.target.value ? setADXWeight(parseInt(e.target.value)) : setADXWeight(0);
+          break;
+      }
+  }
+
+  const handleBlur = () => {
+    let newWeightObject = {
+      fastWeight: fastWeight,
+      slowWeight: slowWeight,
+      fastToSlowWeight: fastToSlowWeight,
+      MACDWeight: MACDWeight,
+      ADXWeight: ADXWeight
+    }
+    onWeightChange(newWeightObject);
+  }
 
   return (
     <Form>
@@ -28,26 +60,26 @@ const Weighting = ({user}) => {
           <h3>Slow Moving Average</h3>
           <Form.Group controlId='FastSMA'>
             <Form.Label>Fast</Form.Label>
-            <Form.Control type='input' value={fastWeight} />
+            <Form.Control type='input' value={fastWeight} onChange={handleChange} onBlur={handleBlur} />
           </Form.Group>
           <Form.Group controlId='SlowSMA'>
             <Form.Label>Slow</Form.Label>
-            <Form.Control type='input' value={slowWeight} />
+            <Form.Control type='input' value={slowWeight} onChange={handleChange} onBlur={handleBlur} />
           </Form.Group>
           <Form.Group controlId='FasterSlowSMA'>
             <Form.Label>Faster > Slow </Form.Label>
-            <Form.Control type='input' value={fastToSlowWeight} />
+            <Form.Control type='input' value={fastToSlowWeight} onChange={handleChange} onBlur={handleBlur} />
           </Form.Group>
         </Col>
         <Col>
           <h3>Other</h3>
           <Form.Group controlId='MACD'>
             <Form.Label>Weekly MACD Pos. Crossover</Form.Label>
-            <Form.Control type='input' value={MACDWeight} />
+            <Form.Control type='input' value={MACDWeight} onChange={handleChange} onBlur={handleBlur} />
           </Form.Group>
           <Form.Group controlId='ADX'>
             <Form.Label>ADX</Form.Label>
-            <Form.Control type='input' value={ADXWeight} />
+            <Form.Control type='input' value={ADXWeight} onChange={handleChange} onBlur={handleBlur} />
           </Form.Group>
         </Col>
       </Row>
