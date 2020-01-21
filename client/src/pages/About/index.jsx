@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import Iwm from './IWM.png';
 import Gme from './GME.png';
-import Qqq from './QQQ.png';
+import Qqq from './qqq.png';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -72,16 +72,31 @@ export const About = () => {
 
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  const [open3, setOpen3] = React.useState(false);
 
-  const handleOpen = () => {
-      setOpen(true);
+  const handleOpen1 = () => {
+      setOpen1(true);
   };
 
-  const handleClose = () => {
-      setOpen(false);
+  const handleClose1 = () => {
+      setOpen1(false);
   };
+  const handleOpen2 = () => {
+    setOpen2(true);
+};
 
+const handleClose2 = () => {
+    setOpen2(false);
+};
+const handleOpen3 = () => {
+  setOpen3(true);
+};
+
+const handleClose3 = () => {
+  setOpen3(false);
+};
   return (
     <div>
 
@@ -112,14 +127,14 @@ export const About = () => {
               <p style={styles.paragraph}>In investing and speculating in stocks, one can keep a pulse on the health of the market as a whole by monitoring the trends in the price of the current leading sectors and individual stocks. It is common practice to determine the state of a trend (up, down, sideways) via the use of technical indicators; <a href="https://www.investopedia.com/terms/m/movingaverage.asp" target="_blank">Moving Averages,</a> and the <a href="https://www.investopedia.com/terms/m/macd.asp" target="_blank">MACD (Moving Average Convergence/Divergence Oscillator)</a>, to name two.</p>
               <p style={styles.paragraph}>Figure 1 is a price history chart of the IWM Small Cap (Cap = Market Capitalization. The value of a stock or index, calculated by multiplying the number of shares outstanding by the share price) index, ranging from Q’1 2014 to Q’1 2020. Each bar on the chart represents one week of price movement. The blue line is the 10 period moving average (MA), and the red is the 40 period MA. The indicator in the middle pane represents MACD, and the bottom pane represents ADX (Average Directional Index, discussed later)</p>
               
-              <Button variant="contained" color="primary" onClick={handleOpen} style={{marginLeft:"4em"}}> Figure 1
+              <Button variant="contained" color="primary" onClick={handleOpen1} style={{marginLeft:"4em"}}> Figure 1
               </Button>
 
               <Modal
                   aria-labelledby="simple-modal-title"
                   aria-describedby="simple-modal-description"
-                  open={open}
-                  onClose={handleClose}
+                  open={open1}
+                  onClose={handleClose1}
               >
               <img src={Iwm} style={modalStyle} className={classes.paper}/>
               </Modal>
@@ -143,26 +158,26 @@ export const About = () => {
               <p style={styles.paragraph}>Refer to Figures 2 & 3. GameStop (GME) has a weekly ADX of 22.78 as it trends towards new lows, while the Nasdaq 100 Index (QQQ) has a similar weekly ADX of 21.85 while it is trending at all time highs.</p>
 
                 <div className="row justicy-content-center">
-                  <Button variant="contained" color="primary" onClick={handleOpen} style={{marginLeft:"4em"}}> Figure 1
+                  <Button variant="contained" color="primary" onClick={handleOpen2} style={{marginLeft:"4em"}}> Figure 2
                   </Button>
 
                   <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
-                    open={open}
-                    onClose={handleClose}
+                    open={open2}
+                    onClose={handleClose2}
                   >
                   <img src={Gme} style={modalStyle} className={classes.paper}/>
                   </Modal>
 
-                  <Button variant="contained" color="primary" onClick={handleOpen} style={{marginLeft:"4em"}}> Figure 1
+                  <Button variant="contained" color="primary" onClick={handleOpen3} style={{marginLeft:"4em"}}> Figure 3
                   </Button>
 
                   <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
-                    open={open}
-                    onClose={handleClose}
+                    open={open3}
+                    onClose={handleClose3}
                   >
                   <img src={Qqq} style={modalStyle} className={classes.paper}/>
                   </Modal>

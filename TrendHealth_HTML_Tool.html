@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trend Health</title>
+
+  <!-- mobile device compatibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 
+  <!-- boot strap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- custom CSS -->
+    <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/66fb9cbaef.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+</head>
+
+<body style="background: powderblue">
+
+<!-- header -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Trend Health</a>
+        <i class="fas fa-first-aid"></i>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home
+                    <i class="fas fa-igloo"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Your Watchlist
+                    <i class="fas fa-binoculars"></i>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">User Settings
+                    <i class="fas fa-tools"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+<!-- contains entirety of page content  -->
+  <div class="container">
+
+    <!-- add student, view student -->
+      <div class="row justify-content-around" style="padding-bottom:2%">
+          <div class="col-lg-10">
+            <div class="card card-default" style="margin-top: 3%; border:3px solid black">
+
+                <div class="card-header" style="background:black; font-weight:bold; color:white; text-align:center">
+                    <h3>
+                        Trend Health Calculator
+                        <i class="fas fa-tools"></i>
+                    </h3>
+                </div>
+
+                <div class="row" style="padding-top:1%">
+                    <div class="col-lg-12" style="text-align:center">
+                        <h5>Ticker</h5>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col" style="text-align:center">
+                        <input type="text" class="form-control" id="tickerSelect" placeholder="TSLA" style="width:40%; margin:auto">
+                    </div>
+                </div>
+
+
+
+                <div class="row" style="padding-top:1%">
+                    <div class="col-lg-6" style="text-align:center">
+                        <h5>Fast Moving Average Period (weekly)</h5>
+                    </div>
+                    <div class="col-lg-6" style="text-align:center">
+                        <h5>Slow Moving Average Period (weekly)</h5>
+                    </div>
+                </div>
+
+                    <form style="padding:0 2% 2% 2%">
+                        <div class="form-row">
+                        <div class="col" style="text-align:center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="fastSMARadio" id="inlineRadio1" value="5">
+                                <label class="form-check-label" for="inlineRadio1">5</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input active" type="radio" name="fastSMARadio" id="inlineRadio2" value="10" checked="checked">
+                                <label class="form-check-label active" for="inlineRadio2">10</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="fastSMARadio" id="inlineRadio3" value="20">
+                                <label class="form-check-label" for="inlineRadio3">20</label>
+                            </div>
+                        </div>
+                        
+                        <div class="col" style="text-align:center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="slowSMARadio" id="inlineRadio1" value="40" checked="checked">
+                                <label class="form-check-label" for="inlineRadio1" checked="checked">40</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="slowSMARadio" id="inlineRadio2" value="60">
+                                <label class="form-check-label" for="inlineRadio2">60</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="slowSMARadio" id="inlineRadio3" value="80">
+                                <label class="form-check-label" for="inlineRadio3">80</label>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+
+                <div class="row" style="padding-top:1%">
+                    <div class="col-lg-12" style="text-align:center">
+                        <h2>Weightings %</h2>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top:1%">
+                    <div class="col-lg-6" style="text-align:center">
+                        <h5>Fast SMA has Positive Slope</h5>
+                    </div>
+                    <div class="col-lg-6" style="text-align:center">
+                        <h5>Slow SMA has Positive Slope</h5>
+                    </div>
+                </div>
+
+                    <div class="form-row">
+                        <div class="col" style="text-align:center">
+                            <input type="text" class="form-control" id="fastSMAWeight" placeholder="%" style="width:80%; margin:auto">
+                        </div>
+                        <div class="col" style="text-align:center">
+                            <input type="text" class="form-control" id="slowSMAWeight" placeholder="%" style="width:80%; margin:auto">
+                        </div>
+                    </div>
+
+                <div class="row" style="padding-top:2%">
+                    <div class="col-lg-12" style="text-align:center">
+                        <h5>Fast SMA is Greater Than Slow SMA</h5>
+                    </div>
+                </div>
+
+                    <div class="form-row">
+                        <div class="col" style="text-align:center">
+                            <input type="text" class="form-control" id="fastGreaterSlowWeight" placeholder="%" style="width:40%; margin:auto">
+                        </div>
+                    </div>
+
+                <div class="row" style="padding-top:1%">
+                    <div class="col-lg-6" style="text-align:center">
+                        <h5>Weekly MACD Pos. Crossover</h5>
+                    </div>
+                    <div class="col-lg-6" style="text-align:center">
+                        <h5>ADX</h5>
+                    </div>
+                </div>
+
+                    <div class="form-row" style="padding-bottom:2%">
+                        <div class="col" style="text-align:center">
+                            <input type="text" class="form-control" id="macdWeight" placeholder="%" style="width:80%; margin:auto">
+                        </div>
+                        <div class="col" style="text-align:center">
+                            <input type="text" class="form-control" id="adxWeight" placeholder="%" style="width:80%; margin:auto">
+                        </div>
+                    </div>
+
+                    <div class="col-auto" style="text-align:center">
+                        <button type="submit" class="btn btn-primary mb-2" id="retrieveData">Submit</button>
+                    </div>
+                      
+                    <div class="row justify-content-center" id ="healthRow" style="padding-top:1%"></div>
+
+                </div>
+            </div>
+        </div>  
+    </div>
+
+<!-- footer -->
+  <footer class="footer">
+    <!-- <div class="container" style="background: wheat; width: 35%;text-align:center; margin-bottom:4%; border-radius:25px">
+        <a target="_blank" href="/api/curriculum">API Vocab Link</a> | 
+        <a target="_blank" href="https://github.com/LoganMcnulty/Vocab-O-Matic">GitHub Repo</a> -->
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
+
+<!-- script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="js/...."></script> -->
+  
+
+<!-- Java Script -->
+<script type="text/javascript">
+
+$("#retrieveData").on("click", function(event) {
+    event.preventDefault();
+
+// data storage
+    let priceData = []
+    let macdData = []
+    let adxData = []
+
+// user inputs
+    const userFastSMA = Number($("input[name='fastSMARadio']:checked").val())
+    const userSlowSMA = Number($("input[name='slowSMARadio']:checked").val())
+    const stock = $("#tickerSelect").val()
+
+//api key
+    let apiKEY= 'ZXKO99TVLOE9KC7R'
+
+// calculated values
+    let fastSMAValue
+    let slowSMAValue
+    let fastSMAValueLookback
+    let slowSMAValueLookback
+    let macdValue
+ 
+ // values to be weighted
+    let fastSMAPositiveSlope
+    let slowSMAPositiveSlope
+    let fastGreaterSlow
+    let macdPositiveSlope
+    let adxValue
+
+// weights
+    let fastSlopeWeight = Number($("#fastSMAWeight").val())/100
+    let slowSlopeWeight = Number($("#slowSMAWeight").val())/100
+    let fastGreaterSlowWeight = Number($("#fastGreaterSlowWeight").val())/100
+    let macdWeight = Number($("#macdWeight").val())/100
+    let adxWeight = Number($("#adxWeight").val())/100
+
+    
+    
+// URLs
+    let stockPriceDataURL = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${stock}&apikey=${apiKEY}`
+    let macdURL = `https://www.alphavantage.co/query?function=MACD&symbol=${stock}&interval=weekly&series_type=close&apikey=${apiKEY}`
+    let adxURL = `https://www.alphavantage.co/query?function=ADX&symbol=${stock}&interval=weekly&time_period=10&apikey=${apiKEY}`
+
+// fast over slow function
+    const fastOverSlow = function (macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted, slowSMAPositiveSlopeWeighted){
+        macdPositiveSlopeWeighted = macdPositiveSlopeWeighted
+        fastSMAPositiveSlopeWeighted = fastSMAPositiveSlopeWeighted
+        slowSMAPositiveSlopeWeighted = slowSMAPositiveSlopeWeighted
+        
+        if(fastSMAValue > slowSMAValue){fastGreaterSlow = 1}else{fastGreaterSlow = 0}
+        // console.log("fast greater slow: " + fastGreaterSlow)
+
+        const fastGreaterSlowWeighted = (fastGreaterSlow * fastGreaterSlowWeight)
+
+        // console.log("fast greater slow weighted: " + fastGreaterSlowWeighted)
+
+            adxCall(macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted, slowSMAPositiveSlopeWeighted, fastGreaterSlowWeighted)
+    }
+
+// slow SMA Function
+    const slowSMA = function(macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted){
+        macdPositiveSlopeWeighted = macdPositiveSlopeWeighted
+        fastSMAPositiveSlopeWeighted = fastSMAPositiveSlopeWeighted
+
+        let sum = 0
+        let sumLookback = 0
+        for (i=0; i<userSlowSMA; i++){ sum += priceData[i]}
+        slowSMAValue = sum/userSlowSMA
+        // console.log("Slow SMA t0: " + slowSMAValue)
+
+        for (i=1; i<userSlowSMA+1; i++){ sumLookback += priceData[i]}
+        slowSMAValueLookback = sumLookback/userSlowSMA
+        // console.log("Slow SMA t-1: " + slowSMAValueLookback)
+
+        if (slowSMAValue > slowSMAValueLookback){slowSMAPositiveSlope = 1}else{slowSMAPositiveSlope = 0}
+        // console.log("slow SMA Pos Slope: " + slowSMAPositiveSlope)
+
+        const slowSMAPositiveSlopeWeighted = (slowSMAPositiveSlope * slowSlopeWeight)
+        // console.log("slow SMA Weighted: " + slowSMAPositiveSlopeWeighted)
+
+            fastOverSlow(macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted, slowSMAPositiveSlopeWeighted)
+
+    }
+
+// fast SMA Function
+    const fastSMA = function(macdPositiveSlopeWeighted){
+            macdPositiveSlopeWeighted = macdPositiveSlopeWeighted
+
+            let sum = 0
+            let sumLookback = 0
+            for (i=0; i<userFastSMA; i++){sum += priceData[i]}
+            fastSMAValue = sum/userFastSMA
+            // console.log("Fast SMA t0: " + fastSMAValue)
+
+            for (i=1; i<userFastSMA+1; i++){sumLookback += priceData[i]}
+            fastSMAValueLookback = sumLookback/userFastSMA
+            // console.log("Fast SMA t-1: " + fastSMAValueLookback)
+
+            if (fastSMAValue > fastSMAValueLookback){fastSMAPositiveSlope = 1}else{fastSMAPositiveSlope = 0}
+            // console.log("fast SMA Pos Slope: " + fastSMAPositiveSlope)
+
+            let fastSMAPositiveSlopeWeighted = (fastSMAPositiveSlope * fastSlopeWeight)
+            // console.log("fast SMA Weighted: " + fastSMAPositiveSlopeWeighted)
+
+                slowSMA(macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted)
+
+        }
+
+
+
+// MACD AJAX call **THIS KICKS OFF THE ENTIRE CHAIN OF EVENTS ** 
+    $.ajax({
+        url: macdURL,
+        method: "GET"
+        }).then(function(response) {
+        Object.entries(response['Technical Analysis: MACD']).forEach(([key, value], index) => {macdData.push(Number(value["MACD"]))});
+            if (macdData[0] > macdData[1]){macdPositiveSlope = 1}else{macdPositiveSlope = 0}
+            let macdPositiveSlopeWeighted = (macdPositiveSlope * macdWeight)
+            
+            $.ajax({
+            url: stockPriceDataURL,
+            method: "GET"
+            }).then(function(response) {
+            Object.entries(response['Weekly Time Series']).forEach(([key, value], index) => {priceData.push(Number(value["4. close"]))});
+                // console.log("Price Data:" + priceData)
+
+                fastSMA(macdPositiveSlopeWeighted)
+            
+             })
+
+
+        })
+
+// trend health equation
+    const trendHealth = function (macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted, slowSMAPositiveSlopeWeighted, fastGreaterSlowWeighted, adxValueWeighted) {
+
+    }
+
+// ADX AJAX Call
+    const adxCall = function(macdPositiveSlopeWeighted, fastSMAPositiveSlopeWeighted, slowSMAPositiveSlopeWeighted, fastGreaterSlowWeighted) {
+        macdPositiveSlopeWeighted = macdPositiveSlopeWeighted
+        fastSMAPositiveSlopeWeighted = fastSMAPositiveSlopeWeighted
+        slowSMAPositiveSlopeWeighted = slowSMAPositiveSlopeWeighted
+        fastGreaterSlowWeighted = fastGreaterSlowWeighted
+
+        $.ajax({
+            url: adxURL,
+            method: "GET"
+            }).then(function(response) {
+            Object.entries(response['Technical Analysis: ADX']).forEach(([key, value], index) => {adxData.push(Number(value["ADX"]))});
+                console.log("ADX Data: " + adxData)
+                if(slowSMAPositiveSlope === 1){adxValue = adxData[0]/100}else{adxValue=0}
+                const adxValueWeighted = (adxValue * adxWeight)
+
+                macdPositiveSlopeWeighted = macdPositiveSlopeWeighted
+                fastSMAPositiveSlopeWeighted = fastSMAPositiveSlopeWeighted
+                slowSMAPositiveSlopeWeighted = slowSMAPositiveSlopeWeighted
+                fastGreaterSlowWeighted = fastGreaterSlowWeighted
+
+                setTimeout(function(){ 
+                    console.log("macd weight: " + macdPositiveSlopeWeighted)
+                    console.log("fast sma weight: " + fastSMAPositiveSlopeWeighted)
+                    console.log("slow SMA weight: " + slowSMAPositiveSlopeWeighted)
+                    console.log("fast over slow weight: " + fastGreaterSlowWeighted)
+                    console.log("adx weighted: " + adxValueWeighted)
+
+                    let trendHealth = adxValueWeighted + macdPositiveSlopeWeighted + fastGreaterSlowWeighted + slowSMAPositiveSlopeWeighted + fastGreaterSlowWeighted
+                    console.log("TREND HEALTH: " + trendHealth)
+
+                    let healthDiv = $("<div>")
+                    let healthH1 = $("<h1>").html("TREND HEALTH: " + trendHealth)
+                    healthDiv.html(healthH1)
+                    $("#healthRow").html(healthDiv)
+                    
+                }, 1000);
+             
+
+            
+            })
+    }
+  })
+
+</script>
+
