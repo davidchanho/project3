@@ -8,6 +8,7 @@ router.route("/api/user").post((req, res, next) => {
             const userDataScrubbed = {};
             userDataScrubbed.email = req.body.email;
             userDataScrubbed.name = req.body.name;
+            userDataScrubbed.userSettings = req.body.userSettings;
 
             jwt.sign(userDataScrubbed, 'privatekey', { expiresIn: '1h' }, (err, token) => {
                 if (err) { console.log(err) }
@@ -39,6 +40,7 @@ router.route("/api/auth").post((req, res, next) => {
                     const userDataScrubbed = {};
                     userDataScrubbed.email = userData.email;
                     userDataScrubbed.name = userData.name;
+                    userDataScrubbed.userSettings = userData.userSettings;
 
                     jwt.sign(userDataScrubbed, 'privatekey', { expiresIn: '1h' }, (err, token) => {
                         if (err) { console.log(err) }
@@ -48,6 +50,17 @@ router.route("/api/auth").post((req, res, next) => {
             })
         }
     })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        })
+})
+
+router.route("/api/watchList").post((req, res, next) => {
+    db.User.findOneAndUpdate({email},{watchlist})
+        .then(function () {
+            //add response for User watchlist update
+        })
         .catch(function (err) {
             // If an error occurred, send it to the client
             res.json(err);
