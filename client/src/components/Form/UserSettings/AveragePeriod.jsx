@@ -1,9 +1,9 @@
-import React, {useEffect, setState, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 
 const AveragePeriod = ({user}) => {
-  console.log(user)
+
   const [fastSMA, setFastSMA] = useState();
   const [slowSMA, setSlowSMA] = useState();
 
@@ -12,9 +12,16 @@ const AveragePeriod = ({user}) => {
       setFastSMA(user.userSettings.fastSMA);
       setSlowSMA(user.userSettings.slowSMA);
     } catch (ex) { }
-
-    
   });
+
+  
+  const handleFastChange = (e) => {
+    setFastSMA(e.target.value);
+  }
+
+  const handleSlowChange = (e) => {
+    setSlowSMA(e.target.value);
+  }
 
   return (
     <Form>
@@ -30,6 +37,7 @@ const AveragePeriod = ({user}) => {
               name='fastRadio'
               id='fastRadio1'
               checked={fastSMA == 5}
+              onChange={handleFastChange}
             />
             <Form.Check
               inline
@@ -39,6 +47,7 @@ const AveragePeriod = ({user}) => {
               name='fastRadio'
               id='fastRadio2'
               checked={fastSMA === 10}
+              onChange={handleFastChange}
             />
             <Form.Check
               inline
@@ -48,6 +57,7 @@ const AveragePeriod = ({user}) => {
               name='fastRadio'
               id='fastRadio3'
               checked={fastSMA === 15}
+              onChange={handleFastChange}
             />
           </Col>
         </Form.Group>
@@ -60,24 +70,30 @@ const AveragePeriod = ({user}) => {
               inline
               type='radio'
               label='40'
+              value='40'
               name='slowRadio'
               id='slowRadio1'
+              onChange={handleSlowChange}
               checked={slowSMA === 40}
             />
             <Form.Check
               inline
               type='radio'
               label='60'
+              value='60'
               name='slowRadio'
               id='slowRadio2'
+              onChange={handleSlowChange}
               checked={fastSMA === 60}
             />
             <Form.Check
               inline
               type='radio'
               label='80'
+              value='80'
               name='slowRadio'
               id='slowRadio3'
+              onChange={handleSlowChange}
               checked={fastSMA === 80}
             />
           </Col>

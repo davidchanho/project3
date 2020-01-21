@@ -11,11 +11,11 @@ export function register(user) {
         userSettings: {
             fastSMA: 10,
             slowSMA: 40,
-            fastWeight: 15,
-            slowWeight: 15,
-            fastToSlowWeight: 15,
-            MACDWeight: 15,
-            ADXWeight: 40
+            fastWeight: 20,
+            slowWeight: 20,
+            fastToSlowWeight: 20,
+            MACDWeight: 20,
+            ADXWeight: 20
         }
     })
 }

@@ -19,7 +19,7 @@ export function UserSettings({ user }) {
           <AveragePeriod user={user} />
         </Tab>
         <Tab eventKey='Weighting' title='Weighting (%)'>
-          <Weighting />
+          <Weighting user={user} />
         </Tab>
       </Tabs>
     </>
