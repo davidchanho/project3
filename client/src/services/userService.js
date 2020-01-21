@@ -1,9 +1,9 @@
 import http from "./httpService";
 import { apiUrl } from "../config.json";
 
-const apiEndpoint = apiUrl + "/user";
-
 export function register(user) {
+    const apiEndpoint = apiUrl + "/user";
+
     return http.post(apiEndpoint, {
         email: user.email,
         password: user.password,
@@ -18,4 +18,10 @@ export function register(user) {
             ADXWeight: 20
         }
     })
+}
+
+export function updateSettings(email, userSettings) {
+    const apiEndpoint = apiUrl + "/userSettings";
+    
+    return http.post(apiEndpoint, {email, userSettings});
 }

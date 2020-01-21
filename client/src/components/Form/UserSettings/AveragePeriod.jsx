@@ -1,26 +1,32 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
+import { Button } from '@material-ui/core';
 
-const AveragePeriod = ({user}) => {
-
+const AveragePeriod = ({ user, onFastSMAChange, onSlowSMAChange }) => {
   const [fastSMA, setFastSMA] = useState();
   const [slowSMA, setSlowSMA] = useState();
 
   useEffect(() => {
     try {
-      setFastSMA(user.userSettings.fastSMA);
-      setSlowSMA(user.userSettings.slowSMA);
+      if (!fastSMA && !slowSMA) {
+        setFastSMA(user.userSettings.fastSMA);
+        setSlowSMA(user.userSettings.slowSMA);
+        onFastSMAChange(user.userSettings.fastSMA);
+        onSlowSMAChange(user.userSettings.slowSMA);
+      }
     } catch (ex) { }
   });
 
-  
+
   const handleFastChange = (e) => {
     setFastSMA(e.target.value);
+    onFastSMAChange(e.target.value)
   }
 
   const handleSlowChange = (e) => {
     setSlowSMA(e.target.value);
+    onSlowSMAChange(e.target.value)
   }
 
   return (
@@ -46,7 +52,7 @@ const AveragePeriod = ({user}) => {
               value='10'
               name='fastRadio'
               id='fastRadio2'
-              checked={fastSMA === 10}
+              checked={fastSMA == 10}
               onChange={handleFastChange}
             />
             <Form.Check
@@ -56,7 +62,7 @@ const AveragePeriod = ({user}) => {
               value='15'
               name='fastRadio'
               id='fastRadio3'
-              checked={fastSMA === 15}
+              checked={fastSMA == 15}
               onChange={handleFastChange}
             />
           </Col>
@@ -74,7 +80,7 @@ const AveragePeriod = ({user}) => {
               name='slowRadio'
               id='slowRadio1'
               onChange={handleSlowChange}
-              checked={slowSMA === 40}
+              checked={slowSMA == 40}
             />
             <Form.Check
               inline
@@ -84,7 +90,7 @@ const AveragePeriod = ({user}) => {
               name='slowRadio'
               id='slowRadio2'
               onChange={handleSlowChange}
-              checked={fastSMA === 60}
+              checked={slowSMA == 60}
             />
             <Form.Check
               inline
@@ -94,7 +100,7 @@ const AveragePeriod = ({user}) => {
               name='slowRadio'
               id='slowRadio3'
               onChange={handleSlowChange}
-              checked={fastSMA === 80}
+              checked={slowSMA == 80}
             />
           </Col>
         </Form.Group>

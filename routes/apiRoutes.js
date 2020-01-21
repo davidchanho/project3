@@ -56,6 +56,22 @@ router.route("/api/auth").post((req, res, next) => {
         })
 })
 
+router.route("/api/userSettings").post((req, res, next) => {
+    console.log(req.body)
+    userData = {
+        email: req.body.email
+    }
+
+    db.User.findOneAndUpdate(userData,{"userSettings":req.body.userSettings})
+        .then(function () {
+            //add response for User watchlist update
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        })
+})
+
 router.route("/api/watchList").post((req, res, next) => {
     db.User.findOneAndUpdate({email},{watchlist})
         .then(function () {
