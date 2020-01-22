@@ -7,7 +7,7 @@ export const CircleBar = props => {
   return (
     <div
       data-preset='circle'
-      className={`${classes.circleBar} ldBar`}
+      className={`${classes.circleBar} ldBar label-center`}
       data-value={props.health}
     />
   )
@@ -15,6 +15,7 @@ export const CircleBar = props => {
 
 const useStyles = makeStyles(theme => ({
   circleBar: {
-    margin: 'auto'
+    margin: 'auto',
+    width: '50%'
   }
 }))

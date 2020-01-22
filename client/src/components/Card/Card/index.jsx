@@ -30,6 +30,8 @@ export const TrendCard = props => {
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    margin: 'auto'
+    margin: 'auto',
+    textAlign: 'center',
+    height: 250
   }
 }))

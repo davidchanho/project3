@@ -12,11 +12,11 @@ export const Trend = () => {
 
   return (
     <>
-      <Grid container spacing={1}>
-        <Grid item xs={1}>
+      <Grid container>
+        <Grid item >
           <Filter tests={tests} />
         </Grid>
-        <Grid item xs={'auto'}>
+        <Grid item >
           <Columns tests={tests} onDelete={handleDelete} />
         </Grid>
       </Grid>
