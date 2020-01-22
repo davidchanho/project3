@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import TrendingUpIcon from '@material-ui/icons/TrendingUp'
+import SettingsIcon from '@material-ui/icons/Settings'
+import MenuItem from '@material-ui/core/MenuItem'
+import Link from '@material-ui/core/Link'
 import { DarkMode } from '../../_common/DarkMode'
 import { AccountMenu, NotificationMenu } from '../'
 
@@ -83,8 +86,21 @@ export const AppBarMenu = () => {
         </Typography>
         <div className={classes.grow} />
         <div className={classes.sectionDesktop}>
-          <DarkMode />
-          <NotificationMenu />
+          <MenuItem>
+            <Link color='inherit' href='/About'>
+              About
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link color='inherit' href='/Signup'>
+              Signup
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link color='inherit' href='/User'>
+              <SettingsIcon />
+            </Link>
+          </MenuItem>
           <AccountMenu />
         </div>
       </Toolbar>

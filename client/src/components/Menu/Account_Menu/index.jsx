@@ -28,12 +28,12 @@ export const AccountMenu = () => {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <MenuItem>
-          <Link href='/User'>My  Settings</Link>
+        <MenuItem >
+          <Link color="inherit" href='/User'>My Settings</Link>
         </MenuItem>
         <Divider />
         <MenuItem>
-          <Link href='/Login'>Log Out</Link>
+          <Link color="inherit" href='/Login'>Log Out</Link>
         </MenuItem>
       </Menu>
       <IconButton
