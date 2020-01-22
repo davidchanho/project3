@@ -81,11 +81,12 @@ export const About = () => {
   const handleClose3 = () => {
     setOpen3(false)
   }
+
   return (
     <div>
       <Paper elevation={6} style={{ marginBottom: '2%' }}>
         <div className='container fluid'>
-          <div className='row  justify-content-center'>
+          <div className='row justify-content-center'>
             <div className='col-lg-6'>
               <h1 style={styles.header}>Trend Health Scoring</h1>
             </div>

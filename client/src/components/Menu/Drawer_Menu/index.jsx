@@ -34,7 +34,7 @@ export function DrawerMenu({ children }) {
   }
 
   function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
+    return <ListItem button component='a' {...props} />
   }
 
   return (
@@ -98,7 +98,7 @@ export function DrawerMenu({ children }) {
         </List>
         <Divider />
         <List>
-          {['About', 'User', 'Logout', 'Signup'].map((text, index) => (
+          {['About', 'User', 'Logout', 'Signup', ''].map((text, index) => (
             <ListItemLink button href={text} key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -110,7 +110,6 @@ export function DrawerMenu({ children }) {
       </Drawer>
 
       {children}
-
     </div>
   )
 }

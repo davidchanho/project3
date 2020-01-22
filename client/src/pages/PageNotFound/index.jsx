@@ -1,8 +1,10 @@
 import React from 'react'
+import CardMedia from '@material-ui/core/CardMedia'
 import img404 from './img/404.png'
 
 export const PageNotFound = () => {
-  return <img src={img404} alt='page not found' style={styles} />
+  
+  return <CardMedia src={img404 } component='img' title='404' />
 }
 
 const styles = {

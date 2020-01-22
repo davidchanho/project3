@@ -8,6 +8,7 @@ import {
   Trend,
   Watchlist,
   PageNotFound,
+  LandingPage,
   Logout
 } from 'pages'
 
@@ -16,7 +17,7 @@ export default function Routes({ props }) {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={Trend} />
+        <Route exact path='/' component={LandingPage} />
         <Route exact path='/About' component={About} />
         <Route
           exact
