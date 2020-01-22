@@ -2,7 +2,6 @@ import React, { children } from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Paper from '@material-ui/core/Paper'
 import { DrawerMenu, AppBarMenu } from 'components/Menu'
 
 const drawerWidth = 200
@@ -48,7 +47,7 @@ export function Layout({ children }) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Paper>{children}</Paper>
+        {children}
       </main>
     </div>
   )
