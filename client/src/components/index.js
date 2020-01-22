@@ -1,4 +1,4 @@
 export * from './Card'
-export * from './Footer'
+export * from './Menu'
 export * from './Form'
 export * from './Table'

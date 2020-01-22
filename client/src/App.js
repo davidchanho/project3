@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { Footer, SideNav } from 'components'
+import { SideNav } from 'components'
 import Logout from './components/Logout/index'
 import {
   About,
@@ -55,7 +55,6 @@ export default function App() {
           </Switch>
         </Router>
       </Layout>
-      <Footer />
     </ThemeProvider>
 
   )
