@@ -57,7 +57,6 @@ router.route("/api/auth").post((req, res, next) => {
 })
 
 router.route("/api/userSettings").post((req, res, next) => {
-    console.log(req.body)
     userData = {
         email: req.body.email
     }
@@ -73,7 +72,11 @@ router.route("/api/userSettings").post((req, res, next) => {
 })
 
 router.route("/api/watchList").post((req, res, next) => {
-    db.User.findOneAndUpdate({email},{watchlist})
+    userData = {
+        email: req.body.email
+    }
+
+    db.User.findOneAndUpdate(userData,{"userWatchList":watchlist})
         .then(function () {
             //add response for User watchlist update
         })
@@ -96,13 +99,32 @@ router.route("/api/createSectors").post((req,res) => {
 })
 
 router.route("/api/pullSectors").get((req,res) => {
-    console.log("test pull")
+    console.log("Pulling All Data")
     db.Sector.find({}, function(err, data){
+        console.log(data);
         if (err){
-            res.send(err)
+            res.json(err)
         }else{
-            res.send(data)
+            res.json(data)
         }
+    })
+})
+
+router.route("/api/updateSectors").put((req,res) => {
+    console.log("UPDATING SECTOR " + req.body.symbol);
+    sectorData = {
+        indexName: req.body.symbol
+    }
+    db.Sector.findOneAndUpdate(sectorData, {
+        "priceData":req.body.priceData,
+        "macdData":req.body.macdData,
+        "adxData":req.body.adxData
+    }).then(function () {
+        //add response for User watchlist update
+    })
+    .catch(function (err) {
+        // If an error occurred, send it to the client
+        res.json(err);
     })
 })
 

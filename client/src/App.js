@@ -16,9 +16,11 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { DarkMode } from 'components/_common/DarkMode'
 import auth from "./services/authService"
+import {pullSectorData} from "./services/pullSectors"
 
 export default function App() {
   const [user, setUser] = useState();
+  const [sectorData, setSectorData] = useState();
 
   const theme = React.useMemo(() =>
     createMuiTheme({
@@ -32,6 +34,8 @@ export default function App() {
     try {
       const userData = auth.getCurrentUser();
       setUser(userData);
+      const sectorDataPull = pullSectorData();
+      setSectorData(sectorDataPull);
     } catch (ex) { }
   }, []);
 
