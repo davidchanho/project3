@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { Columns, Filter } from 'components'
 import testsData from 'model/testSector.json'

@@ -7,23 +7,25 @@ import Toolbar from '@material-ui/core/Toolbar'
 import List from '@material-ui/core/List'
 import InputBase from '@material-ui/core/InputBase'
 import MenuItem from '@material-ui/core/MenuItem'
-
 import Menu from '@material-ui/core/Menu'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import Grid from '@material-ui/core/Grid'
+
+import MenuIcon from '@material-ui/icons/Menu'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import MoreIcon from '@material-ui/icons/MoreVert'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import SettingsIcon from '@material-ui/icons/Settings'
+import { Logo } from 'components'
 
 const drawerWidth = 240
 
@@ -135,12 +137,23 @@ export function DrawerMenu({ children }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap>
-            Trend Health
-          </Typography>
+          <Grid
+            container
+            direction='row'
+            justify='flex-start'
+            alignItems='center'
+          >
+            <Grid item className={classes.logo}>
+              <Logo />
+            </Grid>
+            <Grid item>
+              <Typography variant='h6' noWrap>
+                Trend Health
+              </Typography>
+            </Grid>
+          </Grid>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton color='inherit'>About</IconButton>
             <IconButton color='inherit'>
               <SettingsIcon />
             </IconButton>
@@ -277,6 +290,10 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       width: 200
     }
+  },
+  logo: {
+    width: 40,
+    marginRight: 5
   },
   sectionDesktop: {
     display: 'none',
