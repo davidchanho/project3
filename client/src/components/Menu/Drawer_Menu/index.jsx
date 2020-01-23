@@ -16,9 +16,11 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Grid from '@material-ui/core/Grid'
-
+import InfoIcon from '@material-ui/icons/Info'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ViewListIcon from '@material-ui/icons/ViewList'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
@@ -205,25 +207,51 @@ export function DrawerMenu({ children }) {
         </div>
         <Divider />
         <List>
-          {['Sector', 'Watchlist'].map((text, index) => (
-            <ListItemLink button href={text} key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemLink>
-          ))}
+          <ListItemLink button href='Sector' key='Sector'>
+            <ListItemIcon>
+              <CheckBoxOutlineBlankIcon />
+            </ListItemIcon>
+            <ListItemText primary='Sector' />
+          </ListItemLink>
+          <ListItemLink button href='Watchlist' key='Watchlist'>
+            <ListItemIcon>
+              <ViewListIcon />
+            </ListItemIcon>
+            <ListItemText primary='Watchlist' />
+          </ListItemLink>
         </List>
         <Divider />
         <List>
-          {['About', 'User', 'Logout', 'Signup', ''].map((text, index) => (
-            <ListItemLink button href={text} key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemLink>
-          ))}
+          <ListItemLink button href='About' key='About'>
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary='About' />
+          </ListItemLink>
+          <ListItemLink button href='User' key='User'>
+            <ListItemIcon>
+              <SettingsIcon />
+            </ListItemIcon>
+            <ListItemText primary='User' />
+          </ListItemLink>
+          <ListItemLink button href='Login' key='Login'>
+            <ListItemIcon>
+              <CheckBoxOutlineBlankIcon />
+            </ListItemIcon>
+            <ListItemText primary='Login' />
+          </ListItemLink>
+          <ListItemLink button href='Logout' key='Logout'>
+            <ListItemIcon>
+              <ViewListIcon />
+            </ListItemIcon>
+            <ListItemText primary='Logout' />
+          </ListItemLink>
+          <ListItemLink button href='Signup' key='Signup'>
+            <ListItemIcon>
+              <ViewListIcon />
+            </ListItemIcon>
+            <ListItemText primary='Signup' />
+          </ListItemLink>
         </List>
       </Drawer>
 
