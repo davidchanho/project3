@@ -6,9 +6,20 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/Inbox'
 import DraftsIcon from '@material-ui/icons/Drafts'
+import { createSectors } from '../../../services/createSectors'
+import { pullSectors } from '../../../services/pullSectors'
+
 
 export const Filter = props => {
   const classes = useStyles()
+
+  const createSectorsButton = () => {
+    createSectors()
+  }
+  const pullSectorsButton = () => {
+    pullSectors()
+  }
+
   return (
     <div className={classes.root}>
       <List component='nav' aria-label='main'>
@@ -24,6 +35,14 @@ export const Filter = props => {
           </ListItemIcon>
           <ListItemText primary='User' />
         </ListItem>
+
+        <ListItem button onClick={pullSectorsButton}>
+          <ListItemText primary='Update Sectors' />
+        </ListItem>
+        <ListItem button onClick={createSectorsButton}>
+          <ListItemText primary='Create Sectors' style={{background:"red"}}/>
+        </ListItem>
+
       </List>
     </div>
   )
