@@ -1,7 +1,9 @@
 import http from "./httpService";
 import { apiUrl } from "../config.json";
 import axios from "axios";
+
 export function createSectors() {
+
     const apiEndpoint = apiUrl + "/createSectors";
     let mainSectors = [
     { indexName: 'XBI', priceData: [], macdData: [], adxData: []},
@@ -14,5 +16,6 @@ export function createSectors() {
     { indexName: 'IWC', priceData: [], macdData: [], adxData: []},
     { indexName: 'IGV', priceData: [], macdData: [], adxData: []}
     ];
+    
     return http.post(apiEndpoint, {mainSectors})
 }

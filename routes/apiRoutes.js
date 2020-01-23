@@ -94,6 +94,7 @@ router.route("/api/createSectors").post((req,res) => {
         }
     })
 })
+
 router.route("/api/pullSectors").get((req,res) => {
     console.log("test pull")
     db.Sector.find({}, function(err, data){
