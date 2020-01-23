@@ -16,18 +16,16 @@ export function LandingPage() {
           </Grid>
           <Grid item>
             <Typography paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
-              cras pulvinar mattis nunc. Est placerat in egestas erat imperdiet
-              sed euismod nisi porta. Eget dolor morbi non arcu. Ultrices
-              tincidunt arcu non sodales neque sodales. Quis ipsum suspendisse
-              ultrices gravida. Mi eget mauris pharetra et ultrices.
+              Trend Health is a stock market trend monitoring system that
+              applies user-defined weightings to a combination of customizable
+              technical indicators in order to derive a single trend score.
             </Typography>
           </Grid>
         </Grid>
       </>
     )
   }
+  
   function Dev() {
     return (
       <>
@@ -49,6 +47,7 @@ export function LandingPage() {
       </>
     )
   }
+
   function Money() {
     return (
       <>
@@ -77,6 +76,7 @@ export function LandingPage() {
         <Typography variant='h1'> Trend Health </Typography>
       </Grid>
       <Grid item>
+        <Typography variant='h3'> What is Trend Health? </Typography>
         <Meeting />
       </Grid>
       <Grid item>

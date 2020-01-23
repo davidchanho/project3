@@ -4,11 +4,10 @@ import auth from '../../services/authService'
 export class Logout extends Component {
   componentDidMount() {
     auth.logout()
-    window.location = '/Login'
   }
 
   render() {
-    return null
+    return <h1> come back soon</h1>
   }
 }
 
