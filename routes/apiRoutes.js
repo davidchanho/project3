@@ -83,4 +83,26 @@ router.route("/api/watchList").post((req, res, next) => {
         })
 })
 
+router.route("/api/createSectors").post((req,res) => {
+    console.log(req.body)
+    let sectors = req.body.mainSectors
+    db.Sector.create(sectors, function(err, docs) {
+        if (err){
+            console.log("Error: " + err)
+        } else{
+            console.log(docs)
+        }
+    })
+})
+router.route("/api/pullSectors").get((req,res) => {
+    console.log("test pull")
+    db.Sector.find({}, function(err, data){
+        if (err){
+            res.send(err)
+        }else{
+            res.send(data)
+        }
+    })
+})
+
 module.exports = router;

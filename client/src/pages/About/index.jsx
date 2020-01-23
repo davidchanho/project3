@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import Iwm from './IWM.png';
 import Gme from './GME.png';
-import Qqq from './qqq.png';
+import Qqq from './QQQ.png';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
