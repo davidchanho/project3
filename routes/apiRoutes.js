@@ -119,8 +119,8 @@ router.route("/api/updateSectors").put((req,res) => {
         "priceData":req.body.priceData,
         "macdData":req.body.macdData,
         "adxData":req.body.adxData
-    }).then(function () {
-        //add response for User watchlist update
+    }).then(function (res) {
+        console.log(res)
     })
     .catch(function (err) {
         // If an error occurred, send it to the client

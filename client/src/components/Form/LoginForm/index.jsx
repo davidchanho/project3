@@ -11,7 +11,7 @@ export const LoginForm = withFormik({
   },
   handleSubmit: async (values, { resetForm, setErrors, setSubmitting }) => {
     try {
-      const userResponse = await auth.login(values)
+      const userResponse = await auth.login(values.email, values.password)
 
       if (userResponse) {
         alert(userResponse)
