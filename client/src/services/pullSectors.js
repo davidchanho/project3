@@ -5,7 +5,6 @@ import $ from 'jquery'
 
 export function pullSectors() {
   const apiKey = '07S5MN2IBXDCQAGB'
-  const allStockData = []
   let counter = 0
   let thisStockData = {
     symbol: testsData[counter].Stock,
@@ -22,6 +21,7 @@ export function pullSectors() {
       async: true,
       dataType: 'json',
       success: function(res) {
+        console.log(thisStockData.symbol)
         console.log('ADX:')
         console.log(res)
         Object.entries(res['Technical Analysis: ADX']).forEach(
@@ -48,14 +48,12 @@ export function pullSectors() {
             thisStockData.macdData.push(Number(value['MACD']))
           }
         )
-        allStockData.push(thisStockData)
-        console.log(allStockData)
 
         let apiEndpoint = apiUrl + '/updateSectors'
         http.put(apiEndpoint, thisStockData)
 
         counter++
-        if (counter < 2) {
+        if (counter < testsData.length) {
           getPriceData()
           thisStockData = {
             symbol: testsData[counter].Stock,
@@ -76,7 +74,7 @@ export function pullSectors() {
       async: true,
       dataType: 'json',
       success: function(res) {
-        // console.log("PRICE: " + res)
+        console.log("PRICE: ")
         Object.entries(res['Weekly Time Series']).forEach(
           ([key, value], index) => {
             thisStockData.priceData.push(Number(value['4. close']))
@@ -86,7 +84,6 @@ export function pullSectors() {
       }
     })
   }
-
   getPriceData()
 }
 
