@@ -2,9 +2,11 @@ import React from 'react'
 import CardMedia from '@material-ui/core/CardMedia'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
+import { SignupForm } from 'components'
 import meetingImg from './img/Meeting.png'
 import moneyImg from './img/money.png'
 import devImg from './img/dev.png'
+import waves from './img/wave.svg'
 
 export function LandingPage() {
   function Meeting() {
@@ -25,7 +27,7 @@ export function LandingPage() {
       </>
     )
   }
-  
+
   function Dev() {
     return (
       <>
@@ -72,18 +74,20 @@ export function LandingPage() {
 
   return (
     <Grid container direction='column' spacing={6}>
-      <Grid item>
+      <Grid item justify='center' style={{ backgroundColor: '#0099ff' }}>
         <Typography variant='h1'> Trend Health </Typography>
-      </Grid>
-      <Grid item>
         <Typography variant='h3'> What is Trend Health? </Typography>
         <Meeting />
       </Grid>
+        <CardMedia src={waves} component='img' title='waves' />
       <Grid item>
         <Dev />
       </Grid>
       <Grid item>
         <Money />
+      </Grid>
+      <Grid item>
+        <SignupForm />
       </Grid>
     </Grid>
   )
