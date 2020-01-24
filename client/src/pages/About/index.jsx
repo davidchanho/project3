@@ -58,31 +58,6 @@ const styles = {
 export const About = () => {
   const classes = useStyles()
   const zoom = React.useRef(mediumZoom())
-  const [open1, setOpen1] = React.useState(false)
-  const [open2, setOpen2] = React.useState(false)
-  const [open3, setOpen3] = React.useState(false)
-
-  const handleOpen1 = () => {
-    setOpen1(true)
-  }
-
-  const handleClose1 = () => {
-    setOpen1(false)
-  }
-  const handleOpen2 = () => {
-    setOpen2(true)
-  }
-
-  const handleClose2 = () => {
-    setOpen2(false)
-  }
-  const handleOpen3 = () => {
-    setOpen3(true)
-  }
-
-  const handleClose3 = () => {
-    setOpen3(false)
-  }
 
   return (
     <div>
