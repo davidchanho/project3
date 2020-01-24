@@ -125,8 +125,8 @@ export async function calcSectorHealth() {
             }            
         }
 
-    console.log("SECTORS & SCORES...")
-    console.log(allSectorHealthData)
+    // console.log("SECTORS & SCORES...")
+    // console.log(allSectorHealthData)
 
     return allSectorHealthData
   }

@@ -13,7 +13,7 @@ export const Trend = () => {
     try {
       const sectorHealthCalc = calcSectorHealth()
       setSectorHealthData(sectorHealthCalc)
-      console.log(sectorHealthData)
+      // console.log(sectorHealthData)
     } catch (ex) {}
   }, [])
   
@@ -25,7 +25,7 @@ export const Trend = () => {
     <>
       <Grid container>
         <Grid item>
-          <Filter sectorHealthData={sectorHealthData} />
+          <Filter tests={tests} />
         </Grid>
         <Grid item>
           <Columns tests={tests} sectorHealthData={sectorHealthData} onDelete={handleDelete} />
