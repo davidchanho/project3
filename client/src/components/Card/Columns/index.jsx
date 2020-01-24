@@ -4,6 +4,8 @@ import { TrendCard } from '../Card'
 
 export const Columns = props => {
   const { tests, onDelete } = props
+  // console.log("PROPS YO")
+  // console.log(props)
   return (
     <CardColumns>
       {tests.map(test => (
