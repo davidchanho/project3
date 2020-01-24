@@ -10,18 +10,18 @@ import { CircleBar } from '../CircleBar'
 
 export const TrendCard = props => {
   const classes = useStyles()
-  const { test, onDelete } = props
+  const { sector, onDelete } = props
 
   return (
     <Card className={classes.root}>
       <CardActions>
-        <ClearIcon className='close' onClick={() => onDelete(test.id)} />
+        <ClearIcon className='close' onClick={() => onDelete(sector.id)} />
         <InfoIcon />
       </CardActions>
       <Card.Body>
-        <Typography>{test.Company}</Typography>
-        <Typography>({test.Stock})</Typography>
-        <CircleBar health={test.Health} />
+        <Typography>{sector.symbol}</Typography>
+        <h1><div>{(sector.score*100).toFixed(0)}</div></h1>
+        <CircleBar health={sector.score} />
       </Card.Body>
     </Card>
   )

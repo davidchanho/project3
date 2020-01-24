@@ -3,11 +3,9 @@ import { apiUrl } from '../config.json'
 import auth from './authService'
 import { pullSectorData } from './pullSectors'
 
-export async function calcSectorHealth() {
-    let apiEndpoint = apiUrl + '/pullSectors'
-    const userData = auth.getCurrentUser()
-    const sectorData = await http.get(apiEndpoint)
-
+export function calcSectorHealth(sectorData) {
+    const userData = auth.getCurrentUser();
+    console.log(sectorData);
     let allSectorHealthData =[]
 
     //constant values from user
@@ -51,9 +49,11 @@ export async function calcSectorHealth() {
         let fastSMALookbackSum = 0
         let slowSMASum = 0
         let slowSMALookbackSum = 0
+        let idCounter = 0
         
         for (let x = 0; x < sectorData.data.length; x++){
             sectorAndHealthScore.symbol = sectorData.data[x].indexName
+            sectorAndHealthScore.id = idCounter
             // console.log(sectorAndHealthScore.symbol)
 
             //fast SMA pos slope?
@@ -66,8 +66,8 @@ export async function calcSectorHealth() {
                 // console.log("fastSMA Lookback Value: " + fastSMALookbackValue)
 
             // fast SMA Positive slope check
-            if((fastSMAValue) > (fastSMALookbackValue)){fastSMAPositiveSlopeWeighted=(1*fastWeight)}
-            else{fastSMAPositiveSlopeWeighted=0}
+                if((fastSMAValue) > (fastSMALookbackValue)){fastSMAPositiveSlopeWeighted=(1*fastWeight)}
+                else{fastSMAPositiveSlopeWeighted=0}
             // console.log("fast SMA Pos Slope Weighted: " + fastSMAPositiveSlopeWeighted)
 
             //slow SMA pos slope?
@@ -93,14 +93,16 @@ export async function calcSectorHealth() {
                 else{macdPositiveSlopeWeighted = 0}
                 // console.log("macd pos slope weighted: " + macdPositiveSlopeWeighted)
 
-            // use ADX?
+            // apply ADX?
                 if ((slowSMAValue > slowSMALookbackValue)){adxValueWeighted=(sectorData.data[x].adxData[0]*adxWeight/100)}
                 else{adxValueWeighted=0}
 
                 sectorAndHealthScore.score = (fastSMAPositiveSlopeWeighted + slowSMAPositiveSlopeWeighted + fastGreaterSlowWeighted + macdPositiveSlopeWeighted + adxValueWeighted)
-
+            
+            
             allSectorHealthData.push(sectorAndHealthScore)
 
+            idCounter++
             fastSMAValue = 0
             slowSMAValue = 0
             fastSMALookbackValue = 0
@@ -121,8 +123,8 @@ export async function calcSectorHealth() {
             }            
         }
 
-    console.log("SECTORS & SCORES...")
-    console.log(allSectorHealthData)
+    // console.log("SECTORS & SCORES...")
+    // console.log(allSectorHealthData)
 
     return allSectorHealthData
   }

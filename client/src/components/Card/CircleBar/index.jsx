@@ -8,7 +8,8 @@ export const CircleBar = props => {
     <div
       data-preset='circle'
       className={`${classes.circleBar} ldBar label-center`}
-      data-value={props.health}
+      // data-value={(props.health * 100).toFixed(0)}
+      // data-value={"50"}
     />
   )
 }
