@@ -1,4 +1,6 @@
 import React from 'react'
+import mediumZoom from 'medium-zoom'
+import ImageZoom from './ImageZoom'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -6,7 +8,6 @@ import Modal from '@material-ui/core/Modal'
 import Iwm from './img/IWM.png'
 import Gme from './img/GME.png'
 import Qqq from './img/qqq.png'
-
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -56,6 +57,7 @@ const styles = {
 
 export const About = () => {
   const classes = useStyles()
+  const zoom = React.useRef(mediumZoom())
   const [open1, setOpen1] = React.useState(false)
   const [open2, setOpen2] = React.useState(false)
   const [open3, setOpen3] = React.useState(false)
@@ -148,24 +150,12 @@ export const About = () => {
                 later)
               </p>
 
-              <Button
-                variant='contained'
-                color='primary'
-                onClick={handleOpen1}
-                style={{ marginLeft: '4em' }}
-              >
-                {' '}
-                Figure 1
-              </Button>
-
-              <Modal
-                aria-labelledby='simple-modal-title'
-                aria-describedby='simple-modal-description'
-                open={open1}
-                onClose={handleClose1}
-              >
-                <img src={Iwm} className={classes.paper} />
-              </Modal>
+              <ImageZoom
+                src={Iwm}
+                alt='Zoom 1'
+                zoom={zoom.current}
+                background='#000'
+              />
 
               <p style={styles.paragraph}>
                 In Figure 1, inferences about the trend of the index can be made
