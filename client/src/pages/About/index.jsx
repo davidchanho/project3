@@ -1,4 +1,6 @@
 import React from 'react'
+import mediumZoom from 'medium-zoom'
+import ImageZoom from './ImageZoom'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -6,7 +8,6 @@ import Modal from '@material-ui/core/Modal'
 import Iwm from './img/IWM.png'
 import Gme from './img/GME.png'
 import Qqq from './img/qqq.png'
-
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
@@ -56,31 +57,7 @@ const styles = {
 
 export const About = () => {
   const classes = useStyles()
-  const [open1, setOpen1] = React.useState(false)
-  const [open2, setOpen2] = React.useState(false)
-  const [open3, setOpen3] = React.useState(false)
-
-  const handleOpen1 = () => {
-    setOpen1(true)
-  }
-
-  const handleClose1 = () => {
-    setOpen1(false)
-  }
-  const handleOpen2 = () => {
-    setOpen2(true)
-  }
-
-  const handleClose2 = () => {
-    setOpen2(false)
-  }
-  const handleOpen3 = () => {
-    setOpen3(true)
-  }
-
-  const handleClose3 = () => {
-    setOpen3(false)
-  }
+  const zoom = React.useRef(mediumZoom())
 
   return (
     <div>
@@ -148,24 +125,12 @@ export const About = () => {
                 later)
               </p>
 
-              <Button
-                variant='contained'
-                color='primary'
-                onClick={handleOpen1}
-                style={{ marginLeft: '4em' }}
-              >
-                {' '}
-                Figure 1
-              </Button>
-
-              <Modal
-                aria-labelledby='simple-modal-title'
-                aria-describedby='simple-modal-description'
-                open={open1}
-                onClose={handleClose1}
-              >
-                <img src={Iwm} className={classes.paper} />
-              </Modal>
+              <ImageZoom
+                src={Iwm}
+                alt='Zoom 1'
+                zoom={zoom.current}
+                background='#000'
+              />
 
               <p style={styles.paragraph}>
                 In Figure 1, inferences about the trend of the index can be made
@@ -246,43 +211,18 @@ export const About = () => {
               </p>
 
               <div className='row justicy-content-center'>
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={handleOpen2}
-                  style={{ marginLeft: '4em' }}
-                >
-                  {' '}
-                  Figure 2
-                </Button>
-
-                <Modal
-                  aria-labelledby='simple-modal-title'
-                  aria-describedby='simple-modal-description'
-                  open={open2}
-                  onClose={handleClose2}
-                >
-                  <img src={Gme} className={classes.paper} />
-                </Modal>
-
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={handleOpen3}
-                  style={{ marginLeft: '4em' }}
-                >
-                  {' '}
-                  Figure 3
-                </Button>
-
-                <Modal
-                  aria-labelledby='simple-modal-title'
-                  aria-describedby='simple-modal-description'
-                  open={open3}
-                  onClose={handleClose3}
-                >
-                  <img src={Qqq} className={classes.paper} />
-                </Modal>
+                <ImageZoom
+                  src={Gme}
+                  alt='Zoom 2'
+                  zoom={zoom.current}
+                  background='#000'
+                />
+                <ImageZoom
+                  src={Qqq}
+                  alt='Zoom 3'
+                  zoom={zoom.current}
+                  background='#000'
+                />
               </div>
 
               <p style={styles.paragraph}>

@@ -2,30 +2,13 @@ import React from 'react'
 import CardMedia from '@material-ui/core/CardMedia'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
+import { SignupForm } from 'components'
 import meetingImg from './img/Meeting.png'
 import moneyImg from './img/money.png'
 import devImg from './img/dev.png'
+import waves from './img/wave.svg'
 
 export function LandingPage() {
-  function Meeting() {
-    return (
-      <>
-        <Grid container direction='row'>
-          <Grid item>
-            <CardMedia src={meetingImg} component='img' title='meeting' />
-          </Grid>
-          <Grid item>
-            <Typography paragraph>
-              Trend Health is a stock market trend monitoring system that
-              applies user-defined weightings to a combination of customizable
-              technical indicators in order to derive a single trend score.
-            </Typography>
-          </Grid>
-        </Grid>
-      </>
-    )
-  }
-  
   function Dev() {
     return (
       <>
@@ -72,18 +55,25 @@ export function LandingPage() {
 
   return (
     <Grid container direction='column' spacing={6}>
-      <Grid item>
+      <Grid item justify='center' style={{ backgroundColor: '#0099ff' }}>
         <Typography variant='h1'> Trend Health </Typography>
-      </Grid>
-      <Grid item>
         <Typography variant='h3'> What is Trend Health? </Typography>
-        <Meeting />
+        <CardMedia src={meetingImg} component='img' title='meeting' />
+        <Typography paragraph>
+          Trend Health is a stock market trend monitoring system that applies
+          user-defined weightings to a combination of customizable technical
+          indicators in order to derive a single trend score.
+        </Typography>
       </Grid>
+      <CardMedia src={waves} component='img' />
       <Grid item>
         <Dev />
       </Grid>
       <Grid item>
         <Money />
+      </Grid>
+      <Grid item>
+        <SignupForm />
       </Grid>
     </Grid>
   )

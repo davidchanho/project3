@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { Columns, Filter } from 'components'
+import { testsData } from 'model/sector'
 import { calcSectorHealth } from '../../services/calcSectorHealth'
+import http from '../../services/httpService'
+import { apiUrl } from '../../config.json'
 import { pullSectorData } from '../../services/pullSectors'
-
 export const Trend = () => {
+  const [tests, setTests] = useState(testsData)
   const [sectorHealthData, setSectorHealthData] = useState()
   useEffect(() => {
     try {
@@ -14,24 +17,18 @@ export const Trend = () => {
       })
     } catch (ex) { }
   }, [])
-
   const handleDelete = id => {
-    setSectorHealthData(sectorHealthData.filter(sectorHealthData => sectorHealthData.id !== id))
+    setTests(tests.filter(tests => tests.id !== id))
   }
-
-  if(!sectorHealthData){
-    return(null)
-  }
-
   return (
     <>
       <Grid container>
-          <Grid item>
-            <Filter sectorHealthData={sectorHealthData} />
-            </Grid>
-            <Grid item>
-            <Columns sectorHealthData={sectorHealthData} onDelete={handleDelete} />
-          </Grid>
+        <Grid item>
+          <Filter tests={tests} />
+        </Grid>
+        <Grid item>
+          <Columns tests={tests} sectorHealthData={sectorHealthData} onDelete={handleDelete} />
+        </Grid>
       </Grid>
     </>
   )

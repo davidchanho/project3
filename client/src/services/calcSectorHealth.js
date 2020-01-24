@@ -1,8 +1,11 @@
+import http from './httpService'
+import { apiUrl } from '../config.json'
 import auth from './authService'
+import { pullSectorData } from './pullSectors'
 
 export function calcSectorHealth(sectorData) {
     const userData = auth.getCurrentUser();
-    // console.log(sectorData);
+    console.log(sectorData);
     let allSectorHealthData =[]
 
     //constant values from user
@@ -119,6 +122,9 @@ export function calcSectorHealth(sectorData) {
                 score: 0
             }            
         }
+
+    // console.log("SECTORS & SCORES...")
+    // console.log(allSectorHealthData)
 
     return allSectorHealthData
   }

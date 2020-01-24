@@ -3,20 +3,30 @@ import CardColumns from 'react-bootstrap/CardColumns'
 import { TrendCard } from '../Card'
 
 export function Columns (props) {
-  const {onDelete, sectorHealthData } = props
-  console.log(sectorHealthData)
-
+  // console.log("PROPS YO")
+  // console.log(props)
+  const { tests, onDelete, sectorHealthData } = props
+  
   if(!sectorHealthData){
     return(null)
   }
 
+  console.log("SECTOR HEALTH DATA...")
+  console.log(sectorHealthData)
   return (
     <div>
+<<<<<<< HEAD
         <CardColumns>{
              sectorHealthData.map(sector=> (
               <TrendCard key={sector.id} sector={sector} onDelete={onDelete} />
             ))
           }
+=======
+        <CardColumns>
+          {sectorHealthData &&tests.map(test => (
+            <TrendCard key={test.id} test={test} onDelete={onDelete} />
+          ))}
+>>>>>>> origin/david
       </CardColumns>
     </div>
   )
