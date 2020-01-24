@@ -15,18 +15,11 @@ export function Columns (props) {
   console.log(sectorHealthData)
   return (
     <div>
-<<<<<<< HEAD
         <CardColumns>{
              sectorHealthData.map(sector=> (
               <TrendCard key={sector.id} sector={sector} onDelete={onDelete} />
             ))
           }
-=======
-        <CardColumns>
-          {sectorHealthData &&tests.map(test => (
-            <TrendCard key={test.id} test={test} onDelete={onDelete} />
-          ))}
->>>>>>> origin/david
       </CardColumns>
     </div>
   )

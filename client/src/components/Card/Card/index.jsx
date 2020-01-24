@@ -10,7 +10,7 @@ import { CircleBar } from '../CircleBar'
 
 export const TrendCard = props => {
   const classes = useStyles()
-  const { test, onDelete } = props
+  const { sector, onDelete } = props
 
   return (
     <Card className={classes.root}>
@@ -19,7 +19,6 @@ export const TrendCard = props => {
         <InfoIcon />
       </CardActions>
       <Card.Body>
-      <Typography>"test"</Typography>
         <Typography>{sector.symbol}</Typography>
         <h1><div>{(sector.score*100).toFixed(0)}</div></h1>
         <CircleBar health={sector.score} />
