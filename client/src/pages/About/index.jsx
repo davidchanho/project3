@@ -236,43 +236,18 @@ export const About = () => {
               </p>
 
               <div className='row justicy-content-center'>
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={handleOpen2}
-                  style={{ marginLeft: '4em' }}
-                >
-                  {' '}
-                  Figure 2
-                </Button>
-
-                <Modal
-                  aria-labelledby='simple-modal-title'
-                  aria-describedby='simple-modal-description'
-                  open={open2}
-                  onClose={handleClose2}
-                >
-                  <img src={Gme} className={classes.paper} />
-                </Modal>
-
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={handleOpen3}
-                  style={{ marginLeft: '4em' }}
-                >
-                  {' '}
-                  Figure 3
-                </Button>
-
-                <Modal
-                  aria-labelledby='simple-modal-title'
-                  aria-describedby='simple-modal-description'
-                  open={open3}
-                  onClose={handleClose3}
-                >
-                  <img src={Qqq} className={classes.paper} />
-                </Modal>
+                <ImageZoom
+                  src={Gme}
+                  alt='Zoom 2'
+                  zoom={zoom.current}
+                  background='#000'
+                />
+                <ImageZoom
+                  src={Qqq}
+                  alt='Zoom 3'
+                  zoom={zoom.current}
+                  background='#000'
+                />
               </div>
 
               <p style={styles.paragraph}>
