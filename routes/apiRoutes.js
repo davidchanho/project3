@@ -76,9 +76,10 @@ router.route("/api/watchList").post((req, res, next) => {
         email: req.body.email
     }
 
+
     db.User.findOneAndUpdate(userData,{"userWatchList":watchlist})
-        .then(function () {
-            //add response for User watchlist update
+        .then(function (res) {
+            console.log(res)
         })
         .catch(function (err) {
             // If an error occurred, send it to the client

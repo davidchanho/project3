@@ -3,6 +3,20 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcryptjs'),
     SALT_WORK_FACTOR = 10;
 
+var UserWatchList = new Schema({
+    indexName: { type: String, required: true, index: { unique: true } },
+    lastActiveDate: Date,
+    priceData: [{
+        type: Number
+    }],
+    macdData: [{
+        type: Number
+    }],
+    adxData: [{
+        type: Number
+    }]
+})
+
 var UserSchema = new Schema({
     email: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
@@ -15,7 +29,9 @@ var UserSchema = new Schema({
         fastToSlowWeight: {type:Number, required:false},
         MACDWeight: {type:Number, required:false},
         ADXWeight: {type:Number, required:false}
-    }
+    },
+    watchList: [UserWatchList],
+    child: UserWatchList
 });
 
 

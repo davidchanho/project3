@@ -4,9 +4,10 @@ import { Columns, Filter } from 'components'
 // import testsData from 'model/testSector.json'
 import {testsData} from 'model/sector'
 
+
 export const Trend = () => {
   const [tests, setTests] = useState(testsData)
-
+  
   const handleDelete = id => {
     setTests(tests.filter(tests => tests.id !== id))
   }
