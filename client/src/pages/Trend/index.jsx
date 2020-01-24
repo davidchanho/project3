@@ -11,11 +11,11 @@ export const Trend = () => {
   const [sectorHealthData, setSectorHealthData] = useState()
   useEffect(() => {
     try {
-      pullSectorData().then(sectorData => {
-        const sectorHealthCalc = calcSectorHealth(sectorData)
+      pullSectorData().then((sectorData) => {
+        const sectorHealthCalc = calcSectorHealth(sectorData);
         setSectorHealthData(sectorHealthCalc)
       })
-    } catch (ex) {}
+    } catch (ex) { }
   }, [])
   const handleDelete = id => {
     setTests(tests.filter(tests => tests.id !== id))
@@ -27,11 +27,7 @@ export const Trend = () => {
           <Filter tests={tests} />
         </Grid>
         <Grid item>
-          <Columns
-            tests={tests}
-            sectorHealthData={sectorHealthData}
-            onDelete={handleDelete}
-          />
+          <Columns tests={tests} sectorHealthData={sectorHealthData} onDelete={handleDelete} />
         </Grid>
       </Grid>
     </>

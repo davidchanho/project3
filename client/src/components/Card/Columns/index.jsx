@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import CardColumns from 'react-bootstrap/CardColumns'
 import { TrendCard } from '../Card'
-export function Columns(props) {
-  console.log('PROPS YO')
+export function Columns (props) {
+  console.log("PROPS YO")
   console.log(props)
   const { tests, onDelete, sectorHealthData } = props
-
+  
   console.log(sectorHealthData)
   return (
     <CardColumns>
