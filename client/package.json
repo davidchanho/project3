@@ -9,6 +9,7 @@
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
     "clsx": "^1.0.4",
+    "cron": "^1.8.2",
     "formik": "^2.1.1",
     "jquery": "^3.4.1",
     "material-table": "^1.55.0",

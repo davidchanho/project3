@@ -17,12 +17,13 @@ export const TrendCard = props => {
   return (
     <Card className={classes.root}>
       <CardActions>
-        <ClearIcon className='close' onClick={() => onDelete(test.id)} />
+        <ClearIcon className='close' onClick={() => onDelete(sector.id)} />
         <InfoIcon />
       </CardActions>
       <Card.Body>
+      <Typography>"test"</Typography>
         <Typography>{sector.symbol}</Typography>
-        <h1><div>{sector.score*100}</div></h1>
+        <h1><div>{(sector.score*100).toFixed(0)}</div></h1>
         <CircleBar health={sector.score} />
       </Card.Body>
     </Card>
