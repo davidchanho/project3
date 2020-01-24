@@ -6,6 +6,10 @@ export function Columns (props) {
   console.log(props)
   const { tests, onDelete, sectorHealthData } = props
   
+  if(!sectorHealthData){
+    return (null)
+  }
+
   console.log(sectorHealthData)
   return (
     <CardColumns>
