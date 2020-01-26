@@ -15,8 +15,6 @@ export function WatchTable({user}) {
         field: 'health',
         type: 'numeric'
       }
-      // { title: 'MA', field: 'ma' },
-      // { title: 'Option', field: 'option' }
     ],
     data: tests
   })

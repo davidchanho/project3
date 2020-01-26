@@ -1,35 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import Grid from '@material-ui/core/Grid'
 import { Columns, Filter } from 'components'
-import { testsData } from 'model/sector'
-import { calcSectorHealth } from '../../services/calcSectorHealth'
-import http from '../../services/httpService'
-import { apiUrl } from '../../config.json'
-import { pullSectorData } from '../../services/pullSectors'
-export const Trend = () => {
-  const [tests, setTests] = useState(testsData)
+
+export const Trend = ({ sectorHealthDataPass }) => {
   const [sectorHealthData, setSectorHealthData] = useState()
+  
   useEffect(() => {
-    try {
-      pullSectorData().then((sectorData) => {
-        const sectorHealthCalc = calcSectorHealth(sectorData);
-        setSectorHealthData(sectorHealthCalc)
-      })
-    } catch (ex) { }
+    setSectorHealthData(sectorHealthDataPass)
+    console.log(sectorHealthDataPass)
   }, [])
+
   const handleDelete = id => {
-    setTests(tests.filter(tests => tests.id !== id))
+    setSectorHealthData(sectorHealthData.filter(sectorHealthData => sectorHealthData.id !== id))
   }
+
+  const style = {
+    jumbotron: {
+      background: "#3f51b5",
+      backgroundSize: "cover"
+    }
+  }
+  
   return (
     <>
+      <div className="jumbotron" style={style.jumbotron}>
+        <div className="container for-about">
+        <h1 style={{textAlign:"center", color:"white"}}>Sector Health Scores</h1>
+        </div>
+      </div>
+
       <Grid container>
         <Grid item>
-          <Filter tests={tests} />
+          <Columns sectorHealthData={sectorHealthData} onDelete={handleDelete} />
         </Grid>
+
         <Grid item>
-          <Columns tests={tests} sectorHealthData={sectorHealthData} onDelete={handleDelete} />
+          <Filter sectorHealthData={sectorHealthData} />
         </Grid>
       </Grid>
+
     </>
   )
 }
