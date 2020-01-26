@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import MaterialTable from 'material-table'
 import tests from '../../model/testWatchlist.json'
-import { getWatchList } from '../../services/watchListService'
+import { getWatchList, pullStockData, calcStockHealth } from '../../services/watchListService'
 
-export function WatchTable({user}) {
+export function WatchTable({ user }) {
   const [state, setState] = useState({
     columns: [
       { title: 'Id', field: 'id', type: 'numeric' },
-      { title: 'Ticker', field: 'ticker' },
+      { title: 'Ticker', field: 'indexName' },
       { title: 'Sector', field: 'sector' },
       { title: 'Market Cap', field: 'marketCap' },
       {
@@ -18,63 +18,87 @@ export function WatchTable({user}) {
       // { title: 'MA', field: 'ma' },
       // { title: 'Option', field: 'option' }
     ],
-    data: tests
+    data: []
   })
+  const [addWatchList, setAddWatchList] = useState();
 
   useEffect(() => {
     try {
       getWatchList(user.email).then((loadWatchList) => {
-        console.log(loadWatchList)
-        if(loadWatchList.data.count > 0) {
-          console.log("switching data")
-          setState({...state,data:loadWatchList.data});
+        if (loadWatchList.data.length > 0) {
+          loadWatchList.data.forEach((stockData, index) => {
+            calcStockHealth(user.email, stockData).then((health) => {
+              console.log("test")
+              loadWatchList.data[index].health = (health*100).toFixed(1);
+              loadWatchList.data[index].indexName = loadWatchList.data[index].indexName.toUpperCase();
+              setState({ ...state, data: loadWatchList.data });
+            })
+          });
         }
       })
-    } catch (ex) { console.log("ERROR: "+ex) }
+    } catch (ex) { console.log("ERROR: " + ex) }
   }, [user])
 
+  const handleWatchlistAdd = (e) => {
+    e.preventDefault();
+    try {
+      pullStockData(user.email, addWatchList, "Test Sector", state.data)
+    } catch {
+      alert('stock ticker not found')
+    }
+  }
+
   return (
-    <MaterialTable
-      title='Watch List'
-      columns={state.columns}
-      data={state.data}
-      editable={{
-        onRowAdd: newData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve()
-              setState(prevState => {
-                const data = [...prevState.data]
-                data.push(newData)
-                return { ...prevState, data }
-              })
-            }, 600)
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve()
-              if (oldData) {
+    <React.Fragment>
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="stockTicker">Add Ticker to Watchlist: </label>
+          <input type="text" class="form-control" id="stockTicker" placeholder="ex: AAPL" onChange={e => setAddWatchList(e.target.value)} />
+        </div>
+        <button type="submit" class="btn btn-primary mb-2 ml-2" onClick={handleWatchlistAdd}>Add Stock</button>
+      </form>
+      <MaterialTable
+        title='Watch List'
+        columns={state.columns}
+        data={state.data}
+        editable={{
+          onRowAdd: newData =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve()
                 setState(prevState => {
                   const data = [...prevState.data]
-                  data[data.indexOf(oldData)] = newData
+                  data.push(newData)
                   return { ...prevState, data }
                 })
-              }
-            }, 600)
-          }),
-        onRowDelete: oldData =>
-          new Promise(resolve => {
-            setTimeout(() => {
-              resolve()
-              setState(prevState => {
-                const data = [...prevState.data]
-                data.splice(data.indexOf(oldData), 1)
-                return { ...prevState, data }
-              })
-            }, 600)
-          })
-      }}
-    />
+              }, 600)
+            }),
+          onRowUpdate: (newData, oldData) =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve()
+                if (oldData) {
+                  setState(prevState => {
+                    const data = [...prevState.data]
+                    data[data.indexOf(oldData)] = newData
+                    return { ...prevState, data }
+                  })
+                }
+              }, 600)
+            }),
+          onRowDelete: oldData =>
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve()
+                setState(prevState => {
+                  const data = [...prevState.data]
+                  data.splice(data.indexOf(oldData), 1)
+                  return { ...prevState, data }
+                })
+              }, 600)
+            })
+        }}
+      />
+    </React.Fragment>
   )
 }
