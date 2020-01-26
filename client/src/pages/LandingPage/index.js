@@ -18,12 +18,10 @@ export function LandingPage() {
           </Grid>
           <Grid item>
             <Typography paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
-              cras pulvinar mattis nunc. Est placerat in egestas erat imperdiet
-              sed euismod nisi porta. Eget dolor morbi non arcu. Ultrices
-              tincidunt arcu non sodales neque sodales. Quis ipsum suspendisse
-              ultrices gravida. Mi eget mauris pharetra et ultrices.
+            We understand that investing can be challenging. With tens of thousands of stocks to choose from, how can you decide which
+             stocks are primed for future growth and which to stay away from? Then, how do you pick the ‘right’ time to buy (or sell) your 
+             stocks? We want to help you streamline the process of deciding when is the best time to buy and sell stocks.  For a simpler 
+             approach to stock market analysis, Trend Health is here to help!
             </Typography>
           </Grid>
         </Grid>
@@ -40,12 +38,11 @@ export function LandingPage() {
           </Grid>
           <Grid item>
             <Typography paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
-              cras pulvinar mattis nunc. Est placerat in egestas erat imperdiet
-              sed euismod nisi porta. Eget dolor morbi non arcu. Ultrices
-              tincidunt arcu non sodales neque sodales. Quis ipsum suspendisse
-              ultrices gravida. Mi eget mauris pharetra et ultrices.
+             The goal of Trend Health is to be a place where Trend Followers can glance at a single page application and get a clean summary
+             of the status of the market and their watchlist of stocks and sectors. It has been shown that the bulk of returns in the stock 
+             market are made over longer term holding periods. A Trend Follower with the knowledge that their portfolio holdings maintain 
+             positive scores is less likely to sell early in a bull market, and conversely just as likely to know when not to be holding at
+             all. To become a Trend Follower, sign up below!
             </Typography>
           </Grid>
         </Grid>
