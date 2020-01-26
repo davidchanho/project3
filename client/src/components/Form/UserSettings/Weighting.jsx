@@ -13,11 +13,11 @@ const Weighting = ({ user, onWeightChange }) => {
   useEffect(() => {
     try {
       if (!fastWeight && !slowWeight && !fastToSlowWeight && !MACDWeight && !ADXWeight) {
-        setFastWeight(user.userSettings.fastWeight);
-        setSlowWeight(user.userSettings.slowWeight);
-        setFastToSlowWeight(user.userSettings.fastToSlowWeight);
-        setMACDWeight(user.userSettings.MACDWeight);
-        setADXWeight(user.userSettings.ADXWeight);
+        setFastWeight(user.fastWeight);
+        setSlowWeight(user.slowWeight);
+        setFastToSlowWeight(user.fastToSlowWeight);
+        setMACDWeight(user.MACDWeight);
+        setADXWeight(user.ADXWeight);
       }
     } catch (ex) { }
   });

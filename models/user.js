@@ -8,29 +8,46 @@ var UserSchema = new Schema({
     password: { type: String, required: true },
     name: { type: String, required: false },
     userSettings: {
-        fastSMA: {type:Number, required:false},
-        slowSMA: {type:Number, required:false},
-        fastWeight: {type:Number, required:false},
-        slowWeight: {type:Number, required:false},
-        fastToSlowWeight: {type:Number, required:false},
-        MACDWeight: {type:Number, required:false},
-        ADXWeight: {type:Number, required:false}
-    }
+        fastSMA: { type: Number, required: false },
+        slowSMA: { type: Number, required: false },
+        fastWeight: { type: Number, required: false },
+        slowWeight: { type: Number, required: false },
+        fastToSlowWeight: { type: Number, required: false },
+        MACDWeight: { type: Number, required: false },
+        ADXWeight: { type: Number, required: false }
+    },
+    userWatchList: [
+        {
+            indexName: { type: String, index: { unique: true } },
+            sector: String,
+            marketCap: Number,
+            health:Number,
+            priceData: [{
+                type: Number
+            }],
+            macdData: [{
+                type: Number
+            }],
+            adxData: [{
+                type: Number
+            }]
+        }
+    ]
 });
 
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
 
     // generate a salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
         if (err) return next(err);
 
         // hash the password using our new salt
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, function (err, hash) {
             if (err) return next(err);
 
             // override the cleartext password with the hashed one
@@ -40,8 +57,8 @@ UserSchema.pre('save', function(next) {
     });
 });
 
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+UserSchema.methods.comparePassword = function (candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });

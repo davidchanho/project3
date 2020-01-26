@@ -10,23 +10,24 @@ const AveragePeriod = ({ user, onFastSMAChange, onSlowSMAChange }) => {
   useEffect(() => {
     try {
       if (!fastSMA && !slowSMA) {
-        setFastSMA(user.userSettings.fastSMA);
-        setSlowSMA(user.userSettings.slowSMA);
-        onFastSMAChange(user.userSettings.fastSMA);
-        onSlowSMAChange(user.userSettings.slowSMA);
+        setFastSMA(user.fastSMA);
+        setSlowSMA(user.slowSMA);
+        onFastSMAChange(user.fastSMA);
+        onSlowSMAChange(user.slowSMA);
       }
     } catch (ex) { }
+    console.log(user)
   });
 
 
   const handleFastChange = (e) => {
     setFastSMA(e.target.value);
-    onFastSMAChange(e.target.value)
+    onFastSMAChange(parseInt(e.target.value))
   }
 
   const handleSlowChange = (e) => {
     setSlowSMA(e.target.value);
-    onSlowSMAChange(e.target.value)
+    onSlowSMAChange(parseInt(e.target.value))
   }
 
   return (

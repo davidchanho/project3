@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MaterialTable from 'material-table'
 import tests from '../../model/testWatchlist.json'
+import { getWatchList } from '../../services/watchListService'
 
-export function WatchTable() {
-  const [state, setState] = React.useState({
+export function WatchTable({user}) {
+  const [state, setState] = useState({
     columns: [
       { title: 'Id', field: 'id', type: 'numeric' },
       { title: 'Ticker', field: 'ticker' },
@@ -13,12 +14,24 @@ export function WatchTable() {
         title: 'Health (%)',
         field: 'health',
         type: 'numeric'
-      },
-      { title: 'MA', field: 'ma' },
-      { title: 'Option', field: 'option' }
+      }
+      // { title: 'MA', field: 'ma' },
+      // { title: 'Option', field: 'option' }
     ],
     data: tests
   })
+
+  useEffect(() => {
+    try {
+      getWatchList(user.email).then((loadWatchList) => {
+        console.log(loadWatchList)
+        if(loadWatchList.data.count > 0) {
+          console.log("switching data")
+          setState({...state,data:loadWatchList.data});
+        }
+      })
+    } catch (ex) { console.log("ERROR: "+ex) }
+  }, [user])
 
   return (
     <MaterialTable
