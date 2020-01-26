@@ -16,7 +16,7 @@ export const Trend = () => {
         setSectorHealthData(sectorHealthCalc)
       })
     } catch (ex) { }
-  }, [])
+  })
   const handleDelete = id => {
     setTests(tests.filter(tests => tests.id !== id))
   }

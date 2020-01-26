@@ -99,16 +99,17 @@ router.route("/api/getWatchList").post((req, res, next) => {
     })
 })
 
-router.route("/api/watchList").post((req, res, next) => {
+router.route("/api/updateWatchList").put((req, res, next) => {
     userData = {
         email: req.body.email
     }
-
-    db.User.findOneAndUpdate(userData, { "userWatchList": watchlist })
+    db.User.findOneAndUpdate(userData, { "userWatchList": req.body.watchList })
         .then(function () {
+            console.log("Watch List Updated! ")
             //add response for User watchlist update
         })
         .catch(function (err) {
+            console.log("ERROR " + err)
             // If an error occurred, send it to the client
             res.json(err);
         })
