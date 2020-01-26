@@ -123,8 +123,8 @@ export function calcSectorHealth(sectorData) {
             }            
         }
 
-    // console.log("SECTORS & SCORES...")
-    // console.log(allSectorHealthData)
+    console.log("SECTORS & SCORES...")
+    console.log(allSectorHealthData)
 
     return allSectorHealthData
   }

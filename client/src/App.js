@@ -35,7 +35,7 @@ export default function App() {
   return (
     <Theme>
       <Template>
-        <Routes user={user} />
+        <Routes user={user} sectorDate={sectorData} sectorHealthData={sectorHealthData} />
       </Template>
     </Theme>
   )

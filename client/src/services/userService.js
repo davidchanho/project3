@@ -20,6 +20,18 @@ export function register(user) {
     })
 }
 
+export async function getSettings(email) {
+    const apiEndpoint = apiUrl + "/getUserSettings";
+    const getUserSettings = await http.post(apiEndpoint, {email});
+
+    if (getUserSettings.data.error) {
+        return getUserSettings.data.error;
+    } else {
+        return getUserSettings.data;
+    }
+    
+}
+
 export function updateSettings(email, userSettings) {
     const apiEndpoint = apiUrl + "/userSettings";
     

@@ -56,12 +56,26 @@ router.route("/api/auth").post((req, res, next) => {
         })
 })
 
+router.route("/api/getUserSettings").post((req, res, next) => {
+    userData = {
+        email: req.body.email
+    }
+
+    db.User.findOne(userData, function (err, {userSettings}) {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(userSettings);
+        }
+    })
+})
+
 router.route("/api/userSettings").post((req, res, next) => {
     userData = {
         email: req.body.email
     }
 
-    db.User.findOneAndUpdate(userData,{"userSettings":req.body.userSettings})
+    db.User.findOneAndUpdate(userData, { "userSettings": req.body.userSettings })
         .then(function () {
             //add response for User watchlist update
         })
@@ -69,6 +83,20 @@ router.route("/api/userSettings").post((req, res, next) => {
             // If an error occurred, send it to the client
             res.json(err);
         })
+})
+
+router.route("/api/getWatchList").post((req, res, next) => {
+    userData = {
+        email: req.body.email
+    }
+
+    db.User.findOne(userData, function (err, {userWatchList}) {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(userWatchList);
+        }
+    })
 })
 
 router.route("/api/watchList").post((req, res, next) => {
@@ -76,7 +104,7 @@ router.route("/api/watchList").post((req, res, next) => {
         email: req.body.email
     }
 
-    db.User.findOneAndUpdate(userData,{"userWatchList":watchlist})
+    db.User.findOneAndUpdate(userData, { "userWatchList": watchlist })
         .then(function () {
             //add response for User watchlist update
         })
@@ -86,46 +114,44 @@ router.route("/api/watchList").post((req, res, next) => {
         })
 })
 
-router.route("/api/createSectors").post((req,res) => {
-    console.log(req.body)
+router.route("/api/createSectors").post((req, res) => {
     let sectors = req.body.mainSectors
-    db.Sector.create(sectors, function(err, docs) {
-        if (err){
+    db.Sector.create(sectors, function (err, docs) {
+        if (err) {
             console.log("Error: " + err)
-        } else{
+        } else {
             console.log(docs)
         }
     })
 })
 
-router.route("/api/pullSectors").get((req,res) => {
+router.route("/api/pullSectors").get((req, res) => {
     console.log("Pulling All Data")
-    db.Sector.find({}, function(err, data){
-        console.log(data);
-        if (err){
+    db.Sector.find({}, function (err, data) {
+        if (err) {
             res.json(err)
-        }else{
+        } else {
             res.json(data)
         }
     })
 })
 
-router.route("/api/updateSectors").put((req,res) => {
+router.route("/api/updateSectors").put((req, res) => {
     console.log("UPDATING SECTOR " + req.body.symbol);
     sectorData = {
         indexName: req.body.symbol
     }
     db.Sector.findOneAndUpdate(sectorData, {
-        "priceData":req.body.priceData,
-        "macdData":req.body.macdData,
-        "adxData":req.body.adxData
+        "priceData": req.body.priceData,
+        "macdData": req.body.macdData,
+        "adxData": req.body.adxData
     }).then(function (res) {
         console.log(res)
     })
-    .catch(function (err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-    })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        })
 })
 
 module.exports = router;

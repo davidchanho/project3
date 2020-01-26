@@ -11,8 +11,6 @@ export function Columns (props) {
     return(null)
   }
 
-  console.log("SECTOR HEALTH DATA...")
-  console.log(sectorHealthData)
   return (
     <div>
         <CardColumns>{
