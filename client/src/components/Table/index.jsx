@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import MaterialTable from 'material-table'
-import { getWatchList, pullStockData, calcStockHealth } from '../../services/watchListService'
+import { getWatchList, pullStockData, calcStockHealth } from 'services/watchListService'
 
 export function WatchTable({ user }) {
   const [state, setState] = useState({

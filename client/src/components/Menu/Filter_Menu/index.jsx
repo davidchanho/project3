@@ -3,13 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import { createSectors } from '../../../services/createSectors'
-import { updateSectorData } from '../../../services/pullSectors'
-
-
-// import ListItemIcon from '@material-ui/core/ListItemIcon'
-// import InboxIcon from '@material-ui/icons/Inbox'
-// import DraftsIcon from '@material-ui/icons/Drafts'
+import { createSectors } from 'services/createSectors'
+import { updateSectorData } from 'services/pullSectors'
 
 export const Filter = props => {
   const classes = useStyles()

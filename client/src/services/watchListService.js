@@ -1,7 +1,7 @@
 import http from './httpService'
-import { apiUrl } from '../config.json'
+import { apiUrl } from 'config.json'
 import $ from 'jquery'
-import { getSettings } from '../services/userService'
+import { getSettings } from 'services/userService'
 
 export function pullStockData(email, stockTicker, stockSector, currentWatchList) {
     const apiKey = '07S5MN2IBXDCQAGB'

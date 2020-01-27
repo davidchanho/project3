@@ -1,6 +1,6 @@
 import http from './httpService'
-import { apiUrl } from '../config.json'
-import testsData from '../model/testSector.json'
+import { apiUrl } from 'config.json'
+import testsData from 'model/testSector.json'
 import $ from 'jquery'
 var CronJob = require('cron').CronJob;
 
