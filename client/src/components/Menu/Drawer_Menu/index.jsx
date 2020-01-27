@@ -28,6 +28,8 @@ import MoreIcon from '@material-ui/icons/MoreVert'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { Logo } from 'components'
+import Link from '@material-ui/core/Link';
+
 import auth from '../../../services/authService'
 
 const drawerWidth = 240
@@ -168,8 +170,9 @@ export function DrawerMenu({ children }) {
           </Grid>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton color='inherit'>
-              <SettingsIcon />
+
+            <IconButton color='white'>
+              <Link href="User" color="white"><SettingsIcon color="white"></SettingsIcon></Link>
             </IconButton>
             <IconButton
               edge='end'
@@ -181,6 +184,7 @@ export function DrawerMenu({ children }) {
             >
               <AccountCircle />
             </IconButton>
+
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
