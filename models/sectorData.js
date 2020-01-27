@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
+    
 SectorSchema = new Schema({
     indexName: { type: String, required: true, index: { unique: true } },
     sectorName: {type: String},

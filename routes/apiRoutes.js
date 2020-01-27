@@ -127,7 +127,7 @@ router.route("/api/createSectors").post((req, res) => {
 })
 
 router.route("/api/pullSectors").get((req, res) => {
-    console.log("Pulling All Data")
+    console.log("Pulling Sector Data from global sector DB")
     db.Sector.find({}, function (err, data) {
         if (err) {
             res.json(err)

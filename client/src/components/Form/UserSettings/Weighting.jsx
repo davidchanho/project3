@@ -57,7 +57,7 @@ const Weighting = ({ user, onWeightChange }) => {
     <Form>
       <Row>
         <Col>
-          <h3>Slow Moving Average</h3>
+          <h3>Moving Averages</h3>
           <Form.Group controlId='FastSMA'>
             <Form.Label>Fast</Form.Label>
             <Form.Control type='input' value={fastWeight} onChange={handleChange} onBlur={handleBlur} />

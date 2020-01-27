@@ -43,12 +43,10 @@
 !!! PLACE HOLDER: TreandHealth.Heroku.com 
 
 **Purpose of this app**
-- This app was a team's final project for the UNC Chapel Hill Full Stack Coding Bootcamp, it was fundamental in solidifying the programmers' (Thomas Coughlin, David Chan Ho, Patrick ONeill, and Logan McNulty) knowledge of working with and building full stack react applications. 
+- This app was a team's final project for the UNC Chapelhill Full Stack Coding Bootcamp, it was fundamental in solidifying the programmers' (Thomas Coughlin, David Chan Ho, Patrick ONeill, and Logan McNulty) knowledge of working with and building full stack react applications. 
 
 **Future Enhancements of the application**
-- Some team members plan on maintaining the application in the future. 
-
-Future enhancements in the pipeline for implementation include: additional user settings (lookback for moving average slope, MACD. Daily/monthly periodicity availability, additional technical indicators), additional fundamental/technical data in the user watchlist table, customized sector page with additional fundamental and technical sector information, dark mode, and more! 
+- Some team members plan on maintaining the application in the future. Future enhancements in the pipeline for implementation include: additional user settings (lookback for moving average slope, MACD. Daily/monthly periodicity availability, additional technical indicators), additional fundamental/technical data in the user watchlist table, customized sector page with additional fundamental and technical sector information, dark mode, and more! 
 
 **Modules required, and links to documentation**
 React 
