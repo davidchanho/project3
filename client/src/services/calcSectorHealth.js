@@ -122,8 +122,6 @@ export function calcSectorHealth(sectorData) {
                 sectorName: ""
             }            
         }
-        console.log("HEALTH DATA: " )
-        console.log(allSectorHealthData)
     return allSectorHealthData
 
   }

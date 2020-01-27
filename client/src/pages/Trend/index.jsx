@@ -7,6 +7,7 @@ export const Trend = ({ sectorHealthDataPass }) => {
   
   useEffect(() => {
     setSectorHealthData(sectorHealthDataPass)
+    console.log("SECTOR HEALTH DATA FOR SECTOR PAGE...")
     console.log(sectorHealthDataPass)
   }, [])
 
