@@ -1,12 +1,15 @@
 import http from './httpService'
 import { apiUrl } from '../config.json'
 import $ from 'jquery'
+import { getSettings } from '../services/userService'
 
-export function pullStockData(stockTicker,stockSector) {
+export function pullStockData(email, stockTicker, stockSector, currentWatchList) {
     const apiKey = '07S5MN2IBXDCQAGB'
     let thisStockData = {
-        symbol: stockTicker,
+        indexName: stockTicker,
         sector: stockSector,
+        marketCap: 1,
+        health: 1,
         priceData: [],
         adxData: [],
         macdData: []
@@ -20,7 +23,6 @@ export function pullStockData(stockTicker,stockSector) {
             async: true,
             dataType: 'json',
             success: function (res) {
-                console.log(thisStockData.symbol)
                 console.log('ADX:')
                 console.log(res)
                 Object.entries(res['Technical Analysis: ADX']).forEach(
@@ -48,8 +50,11 @@ export function pullStockData(stockTicker,stockSector) {
                     }
                 )
 
-                let apiEndpoint = apiUrl + '/updateSectors'
-                http.put(apiEndpoint, thisStockData)
+
+                currentWatchList.push(thisStockData);
+                let apiEndpoint = apiUrl + '/updateWatchList'
+                http.put(apiEndpoint, { watchList: currentWatchList, email: email });
+                return currentWatchList.length;
             }
         })
     }
@@ -69,16 +74,101 @@ export function pullStockData(stockTicker,stockSector) {
                     }
                 )
                 getAdxData()
-            }
+            },
         })
     }
     getPriceData()
 }
 
+export async function calcStockHealth(email, thisStockData) {
+    // final score object for each sector
+    const stockScore = await getSettings(email).then((userSettings) => {
+        //constant values from user
+        let fastSMA = Number(userSettings.fastSMA)
+        // console.log("fast SMA: " + fastSMA)
+        let fastWeight = Number(userSettings.fastWeight) / 100
+        // console.log("fast weight: " + fastWeight)
+        let slowSMA = Number(userSettings.slowSMA)
+        // console.log("slow SMA: " + slowSMA)
+        let slowWeight = Number(userSettings.slowWeight) / 100
+        // console.log("slow weight: " + slowSMAWeight)
+        let fastGreaterSlowWeight = Number(userSettings.fastToSlowWeight) / 100
+        // console.log("fast to slow weight: " + fastToSlowWeight)
+        let macdWeight = Number(userSettings.MACDWeight) / 100
+        // console.log("macd weight: " + macdWeight)
+        let adxWeight = Number(userSettings.ADXWeight) / 100
+        // console.log("adx Weight: " + adxWeight)
+
+        // calculated values 
+        let fastSMAValue
+        let slowSMAValue
+        let fastSMALookbackValue
+        let slowSMALookbackValue
+        let macdValue
+
+        // values with weightings applied
+        let fastSMAPositiveSlopeWeighted
+        let slowSMAPositiveSlopeWeighted
+        let fastGreaterSlowWeighted
+        let macdPositiveSlopeWeighted
+        let adxValueWeighted
+
+        let fastSMASum = 0
+        let fastSMALookbackSum = 0
+        let slowSMASum = 0
+        let slowSMALookbackSum = 0
+
+        //fast SMA pos slope?
+        for (let i = 0; i < fastSMA; i++) { fastSMASum += thisStockData.priceData[i] }
+        fastSMAValue = fastSMASum / fastSMA
+        // console.log("fastSMA Value: " + fastSMAValue)
+        //fast SMA Lookback
+        for (let i = 1; i < fastSMA + 1; i++) { fastSMALookbackSum += thisStockData.priceData[i] }
+        fastSMALookbackValue = fastSMALookbackSum / fastSMA
+        // console.log("fastSMA Lookback Value: " + fastSMALookbackValue)
+
+        // fast SMA Positive slope check
+        if ((fastSMAValue) > (fastSMALookbackValue)) { fastSMAPositiveSlopeWeighted = (1 * fastWeight) }
+        else { fastSMAPositiveSlopeWeighted = 0 }
+        // console.log("fast SMA Pos Slope Weighted: " + fastSMAPositiveSlopeWeighted)
+
+        //slow SMA pos slope?
+        for (let i = 0; i < slowSMA; i++) { slowSMASum += thisStockData.priceData[i] }
+        slowSMAValue = slowSMASum / slowSMA
+        // console.log("slowSMA Value: " + slowSMAValue)
+        //slow SMA Lookback
+        for (let i = 1; i < slowSMA + 1; i++) { slowSMALookbackSum += thisStockData.priceData[i] }
+        slowSMALookbackValue = slowSMALookbackSum / slowSMA
+        // console.log("slowSMA Lookback Value: " + slowSMALookbackValue)
+        // slow SMA Positive slope check
+        if ((slowSMAValue) > (slowSMALookbackValue)) { slowSMAPositiveSlopeWeighted = (1 * slowWeight) }
+        else { slowSMAPositiveSlopeWeighted = 0 }
+        // console.log("slow SMA Pos Slope Weighted: " + slowSMAPositiveSlopeWeighted)
+
+        //fast > Slow 
+        if (fastSMAValue > slowSMAValue) { fastGreaterSlowWeighted = (1 * fastGreaterSlowWeight) }
+        else { fastGreaterSlowWeighted = 0 }
+        // console.log("fast greater Slow weighted: " + fastGreaterSlowWeighted)
+
+        //MACD Pos slope?
+        if (thisStockData.macdData[0] > thisStockData.macdData[1]) { macdPositiveSlopeWeighted = (1 * macdWeight) }
+        else { macdPositiveSlopeWeighted = 0 }
+        // console.log("macd pos slope weighted: " + macdPositiveSlopeWeighted)
+
+        // apply ADX?
+        if ((slowSMAValue > slowSMALookbackValue)) { adxValueWeighted = (thisStockData.adxData[0] * adxWeight / 100) }
+        else { adxValueWeighted = 0 }
+
+        return (fastSMAPositiveSlopeWeighted + slowSMAPositiveSlopeWeighted + fastGreaterSlowWeighted + macdPositiveSlopeWeighted + adxValueWeighted)
+    })
+
+    return stockScore
+}
+
 export async function getWatchList(email) {
     try {
         let apiEndpoint = apiUrl + '/getWatchList'
-        const watchListData = await http.post(apiEndpoint, {email})
+        const watchListData = await http.post(apiEndpoint, { email })
         return watchListData
     } catch {
         return []

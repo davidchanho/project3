@@ -21,7 +21,6 @@ var UserSchema = new Schema({
             indexName: { type: String, index: { unique: true } },
             sector: String,
             marketCap: Number,
-            health:Number,
             priceData: [{
                 type: Number
             }],

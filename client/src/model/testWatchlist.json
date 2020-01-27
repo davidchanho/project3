@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "ticker": "$TSLA",
+    "indexName": "$TSLA",
     "sector": "Technology",
     "marketCap": "Technology",
     "health": 81,
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "ticker": "$APPL",
+    "indexName": "$APPL",
     "sector": "Technology",
     "marketCap": "Technology",
     "health": 95,
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "ticker": "$GOOGL",
+    "indexName": "$GOOGL",
     "sector": "Technology",
     "marketCap": "Software",
     "health": 88,
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "ticker": "$BTC.X",
+    "indexName": "$BTC.X",
     "sector": "Technology",
     "marketCap": "Cypto Currencies",
     "health": 52,
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -55,7 +55,7 @@
   },
   {
     "id": 7,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -64,7 +64,7 @@
   },
   {
     "id": 8,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -73,7 +73,7 @@
   },
   {
     "id": 9,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -91,7 +91,7 @@
   },
   {
     "id": 11,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
@@ -100,7 +100,7 @@
   },
   {
     "id": 12,
-    "ticker": "$BABA",
+    "indexName": "$BABA",
     "sector": "Technology",
     "marketCap": "China",
     "health": 75,
