@@ -14,11 +14,7 @@ export async function yahooDataPull (stockTicker) {
     "symbol": `${stockTicker}`
     }
     })
-    .then((response)=>{
-      return(response)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+    .then((response)=>{return(response)})
+    .catch((error)=>{console.log(error)})
     return (yahooData)
 }

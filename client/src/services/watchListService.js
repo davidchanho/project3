@@ -49,8 +49,6 @@ export function pullStockData(email, stockTicker, stockSector, currentWatchList)
                         thisStockData.macdData.push(Number(value['MACD']))
                     }
                 )
-
-
                 currentWatchList.push(thisStockData);
                 let apiEndpoint = apiUrl + '/updateWatchList'
                 http.put(apiEndpoint, { watchList: currentWatchList, email: email });
