@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import MaterialTable from 'material-table'
 import { getWatchList, pullStockData, calcStockHealth } from '../../services/watchListService'
+import { yahooDataPull } from '../../services/yahooFinance'
 
 export function WatchTable({ user }) {
   const [state, setState] = useState({
@@ -25,21 +26,29 @@ export function WatchTable({ user }) {
       getWatchList(user.email).then((loadWatchList) => {
         if (loadWatchList.data.length > 0) {
           loadWatchList.data.forEach((stockData, index) => {
-
             console.log(stockData)
-            // fetch data from yahoo finance API
-              
+
             calcStockHealth(user.email, stockData).then((health) => {
-              console.log(health)
-
-              loadWatchList.data[index].sector = "technology"
-              loadWatchList.data[index].marketCap = 400
-              loadWatchList.data[index].price = 50
-
+              // console.log(health)
               loadWatchList.data[index].health = (health*100).toFixed(1);
               loadWatchList.data[index].indexName = loadWatchList.data[index].indexName.toUpperCase();
               setState({ ...state, data: loadWatchList.data });
             })
+            .then(()=>{
+              console.log("Yahoo data...")
+              yahooDataPull(stockData.indexName).then( (yahooData) => {
+                console.log(yahooData);
+                console.log(yahooData.data.summaryProfile.sector)
+                console.log(yahooData.data.price.marketCap.fmt)
+                console.log(yahooData.data.price.regularMarketOpen.raw)
+
+                loadWatchList.data[index].sector = yahooData.data.summaryProfile.sector
+                loadWatchList.data[index].marketCap = `$${yahooData.data.price.marketCap.fmt}`
+                loadWatchList.data[index].price = `$${yahooData.data.price.regularMarketOpen.raw}`
+              setState({ ...state, data: loadWatchList.data }
+                )
+            })
+          })
           });
         }
       })
