@@ -64,12 +64,4 @@ let testsData = [
   }
 ]
 
-testsData.push({
-  id: 10,
-  Company: 'Logan',
-  Stock: 'Master In Charge',
-  Health: 100,
-  userPreference: false
-})
-
 export { testsData }

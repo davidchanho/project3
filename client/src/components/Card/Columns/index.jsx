@@ -3,9 +3,7 @@ import CardColumns from 'react-bootstrap/CardColumns'
 import { TrendCard } from '../Card'
 
 export function Columns (props) {
-  // console.log("PROPS YO")
-  // console.log(props)
-  const { tests, onDelete, sectorHealthData } = props
+  const { onDelete, sectorHealthData } = props
   
   if(!sectorHealthData){
     return(null)
@@ -22,15 +20,3 @@ export function Columns (props) {
     </div>
   )
 }
-// export const Columns = props => {
-//   const { tests, onDelete } = props
-//   // console.log("PROPS YO")
-//   // console.log(props)
-//   return (
-//     <CardColumns>
-//       {tests.map(test => (
-//         <TrendCard key={test.id} test={test} onDelete={onDelete} />
-//       ))}
-//     </CardColumns>
-//   )
-// }

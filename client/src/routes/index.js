@@ -12,7 +12,7 @@ import {
   Logout
 } from 'pages'
 
-export default function Routes({ user, sectorData, sectorHealthData }) {
+export default function Routes({ user, sectorData, sectorHealthDataPass }) {
   // const { user } = props
   return (
     <Router>
@@ -20,11 +20,13 @@ export default function Routes({ user, sectorData, sectorHealthData }) {
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/About' component={About} />
         <Route
-          exact
-          path='/User'
+          exact path='/User'
           render={props => <User {...props} user={user} />}
         />
-        <Route exact path='/Sector' component={Trend} />
+        <Route 
+        exact path='/Sector' 
+        render = {props => <Trend {...props} sectorHealthDataPass={sectorHealthDataPass} />}
+        />
         <Route
           exact
           path='/Watchlist'

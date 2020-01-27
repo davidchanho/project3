@@ -2,16 +2,21 @@ import http from './httpService'
 import { apiUrl } from '../config.json'
 import testsData from '../model/testSector.json'
 import $ from 'jquery'
+var CronJob = require('cron').CronJob;
 
-export function pullSectors() {
-  const apiKey = '07S5MN2IBXDCQAGB'
-  let counter = 0
-  let thisStockData = {
-    symbol: testsData[counter].Stock,
-    priceData: [],
-    adxData: [],
-    macdData: []
-  }
+export function updateSectorData() {
+  //cron job runs every Friday at 18:00
+  // const job = new CronJob('0 18 * * 5', function() {
+
+    const apiKey = '07S5MN2IBXDCQAGB'
+    let counter = 0
+    let thisStockData = {
+      name: testsData[counter].Company,
+      symbol: testsData[counter].Stock,
+      priceData: [],
+      adxData: [],
+      macdData: []
+    }
 
   //kick off
   const getAdxData = () => {
@@ -22,8 +27,8 @@ export function pullSectors() {
       dataType: 'json',
       success: function(res) {
         console.log(thisStockData.symbol)
-        console.log('ADX:')
-        console.log(res)
+        // console.log('ADX:')
+        // console.log(res)
         Object.entries(res['Technical Analysis: ADX']).forEach(
           ([key, value], index) => {
             thisStockData.adxData.push(Number(value['ADX']))
@@ -41,13 +46,14 @@ export function pullSectors() {
       async: true,
       dataType: 'json',
       success: function(res) {
-        console.log('MACD:')
-        console.log(res)
+        // console.log('MACD:')
+        // console.log(res)
         Object.entries(res['Technical Analysis: MACD']).forEach(
           ([key, value], index) => {
             thisStockData.macdData.push(Number(value['MACD']))
           }
         )
+        console.log(thisStockData)
 
         let apiEndpoint = apiUrl + '/updateSectors'
         http.put(apiEndpoint, thisStockData)
@@ -56,6 +62,7 @@ export function pullSectors() {
         if (counter < testsData.length) {
           getPriceData()
           thisStockData = {
+            name: testsData[counter].Company,
             symbol: testsData[counter].Stock,
             priceData: [],
             adxData: [],
@@ -74,7 +81,7 @@ export function pullSectors() {
       async: true,
       dataType: 'json',
       success: function(res) {
-        console.log("PRICE: ")
+        // console.log("PRICE: ")
         Object.entries(res['Weekly Time Series']).forEach(
           ([key, value], index) => {
             thisStockData.priceData.push(Number(value['4. close']))
@@ -85,11 +92,16 @@ export function pullSectors() {
     })
   }
   getPriceData()
+
+//commenting out cron job for now for Dev purposes
+  // });
+  // job.start();
 }
+
 
 export async function pullSectorData() {
   let apiEndpoint = apiUrl + '/pullSectors'
   const sectorData = await http.get(apiEndpoint)
-  console.log(sectorData)
+  // console.log(sectorData)
   return sectorData
 }

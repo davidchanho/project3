@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import MaterialTable from 'material-table'
-import tests from '../../model/testWatchlist.json'
 import { getWatchList, pullStockData, calcStockHealth } from '../../services/watchListService'
 
 export function WatchTable({ user }) {
@@ -9,14 +8,13 @@ export function WatchTable({ user }) {
       { title: 'Id', field: 'id', type: 'numeric' },
       { title: 'Ticker', field: 'indexName' },
       { title: 'Sector', field: 'sector' },
+      { title: 'Price', field: 'price'},
       { title: 'Market Cap', field: 'marketCap' },
       {
         title: 'Health (%)',
         field: 'health',
         type: 'numeric'
       }
-      // { title: 'MA', field: 'ma' },
-      // { title: 'Option', field: 'option' }
     ],
     data: []
   })
@@ -27,8 +25,17 @@ export function WatchTable({ user }) {
       getWatchList(user.email).then((loadWatchList) => {
         if (loadWatchList.data.length > 0) {
           loadWatchList.data.forEach((stockData, index) => {
+
+            console.log(stockData)
+            // fetch data from yahoo finance API
+              
             calcStockHealth(user.email, stockData).then((health) => {
-              console.log("test")
+              console.log(health)
+
+              loadWatchList.data[index].sector = "technology"
+              loadWatchList.data[index].marketCap = 400
+              loadWatchList.data[index].price = 50
+
               loadWatchList.data[index].health = (health*100).toFixed(1);
               loadWatchList.data[index].indexName = loadWatchList.data[index].indexName.toUpperCase();
               setState({ ...state, data: loadWatchList.data });
