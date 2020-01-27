@@ -9,16 +9,16 @@ import {
   Watchlist,
   PageNotFound,
   LandingPage,
-  Logout
+  Logout,
 } from 'pages'
 import { DrawerMenu } from 'components'
 
 export default function Routes({ user, sectorData, sectorHealthDataPass }) {
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/' component={LandingPage} />
-        <DrawerMenu>
+    <DrawerMenu>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={LandingPage} />
           <Route exact path='/About' component={About} />
           <Route
             exact
@@ -41,8 +41,8 @@ export default function Routes({ user, sectorData, sectorHealthDataPass }) {
           <Route exact path='/Logout' component={Logout} />
           <Route exact path='/Signup' component={Signup} />
           <Route component={PageNotFound} />
-        </DrawerMenu>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </DrawerMenu>
   )
 }

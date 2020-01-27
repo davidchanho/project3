@@ -10,50 +10,45 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import MailIcon from '@material-ui/icons/Mail'
-import MenuIcon from '@material-ui/icons/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import ListIcon from '@material-ui/icons/List'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import InfoIcon from '@material-ui/icons/Info'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Brand from './Brand'
+import AppBars from './AppBar'
 
 const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
-      flexShrink: 0
-    }
-  },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth
-    }
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none'
-    }
+      flexShrink: 0,
+    },
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
-  }
+    padding: theme.spacing(3),
+  },
 }))
 
 function DrawerMenu({ container, children }) {
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
+
+  function ListItemLink(props) {
+    return <ListItem button component='a' {...props} />
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -64,14 +59,27 @@ function DrawerMenu({ container, children }) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Sector', 'Watchlist'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItemLink button href='Sector' key='Sector'>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary='Sector' />
+        </ListItemLink>
+        <ListItemLink button href='Watchlist' key='Watchlist'>
+          <ListItemIcon>
+            <ListIcon />
+          </ListItemIcon>
+          <ListItemText primary='Watchlist' />
+        </ListItemLink>
+      </List>
+      <Divider />
+      <List>
+        <ListItemLink button href='About' key='About'>
+          <ListItemIcon>
+            <InfoIcon />
+          </ListItemIcon>
+          <ListItemText primary='About' />
+        </ListItemLink>
       </List>
     </div>
   )
@@ -79,24 +87,8 @@ function DrawerMenu({ container, children }) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position='fixed' className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant='h6' noWrap>
-            Responsive drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBars onDrawerToggle={handleDrawerToggle} />
       <nav className={classes.drawer} aria-label='mailbox folders'>
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation='css'>
           <Drawer
             container={container}
@@ -105,10 +97,10 @@ function DrawerMenu({ container, children }) {
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true // Better open performance on mobile.
+              keepMounted: true,
             }}
           >
             {drawer}
@@ -117,7 +109,7 @@ function DrawerMenu({ container, children }) {
         <Hidden xsDown implementation='css'>
           <Drawer
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             variant='permanent'
             open

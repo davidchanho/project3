@@ -23,6 +23,6 @@ export default function Brand() {
 const useStyles = makeStyles(theme => ({
   logo: {
     width: 40,
-    marginRight: 5
-  }
+    marginRight: 5,
+  },
 }))
