@@ -1,6 +1,8 @@
 const axios = require("axios");
 
-axios({
+export async function yahooDataPull (stockTicker) {
+
+  const yahooData = await axios({
     "method":"GET",
     "url":"https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary",
     "headers":{
@@ -9,12 +11,19 @@ axios({
     "x-rapidapi-key":"31d1e22625msh0d27ce9220d6290p13cfdfjsn3e5237afdbdf"
     },"params":{
     "region":"US",
-    "symbol":"AMRN"
+    "symbol": `${stockTicker}`
     }
     })
-    .then((response)=>{
-      console.log(response)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+    // .then((response)=>{
+    //   console.log(response)
+    //   return(response)
+    // })
+    // .catch((error)=>{
+    //   console.log(error)
+    // })
+    console.log(yahooData)
+    return (yahooData)
+  // return (stockTicker)
+}
+
+
