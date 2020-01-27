@@ -3,6 +3,7 @@ const express = require('express')
 var cors = require('cors')
 const app = express()
 var whitelist = ['http://localhost:3000']
+
 var corsOptions = {
   origin: function(origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {

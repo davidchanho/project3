@@ -1,27 +1,25 @@
-import http from './httpService'
-import { apiUrl } from '../config.json'
 import auth from './authService'
-import { pullSectorData } from './pullSectors'
 
 export function calcSectorHealth(sectorData) {
     const userData = auth.getCurrentUser();
-    console.log(sectorData);
+
+    // console.log(sectorData);
     let allSectorHealthData =[]
 
     //constant values from user
-        let fastSMA = Number(userData.userSettings.fastSMA)
+        let fastSMA = Number(userData ? userData.userSettings.fastSMA : 10)
         // console.log("fast SMA: " + fastSMA)
-        let fastWeight = Number(userData.userSettings.fastWeight)/100
+        let fastWeight = Number(userData ? userData.userSettings.fastWeight: 20)/100
         // console.log("fast weight: " + fastWeight)
-        let slowSMA = Number(userData.userSettings.slowSMA)
+        let slowSMA = Number(userData ? userData.userSettings.slowSMA : 40)
         // console.log("slow SMA: " + slowSMA)
-        let slowWeight = Number(userData.userSettings.slowWeight)/100
+        let slowWeight = Number(userData ? userData.userSettings.slowWeight : 20)/100
         // console.log("slow weight: " + slowSMAWeight)
-        let fastGreaterSlowWeight = Number(userData.userSettings.fastToSlowWeight)/100
+        let fastGreaterSlowWeight = Number(userData ? userData.userSettings.fastToSlowWeight : 20)/100
         // console.log("fast to slow weight: " + fastToSlowWeight)
-        let macdWeight = Number(userData.userSettings.MACDWeight)/100
+        let macdWeight = Number(userData ? userData.userSettings.MACDWeight : 20)/100
         // console.log("macd weight: " + macdWeight)
-        let adxWeight = Number(userData.userSettings.ADXWeight)/100
+        let adxWeight = Number(userData ? userData.userSettings.ADXWeight : 20)/100
         // console.log("adx Weight: " + adxWeight)
 
     // calculated values 
@@ -53,6 +51,7 @@ export function calcSectorHealth(sectorData) {
         
         for (let x = 0; x < sectorData.data.length; x++){
             sectorAndHealthScore.symbol = sectorData.data[x].indexName
+            sectorAndHealthScore.sectorName = sectorData.data[x].sectorName
             sectorAndHealthScore.id = idCounter
             // console.log(sectorAndHealthScore.symbol)
 
@@ -119,12 +118,12 @@ export function calcSectorHealth(sectorData) {
 
             sectorAndHealthScore = {
                 symbol: "",
-                score: 0
+                score: 0,
+                sectorName: ""
             }            
         }
-
-    console.log("SECTORS & SCORES...")
-    console.log(allSectorHealthData)
-
+        console.log("HEALTH DATA: " )
+        console.log(allSectorHealthData)
     return allSectorHealthData
+
   }
