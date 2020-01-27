@@ -19,8 +19,6 @@ var UserSchema = new Schema({
     userWatchList: [
         {
             indexName: { type: String, index: { unique: true } },
-            sector: String,
-            marketCap: Number,
             priceData: [{
                 type: Number
             }],

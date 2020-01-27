@@ -4,12 +4,15 @@ import $ from 'jquery'
 import { getSettings } from '../services/userService'
 
 export function pullStockData(email, stockTicker, stockSector, currentWatchList) {
+    console.log(email)
+    console.log(stockTicker)
+    console.log(currentWatchList)
     const apiKey = '07S5MN2IBXDCQAGB'
     let thisStockData = {
         indexName: stockTicker,
         sector: stockSector,
-        marketCap: 1,
-        health: 1,
+        // marketCap: 1,
+        // health: 1,
         priceData: [],
         adxData: [],
         macdData: []
@@ -24,7 +27,7 @@ export function pullStockData(email, stockTicker, stockSector, currentWatchList)
             dataType: 'json',
             success: function (res) {
                 console.log('ADX:')
-                console.log(res)
+                // console.log(res)
                 Object.entries(res['Technical Analysis: ADX']).forEach(
                     ([key, value], index) => {
                         thisStockData.adxData.push(Number(value['ADX']))
@@ -43,13 +46,15 @@ export function pullStockData(email, stockTicker, stockSector, currentWatchList)
             dataType: 'json',
             success: function (res) {
                 console.log('MACD:')
-                console.log(res)
+                // console.log(res)
                 Object.entries(res['Technical Analysis: MACD']).forEach(
                     ([key, value], index) => {
                         thisStockData.macdData.push(Number(value['MACD']))
                     }
                 )
                 currentWatchList.push(thisStockData);
+                delete currentWatchList[0].tableData
+                delete currentWatchList[0]._id
                 let apiEndpoint = apiUrl + '/updateWatchList'
                 http.put(apiEndpoint, { watchList: currentWatchList, email: email });
                 return currentWatchList.length;
