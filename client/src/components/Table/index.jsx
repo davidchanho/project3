@@ -28,23 +28,24 @@ export function WatchTable({ user }) {
           loadWatchList.data.forEach((stockData, index) => {
             console.log(stockData)
 
-              let tableData = []
-              tableData = yahooDataPull(stockData.indexName)
-              if(!tableData){
-                return(null)
-              }
-              console.log("TABLE DATA")
-              console.log(tableData)
-              // loadWatchList.data[index].sector = yahooData.data.summaryProfile.sector
-              // loadWatchList.data[index].marketCap = yahooData.data.price.marketCap.fmt
-              // loadWatchList.data[index].price = yahooData.data.price.regularMarketOpen.raw
-              
             calcStockHealth(user.email, stockData).then((health) => {
               console.log(health)
               loadWatchList.data[index].health = (health*100).toFixed(1);
               loadWatchList.data[index].indexName = loadWatchList.data[index].indexName.toUpperCase();
               setState({ ...state, data: loadWatchList.data });
             })
+            .then(()=>{
+              yahooDataPull(stockData.indexName).then( (yahooData) => {
+                console.log(yahooData);
+                console.log(yahooData.data.summaryProfile.sector)
+                console.log(yahooData.data.price.marketCap.fmt)
+                console.log(yahooData.data.price.regularMarketOpen.raw)
+
+                // loadWatchList.data[index].sector = yahooData.data.summaryProfile.sector
+                // loadWatchList.data[index].marketCap = `$${yahooData.data.price.marketCap.fmt}`
+                // loadWatchList.data[index].price = `$${yahooData.data.price.regularMarketOpen.raw}`
+              // setState({ ...state, data: loadWatchList.data })
+            })})
           });
         }
       })
