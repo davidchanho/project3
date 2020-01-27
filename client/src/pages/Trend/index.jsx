@@ -6,20 +6,10 @@ export const Trend = ({ sectorHealthDataPass }) => {
   const [sectorHealthData, setSectorHealthData] = useState()
   
   useEffect(() => {
-<<<<<<< HEAD
     setSectorHealthData(sectorHealthDataPass)
     console.log(sectorHealthDataPass)
   }, [])
 
-=======
-    try {
-      pullSectorData().then((sectorData) => {
-        const sectorHealthCalc = calcSectorHealth(sectorData);
-        setSectorHealthData(sectorHealthCalc)
-      })
-    } catch (ex) { }
-  })
->>>>>>> origin/patrickMerge
   const handleDelete = id => {
     setSectorHealthData(sectorHealthData.filter(sectorHealthData => sectorHealthData.id !== id))
   }
