@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -28,6 +28,9 @@ import MoreIcon from '@material-ui/icons/MoreVert'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import SettingsIcon from '@material-ui/icons/Settings'
 import { Logo } from 'components'
+import Link from '@material-ui/core/Link';
+
+import auth from '../../../services/authService'
 
 const drawerWidth = 240
 
@@ -37,6 +40,17 @@ export function DrawerMenu({ children }) {
   const [open, setOpen] = React.useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
+  const [userLogged, setUserLogged] = useState();
+
+  useEffect(() => {
+    try {
+    const userData = auth.getCurrentUser()
+    setUserLogged(userData)
+    console.log("DRAWER")
+    console.log(userData)
+  } catch (ex) {}
+  }, [])
+
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
@@ -156,8 +170,9 @@ export function DrawerMenu({ children }) {
           </Grid>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton color='inherit'>
-              <SettingsIcon />
+
+            <IconButton color='white'>
+              <Link href="User" color="white"><SettingsIcon color="white"></SettingsIcon></Link>
             </IconButton>
             <IconButton
               edge='end'
@@ -169,6 +184,7 @@ export function DrawerMenu({ children }) {
             >
               <AccountCircle />
             </IconButton>
+
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -221,38 +237,50 @@ export function DrawerMenu({ children }) {
           </ListItemLink>
         </List>
         <Divider />
+
+        <div>
         <List>
-          <ListItemLink button href='About' key='About'>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary='About' />
+        <ListItemLink button href='About' key='About'>
+          <ListItemIcon>
+            <InfoIcon />
+          </ListItemIcon>
+          <ListItemText primary='About' />
           </ListItemLink>
+        {userLogged ? 
+        (<>
           <ListItemLink button href='User' key='User'>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary='User' />
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText primary='User' />
           </ListItemLink>
+          <ListItemLink button href='Logout' key='Logout'>
+          <ListItemIcon>
+            <ViewListIcon />
+          </ListItemIcon>
+          <ListItemText primary='Logout' />
+          </ListItemLink>
+          </>)
+        :
+        (<>
           <ListItemLink button href='Login' key='Login'>
             <ListItemIcon>
               <CheckBoxOutlineBlankIcon />
             </ListItemIcon>
             <ListItemText primary='Login' />
           </ListItemLink>
-          <ListItemLink button href='Logout' key='Logout'>
-            <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText primary='Logout' />
-          </ListItemLink>
+
           <ListItemLink button href='Signup' key='Signup'>
             <ListItemIcon>
               <ViewListIcon />
             </ListItemIcon>
             <ListItemText primary='Signup' />
           </ListItemLink>
+        </>)
+        }
         </List>
+        </div>
+       
       </Drawer>
 
       {children}
