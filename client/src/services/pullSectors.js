@@ -6,7 +6,7 @@ var CronJob = require('cron').CronJob;
 
 export function updateSectorData() {
   //cron job runs every Friday at 18:00
-  const job = new CronJob('0 18 * * 5', function() {
+  // const job = new CronJob('0 18 * * 5', function() {
 
     const apiKey = '07S5MN2IBXDCQAGB'
     let counter = 0
@@ -53,9 +53,7 @@ export function updateSectorData() {
             thisStockData.macdData.push(Number(value['MACD']))
           }
         )
-
         console.log(thisStockData)
-
 
         let apiEndpoint = apiUrl + '/updateSectors'
         http.put(apiEndpoint, thisStockData)
@@ -94,9 +92,10 @@ export function updateSectorData() {
     })
   }
   getPriceData()
-});
 
-job.start();
+//commenting out cron job for now for Dev purposes
+  // });
+  // job.start();
 }
 
 
