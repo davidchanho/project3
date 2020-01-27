@@ -15,10 +15,10 @@ import { DrawerMenu } from 'components'
 
 export default function Routes({ user, sectorData, sectorHealthDataPass }) {
   return (
-    <DrawerMenu>
-      <Router>
+    <Router>
         <Switch>
           <Route exact path='/' component={LandingPage} />
+      <DrawerMenu>
           <Route exact path='/About' component={About} />
           <Route
             exact
@@ -40,9 +40,9 @@ export default function Routes({ user, sectorData, sectorHealthDataPass }) {
           <Route exact path='/Login' component={Login} />
           <Route exact path='/Logout' component={Logout} />
           <Route exact path='/Signup' component={Signup} />
-          <Route component={PageNotFound} />
+    </DrawerMenu>
+          <Route path='*' component={PageNotFound} />
         </Switch>
       </Router>
-    </DrawerMenu>
   )
 }
