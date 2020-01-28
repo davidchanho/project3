@@ -2,7 +2,11 @@ const path = require('path')
 const express = require('express')
 var cors = require('cors')
 const app = express()
+const PORT = process.env.PORT || 3001
 var whitelist = ['http://localhost:3000']
+const routes = require('./routes/apiRoutes')
+const mongoose = require('mongoose')
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project3'
 
 var corsOptions = {
   origin: function(origin, callback) {
@@ -13,13 +17,9 @@ var corsOptions = {
     }
   }
 }
+
 // app.use(cors(corsOptions));
 app.use(cors())
-
-const routes = require('./routes/apiRoutes')
-const mongoose = require('mongoose')
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project3'
-const PORT = process.env.PORT || 3001
 
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }))
@@ -38,7 +38,6 @@ if (process.env.NODE_ENV === 'production') {
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, './client/build/index.html'))
 })
-
 
 //connect to mongoDB
 mongoose.connect(MONGODB_URI, {

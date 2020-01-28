@@ -24,7 +24,7 @@ export const Filter = props => {
 
   return (
     <div className={classes.root}>
-      <List component='nav' aria-label='main'>
+      {/* <List component='nav' aria-label='main'>
         <ListItem button onClick={createSectorsButton}>
           <ListItemText primary='Create Sectors' style={{background:"red"}}/>
         </ListItem>
@@ -33,7 +33,7 @@ export const Filter = props => {
         <ListItem button onClick={updateSectorDataButton}>
           <ListItemText primary='Update Sector Data' style={{background:"red"}}/>
         </ListItem>
-      </List>
+      </List> */}
     </div>
   )
 }
