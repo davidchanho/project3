@@ -181,6 +181,7 @@ export async function getWatchList(email) {
 
 export async function deleteWatchListItem(email, indexName, currentWatchList) {
     try {
+        
         let updatedWatchList =  currentWatchList.filter(watchListItem => {
             return watchListItem.indexName != indexName;
         })
@@ -190,5 +191,6 @@ export async function deleteWatchListItem(email, indexName, currentWatchList) {
         http.put(apiEndpoint, { email: email, watchList: updatedWatchList }).then( () => {
             window.location = "/Watchlist"
         })
+        
     } catch { }
 }
