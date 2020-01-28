@@ -4,7 +4,7 @@
 **ABOUT THIS APP** 
 - Trend Health is a stock market trend monitoring system. The system generates scoring metrics by analyzing the price history and technical indicators of a given stock or sector (ETF), applies a user-defined weighting for each of the scoring metrics, and outputs a "Trend Health". 
 
-(For an in depth explanation of the scoring system, please see the white paper avilable at Trend Health's About page.)
+(For an in depth explanation of the scoring system, please see the white paper available at Trend Health's About page.)
 
 - In order for the user to access the watchlist page and update their user settings, they must create an account. Without an account, only the sector page is available for viewing, with default User Settings. All accounts created are encrypted via BCryptJS. 
 
@@ -38,7 +38,7 @@
 
 - yup ??
 
-- Cron for sheduling specified times in which data is pulled from the Alpha Vantage API and updated in the MLab Database. 
+- Cron for scheduling specified times in which data is pulled from the Alpha Vantage API and updated in the MLab Database. 
 
 **Link to Heroku**
 !!! PLACE HOLDER: TreandHealth.Heroku.com 
