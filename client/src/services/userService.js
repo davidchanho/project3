@@ -1,5 +1,5 @@
 import http from "./httpService";
-import { apiUrl } from "config.json";
+import { apiUrl } from "../config.json";
 
 export function register(user) {
     const apiEndpoint = apiUrl + "/user";

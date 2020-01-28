@@ -8,52 +8,51 @@ import Modal from '@material-ui/core/Modal'
 import Iwm from './img/IWM.png'
 import Gme from './img/GME.png'
 import Qqq from './img/qqq.png'
-
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     width: '1200px',
-    height: '800px',
+    height: '800px'
   },
   paper: {
     position: 'absolute',
     width: 1300,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
+    padding: theme.spacing(2, 4, 3)
+  }
 }))
 
 const styles = {
   header: {
     textAlign: 'center',
     fontSize: '400%',
-    margin: '5% 0',
+    margin: '5% 0'
   },
   paragraph: {
     marginTop: '1%',
     fontFamily: "'Roboto', serif",
     fontSize: '20px',
-    paddingLeft: '1em',
+    paddingLeft: '1em'
   },
   subHeader: {
     marginTop: '2%',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
     // textAlign: "center"
   },
   quote: {
     padding: '.5em 0 0 3em',
     fontWeight: '100',
     fontSize: '20px',
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   },
   note: {
     padding: '0 0 0 3em',
     fontWeight: 'bold',
-    fontStyle: 'italic',
-  },
+    fontStyle: 'italic'
+  }
 }
 
 export const About = () => {
@@ -159,7 +158,8 @@ export const About = () => {
             </div>
           </div>
         </div>
-
+      </Paper>
+      <Paper elevation={6} style={{ marginBottom: '2%' }}>
         <div className='container fluid'>
           <div className='row justify-content-center'>
             <div className='col-lg-12'>
@@ -244,7 +244,8 @@ export const About = () => {
             </div>
           </div>
         </div>
-
+      </Paper>
+      <Paper elevation={6} style={{ marginBottom: '2%' }}>
         <div className='container fluid'>
           <div className='row justify-content-center'>
             <div className='col-lg-12'>

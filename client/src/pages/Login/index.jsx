@@ -11,6 +11,7 @@ export const Login = () => {
         <CardMedia src={loginImg} component='img' title='logging' />
       </Grid>
       <Grid item>
+        
         <LoginForm />
       </Grid>
     </Grid>
