@@ -22,15 +22,6 @@ const useStyles = makeStyles(theme => ({
       zIndex: theme.zIndex.drawer + 1,
     },
   },
-  grow: {
-    flexGrow: 1,
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
@@ -76,11 +67,8 @@ export default function AppBars({ onDrawerToggle }) {
             <MenuIcon />
           </IconButton>
           <Brand />
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <Button href='About' color='inherit'>
-              About
-            </Button>
+
+          <div>
             <IconButton
               aria-label='account of current user'
               aria-controls='menu-appbar'
@@ -89,8 +77,6 @@ export default function AppBars({ onDrawerToggle }) {
             >
               <AccountCircle />
             </IconButton>
-          </div>
-          <div>
             <Menu
               id='menu-appbar'
               anchorEl={anchorEl}
@@ -106,6 +92,11 @@ export default function AppBars({ onDrawerToggle }) {
               open={open}
               onClose={handleClose}
             >
+              <MenuItem>
+                <Link href='/About' color='inherit'>
+                  About
+                </Link>
+              </MenuItem>
               {userLogged ? (
                 <>
                   <MenuItem>
