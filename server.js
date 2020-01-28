@@ -2,11 +2,11 @@ const path = require('path')
 const express = require('express')
 var cors = require('cors')
 const app = express()
+const PORT = process.env.PORT || 3001
 var whitelist = ['http://localhost:3000']
 const routes = require('./routes/apiRoutes')
 const mongoose = require('mongoose')
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/project3'
-const PORT = process.env.PORT || 3001
 
 var corsOptions = {
   origin: function(origin, callback) {
