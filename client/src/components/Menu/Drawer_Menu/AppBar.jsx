@@ -1,5 +1,5 @@
-import React from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Link from '@material-ui/core/Link'
@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MenuIcon from '@material-ui/icons/Menu'
 import Brand from './Brand'
+import auth from 'services/authService'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,6 +34,7 @@ export default function AppBars({ onDrawerToggle }) {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
+  const [userLogged, setUserLogged] = useState()
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -41,6 +43,15 @@ export default function AppBars({ onDrawerToggle }) {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  useEffect(() => {
+    try {
+      const userData = auth.getCurrentUser()
+      setUserLogged(userData)
+      console.log('DRAWER')
+      console.log(userData)
+    } catch (ex) {}
+  }, [])
 
   return (
     <div className={classes.root}>
@@ -86,11 +97,33 @@ export default function AppBars({ onDrawerToggle }) {
                   About
                 </Link>
               </MenuItem>
-              <MenuItem>
-                <Link href='/Login' color='inherit'>
-                  Log Out
-                </Link>
-              </MenuItem>
+              {userLogged ? (
+                <>
+                  <MenuItem>
+                    <Link href='User' color='inherit'>
+                      User
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href='Logout' color='inherit'>
+                      Logout
+                    </Link>
+                  </MenuItem>
+                </>
+              ) : (
+                <>
+                  <MenuItem>
+                    <Link href='Login' color='inherit'>
+                      Login
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href='Signup' color='inherit'>
+                      Signup
+                    </Link>
+                  </MenuItem>
+                </>
+              )}
             </Menu>
           </div>
         </Toolbar>

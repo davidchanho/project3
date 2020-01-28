@@ -53,11 +53,12 @@ export function pullStockData(email, stockTicker, stockSector, currentWatchList)
                     }
                 )
                 currentWatchList.push(thisStockData);
-                delete currentWatchList[0].tableData
-                delete currentWatchList[0]._id
+                delete currentWatchList[0].tableData;
+                delete currentWatchList[0]._id;
                 let apiEndpoint = apiUrl + '/updateWatchList'
-                http.put(apiEndpoint, { watchList: currentWatchList, email: email });
-                return currentWatchList.length;
+                http.put(apiEndpoint, { watchList: currentWatchList, email: email }).then(() => {
+                    window.location = "/Watchlist"
+                });
             }
         })
     }
@@ -176,4 +177,20 @@ export async function getWatchList(email) {
     } catch {
         return []
     }
+}
+
+export async function deleteWatchListItem(email, indexName, currentWatchList) {
+    try {
+        
+        let updatedWatchList =  currentWatchList.filter(watchListItem => {
+            return watchListItem.indexName != indexName;
+        })
+        
+        console.log(updatedWatchList);
+        let apiEndpoint = apiUrl + '/deleteWatchList'
+        http.put(apiEndpoint, { email: email, watchList: updatedWatchList }).then( () => {
+            window.location = "/Watchlist"
+        })
+        
+    } catch { }
 }

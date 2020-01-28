@@ -22,7 +22,7 @@ export default function App() {
       console.log(userData)
 
       // cron job that updates the sectorData in the database weekly
-      // updateSectorData()
+        updateSectorData()
 
       // pull sectorData from DB, calc trendhealths, pass to Routes
       pullSectorData().then(sectorData => {

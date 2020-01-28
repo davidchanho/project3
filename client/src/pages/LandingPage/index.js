@@ -108,8 +108,8 @@ export function LandingPage() {
             <div className='card border-info mb-3'>
               <div className='card-header row'>
                 <h1 style={{ margin: 'auto' }}>
-                  TESLA
-                  <br /> (TSLA)
+                  NASDAQ
+                  <br /> (QQQ)
                 </h1>
               </div>
               <div className='card-body text-info'>
@@ -143,9 +143,9 @@ export function LandingPage() {
             <Typography gutterBottom variant='h5' component='h2'>
               Insight
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
+            {/* <Typography variant='body2' color='textSecondary' component='p'>
               Derive a single trend score
-            </Typography>
+            </Typography> */}
           </CardContent>
         </Grid>
         <Grid item className={classes.card}>
@@ -159,10 +159,10 @@ export function LandingPage() {
             <Typography gutterBottom variant='h5' component='h2'>
               User Friendly
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
+            {/* <Typography variant='body2' color='textSecondary' component='p'>
               Lizards are a widespread group of squamate reptiles, with over
               6,000 species, ranging across all continents except Antarctica
-            </Typography>
+            </Typography> */}
           </CardContent>
         </Grid>
         <Grid item className={classes.card}>
@@ -176,24 +176,10 @@ export function LandingPage() {
             <Typography gutterBottom variant='h5' component='h2'>
               Customizable
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
+            {/* <Typography variant='body2' color='textSecondary' component='p'>
               User-Defined Weightings
-            </Typography>
+            </Typography> */}
           </CardContent>
-        </Grid>
-      </Grid>
-    )
-  }
-  function Money() {
-    return (
-      <Grid container direction='column' alignItems='center' justify='center'>
-        <Grid item>
-          <Typography paragraph>
-            “Watch the Market leaders, the stocks that have led the charge
-            upward in a bull market [...] as the leaders go, so goes the entire
-            market.”
-          </Typography>
-          - Jesse Livermore
         </Grid>
       </Grid>
     )
@@ -241,12 +227,12 @@ export function LandingPage() {
             <SignupForm />
           </Grid>
           <Grid item>
-            <Typography paragraph>
+            <Typography paragraph align='right'>
               “Watch the Market leaders, the stocks that have led the charge
               upward in a bull market [...] as the leaders go, so goes the
               entire market.”
+              <br />- Jesse Livermore
             </Typography>
-            - Jesse Livermore
           </Grid>
         </Grid>
       </Grid>
