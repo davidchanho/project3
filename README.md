@@ -8,7 +8,12 @@
 
 - In order for the user to access the watchlist page and update their user settings, they must create an account. Without an account, only the sector page is available for viewing, with default User Settings. All accounts created are encrypted via BCryptJS. 
 
-- In the user settings, there are two selections to be made. 1) The "fast" moving average, and the "slow" moving average. 2) The weightings to be applied to the scoring metrics. Once these settings are confirmed (modified from their default settings, or retained), the user may visit the watchlist and sector pages.
+- In the user settings, there are two selections to be made. 
+
+1) The "fast" moving average, and the "slow" moving average.
+2) The weightings to be applied to the scoring metrics. 
+
+Once these settings are confirmed (modified from their default settings, or retained), the user may visit the watchlist and sector pages.
 
 - The sector page displays nine sub sectors of the stock market that are actively followed in investing and "FinTwit (Financial Twitter)" communities. Their Trend Healths are generated using the most actively traded ETFs for that sector. 
 
