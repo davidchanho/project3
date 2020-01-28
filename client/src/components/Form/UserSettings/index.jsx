@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import AveragePeriod from './AveragePeriod'
 import Weighting from './Weighting'
-import { updateSettings, getSettings } from 'services/userService'
+import { updateSettings, getSettings } from '../../../services/userService'
 
 export function UserSettings({ user }) {
   const [key, setKey] = useState('AveragePeriod');

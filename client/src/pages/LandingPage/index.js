@@ -1,241 +1,77 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { SignupForm } from 'components'
-import AppBars from 'components/Menu/Drawer_Menu/AppBar'
-import prospect from './img/ProspectsHero__1_.png'
-import path from './img/path.png'
-import user from './img/user.png'
-import signup from './img/signup.png'
-import insight from './img/insight.png'
-
-const useStyles = makeStyles(theme => ({
-  img: {
-    width: 550,
-  },
-  background: {
-    width: '100%',
-    height: 1000,
-    padding: 150,
-  },
-  heading: {
-    fontFamily: '"Times New Roman", Times, serif',
-  },
-  desc: {
-    width: 600,
-  },
-  button: {
-    color: '#007C89',
-    marginRight: 10,
-  },
-  card: {
-    width: 500,
-    textAlign: 'center',
-    height: 500,
-  },
-  media: {
-    height: 280,
-    padding: 200,
-  },
-}))
+import meetingImg from './img/Meeting.png'
+import moneyImg from './img/money.png'
+import devImg from './img/dev.png'
+import waves from './img/wave.svg'
 
 export function LandingPage() {
-  const classes = useStyles()
-
-  function Meeting() {
-    return (
-      <Grid container direction='row' alignItems='center' justify='center'>
-        <Grid item>
-          <Typography variant='h3' className={classes.heading}>
-            Trade with Confidence
-          </Typography>
-          <br />
-          <Typography variant='h5' paragraph className={classes.desc}>
-            Trend Health is the stock market trend monitoring system that you've
-            been waiting for.
-          </Typography>
-          <br />
-          <Grid item>
-            <Button
-              variant='outlined'
-              className={classes.button}
-              href='/Signup'
-            >
-              Signup
-            </Button>
-            <Button className={classes.button} href='/About'>
-              Learn More
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid item>
-          <CardMedia
-            src={prospect}
-            component='img'
-            title='meeting'
-            className={classes.img}
-          />
-        </Grid>
-      </Grid>
-    )
-  }
   function Dev() {
     return (
-      <Grid
-        container
-        direction='row-reverse'
-        alignItems='center'
-        justify='center'
-        spacing={6}
-      >
-        <Grid item>
-          <Typography variant='h5' paragraph className={classes.desc}>
-            Trend Health is where Trend Followers can get a clean summary of the
-            states of the trends of their favorite stocks, and the markets most
-            influential sectors.
-          </Typography>
+      <>
+        <Grid container direction='row'>
+          <Grid item>
+            <CardMedia src={devImg} component='img' title='dev' />
+          </Grid>
+          <Grid item>
+            <Typography paragraph>
+            We understand that investing can be challenging. With tens of thousands of stocks to choose from, how can you decide which
+             stocks are primed for future growth and which to stay away from? Then, how do you pick the ‘right’ time to buy (or sell) your 
+             stocks? We want to help you streamline the process of deciding when is the best time to buy and sell stocks.  For a simpler 
+             approach to stock market analysis, Trend Health is here to help!
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Card className={classes.card}>
-            <div className='card border-info mb-3'>
-              <div className='card-header row'>
-                <h1 style={{ margin: 'auto' }}>
-                  NASDAQ
-                  <br /> (QQQ)
-                </h1>
-              </div>
-              <div className='card-body text-info'>
-                <h1>
-                  <div>{(0.97 * 100).toFixed(0)}%</div>
-                </h1>
-              </div>
-            </div>
-          </Card>
-        </Grid>
-      </Grid>
+      </>
     )
   }
-  function Why() {
+
+  function Money() {
     return (
-      <Grid
-        container
-        direction='row'
-        alignItems='center'
-        justify='center'
-        spacing={2}
-      >
-        <Grid item className={classes.card}>
-          <CardMedia
-            className={classes.media}
-            image={insight}
-            style={{ backgroundColor: '#e2f3f5' }}
-            title='Insight'
-          />
-          <CardContent>
-            <Typography gutterBottom variant='h5' component='h2'>
-              Insight
+      <>
+        <Grid container direction='row'>
+          <Grid item>
+            <CardMedia src={moneyImg} component='img' title='money' />
+          </Grid>
+          <Grid item>
+            <Typography paragraph>
+             The goal of Trend Health is to be a place where Trend Followers can glance at a single page application and get a clean summary
+             of the status of the market and their watchlist of stocks and sectors. It has been shown that the bulk of returns in the stock 
+             market are made over longer term holding periods. A Trend Follower with the knowledge that their portfolio holdings maintain 
+             positive scores is less likely to sell early in a bull market, and conversely just as likely to know when not to be holding at
+             all. To become a Trend Follower, sign up below!
             </Typography>
-            {/* <Typography variant='body2' color='textSecondary' component='p'>
-              Derive a single trend score
-            </Typography> */}
-          </CardContent>
+          </Grid>
         </Grid>
-        <Grid item className={classes.card}>
-          <CardMedia
-            className={classes.media}
-            image={user}
-            style={{ backgroundColor: '#fccde2' }}
-            title='user friendly'
-          />
-          <CardContent>
-            <Typography gutterBottom variant='h5' component='h2'>
-              User Friendly
-            </Typography>
-            {/* <Typography variant='body2' color='textSecondary' component='p'>
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography> */}
-          </CardContent>
-        </Grid>
-        <Grid item className={classes.card}>
-          <CardMedia
-            className={classes.media}
-            image={path}
-            style={{ backgroundColor: '#feff89' }}
-            title='Customizable'
-          />
-          <CardContent>
-            <Typography gutterBottom variant='h5' component='h2'>
-              Customizable
-            </Typography>
-            {/* <Typography variant='body2' color='textSecondary' component='p'>
-              User-Defined Weightings
-            </Typography> */}
-          </CardContent>
-        </Grid>
-      </Grid>
+      </>
     )
   }
 
   return (
-    <Container disableGutters='true' maxWidth='false'>
-      <AppBars />
-      <Grid container>
-        <Grid
-          item
-          justify='center'
-          className={classes.background}
-          style={{ backgroundColor: '#FFE01B' }}
-        >
-          <Meeting />
-        </Grid>
-        <Grid item className={classes.background}>
-          <Why />
-        </Grid>
-        <Grid
-          item
-          justify='center'
-          className={classes.background}
-          style={{ backgroundColor: '#c5e3f6' }}
-        >
-          <Dev />
-        </Grid>
-        <Grid
-          container
-          alignItems='center'
-          justify='center'
-          direction='row'
-          className={classes.background}
-        >
-          <Grid item>
-            <CardMedia
-              src={signup}
-              component='img'
-              title='meeting'
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item>
-            <SignupForm />
-          </Grid>
-          <Grid item>
-            <Typography paragraph align='right'>
-              “Watch the Market leaders, the stocks that have led the charge
-              upward in a bull market [...] as the leaders go, so goes the
-              entire market.”
-              <br />- Jesse Livermore
-            </Typography>
-          </Grid>
-        </Grid>
+    <Grid container direction='column' spacing={6}>
+      <Grid item justify='center' style={{ backgroundColor: '#0099ff' }}>
+        <Typography variant='h1'> Trend Health </Typography>
+        <Typography variant='h3'> What is Trend Health? </Typography>
+        <CardMedia src={meetingImg} component='img' title='meeting' />
+        <Typography paragraph>
+          Trend Health is a stock market trend monitoring system that applies
+          user-defined weightings to a combination of customizable technical
+          indicators in order to derive a single trend score.
+        </Typography>
       </Grid>
-    </Container>
+      <CardMedia src={waves} component='img' />
+      <Grid item>
+        <Dev />
+      </Grid>
+      <Grid item>
+        <Money />
+      </Grid>
+      <Grid item>
+        <SignupForm />
+      </Grid>
+    </Grid>
   )
 }
