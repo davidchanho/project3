@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Link from '@material-ui/core/Link'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import Button from '@material-ui/core/Button'
@@ -89,8 +88,7 @@ export default function AppBars({ onDrawerToggle }) {
             >
               <AccountCircle />
             </IconButton>
-          </div>
-          <div>
+
             <Menu
               id='menu-appbar'
               anchorEl={anchorEl}

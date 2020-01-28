@@ -93,19 +93,19 @@ export function WatchTable({ user }) {
                 })
               }, 600)
             }),
-          onRowUpdate: (newData, oldData) =>
-            new Promise(resolve => {
-              setTimeout(() => {
-                resolve()
-                if (oldData) {
-                  setState(prevState => {
-                    const data = [...prevState.data]
-                    data[data.indexOf(oldData)] = newData
-                    return { ...prevState, data }
-                  })
-                }
-              }, 600)
-            }),
+          // onRowUpdate: (newData, oldData) =>
+          //   new Promise(resolve => {
+          //     setTimeout(() => {
+          //       resolve()
+          //       if (oldData) {
+          //         setState(prevState => {
+          //           const data = [...prevState.data]
+          //           data[data.indexOf(oldData)] = newData
+          //           return { ...prevState, data }
+          //         })
+          //       }
+          //     }, 600)
+          //   }),
           onRowDelete: oldData =>
             new Promise(resolve => {
               setTimeout(() => {
