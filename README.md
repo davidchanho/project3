@@ -32,11 +32,11 @@
 
 - Axios and Jquery (AJAX) for promise based asynchronous calls to the AlphaVantage, and Trend Health APIs.
 
-- Formik ?? 
+- Formik used in coordination with Material UI to make forms
 
-- clsx ??
+- Yup form validation
 
-- yup ??
+- CLSX for making classnames conditional 
 
 - Cron for sheduling specified times in which data is pulled from the Alpha Vantage API and updated in the MLab Database. 
 
@@ -91,7 +91,7 @@ Jquery
 - https://www.npmjs.com/package/jquery
 
 Yup 
-- ??
+- https://www.npmjs.com/package/yup
 
 Formik
 - https://www.npmjs.com/package/formik

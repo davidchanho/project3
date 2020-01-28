@@ -31,9 +31,9 @@ export default function App() {
   }, [])
 
   // wait until sector healths finish calcing to pass to Routes
-    if(!sectorHealthDataPass){
-      return(null)
-    }
+    // if(!sectorHealthDataPass){
+    //   return(null)
+    // }
 
   return (
     <Theme>
