@@ -18,7 +18,7 @@ var UserSchema = new Schema({
     },
     userWatchList: [
         {
-            indexName: { type: String, index: { unique: true } },
+            indexName: String,
             priceData: [{
                 type: Number
             }],
