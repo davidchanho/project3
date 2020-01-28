@@ -21,6 +21,10 @@ export const Trend = ({ sectorHealthDataPass }) => {
       backgroundSize: "cover"
     }
   }
+
+  if(!sectorHealthDataPass){
+    return(null)
+  }
   
   return (
     <>

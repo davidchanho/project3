@@ -16,6 +16,7 @@ import ListIcon from '@material-ui/icons/List'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import InfoIcon from '@material-ui/icons/Info'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import SettingsIcon from '@material-ui/icons/Settings'
 import Brand from './Brand'
 import AppBars from './AppBar'
 
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -74,11 +75,11 @@ function DrawerMenu({ container, children }) {
       </List>
       <Divider />
       <List>
-        <ListItemLink button href='About' key='About'>
+        <ListItemLink button href='User' key='User'>
           <ListItemIcon>
-            <InfoIcon />
+            <SettingsIcon />
           </ListItemIcon>
-          <ListItemText primary='About' />
+          <ListItemText primary='Setting' />
         </ListItemLink>
       </List>
     </div>

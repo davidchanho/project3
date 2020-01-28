@@ -13,20 +13,18 @@ import { SignupForm } from 'components'
 import AppBars from 'components/Menu/Drawer_Menu/AppBar'
 import prospect from './img/ProspectsHero__1_.png'
 import path from './img/path.png'
-import track from './img/track.png'
+import user from './img/user.png'
+import signup from './img/signup.png'
 import insight from './img/insight.png'
 
 const useStyles = makeStyles(theme => ({
-  view: {
-    width: '100%',
-  },
   img: {
     width: 550,
   },
   background: {
     width: '100%',
-    height: 700,
-    paddingTop: 150,
+    height: 1000,
+    padding: 150,
   },
   heading: {
     fontFamily: '"Times New Roman", Times, serif',
@@ -36,13 +34,16 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     color: '#007C89',
+    marginRight: 10,
   },
   card: {
-    width: 345,
-    height: 320,
+    width: 500,
+    textAlign: 'center',
+    height: 500,
   },
   media: {
     height: 280,
+    padding: 200,
   },
 }))
 
@@ -54,7 +55,7 @@ export function LandingPage() {
       <Grid container direction='row' alignItems='center' justify='center'>
         <Grid item>
           <Typography variant='h3' className={classes.heading}>
-            Trade with confidence
+            Trade with Confidence
           </Typography>
           <br />
           <Typography variant='h5' paragraph className={classes.desc}>
@@ -96,30 +97,14 @@ export function LandingPage() {
         spacing={6}
       >
         <Grid item>
-          <Typography variant='h3' className={classes.heading}>
-            Trade with confidence
-          </Typography>
-          <br />
           <Typography variant='h5' paragraph className={classes.desc}>
-            Trend Health is the stock market trend monitoring system that you've
-            been waiting for.
+            Trend Health is where Trend Followers can get a clean summary of the
+            states of the trends of their favorite stocks, and the markets most
+            influential sectors.
           </Typography>
-          <br />
-          <Grid item>
-            <Button
-              variant='outlined'
-              className={classes.button}
-              href='/Signup'
-            >
-              Signup
-            </Button>
-            <Button className={classes.button} href='/About'>
-              Learn More
-            </Button>
-          </Grid>
         </Grid>
         <Grid item>
-          <Card style={{ height: 250, textAlign: 'center', width: 300 }}>
+          <Card className={classes.card}>
             <div className='card border-info mb-3'>
               <div className='card-header row'>
                 <h1 style={{ margin: 'auto' }}>
@@ -145,64 +130,56 @@ export function LandingPage() {
         direction='row'
         alignItems='center'
         justify='center'
-        spacing={3}
+        spacing={2}
       >
         <Grid item className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={insight}
-              style={{ backgroundColor: '#e2f3f5' }}
-              title='Insight'
-            />
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='h2'>
-                Insight
-              </Typography>
-              <Typography variant='body2' color='textSecondary' component='p'>
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={insight}
+            style={{ backgroundColor: '#e2f3f5' }}
+            title='Insight'
+          />
+          <CardContent>
+            <Typography gutterBottom variant='h5' component='h2'>
+              Insight
+            </Typography>
+            <Typography variant='body2' color='textSecondary' component='p'>
+              Derive a single trend score
+            </Typography>
+          </CardContent>
         </Grid>
         <Grid item className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={track}
-              style={{ backgroundColor: '#fccde2' }}
-              title='user friendly'
-            />
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='h2'>
-                User Friendly
-              </Typography>
-              <Typography variant='body2' color='textSecondary' component='p'>
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={user}
+            style={{ backgroundColor: '#fccde2' }}
+            title='user friendly'
+          />
+          <CardContent>
+            <Typography gutterBottom variant='h5' component='h2'>
+              User Friendly
+            </Typography>
+            <Typography variant='body2' color='textSecondary' component='p'>
+              Lizards are a widespread group of squamate reptiles, with over
+              6,000 species, ranging across all continents except Antarctica
+            </Typography>
+          </CardContent>
         </Grid>
         <Grid item className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={path}
-              style={{ backgroundColor: '#feff89' }}
-              title='Contemplative Reptile'
-            />
-            <CardContent>
-              <Typography gutterBottom variant='h5' component='h2'>
-                Tailored to your Needs
-              </Typography>
-              <Typography variant='body2' color='textSecondary' component='p'>
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={path}
+            style={{ backgroundColor: '#feff89' }}
+            title='Customizable'
+          />
+          <CardContent>
+            <Typography gutterBottom variant='h5' component='h2'>
+              Customizable
+            </Typography>
+            <Typography variant='body2' color='textSecondary' component='p'>
+              User-Defined Weightings
+            </Typography>
+          </CardContent>
         </Grid>
       </Grid>
     )
@@ -211,20 +188,12 @@ export function LandingPage() {
     return (
       <Grid container direction='column' alignItems='center' justify='center'>
         <Grid item>
-          {/* <CardMedia component='img' title='money' className={classes.img} /> */}
-        </Grid>
-        <Grid item>
           <Typography paragraph>
-            The goal of Trend Health is to be a place where Trend Followers can
-            glance at a single page application and get a clean summary of the
-            status of the market and their watchlist of stocks and sectors. It
-            has been shown that the bulk of returns in the stock market are made
-            over longer term holding periods. A Trend Follower with the
-            knowledge that their portfolio holdings maintain positive scores is
-            less likely to sell early in a bull market, and conversely just as
-            likely to know when not to be holding at all. To become a Trend
-            Follower, sign up below!
+            “Watch the Market leaders, the stocks that have led the charge
+            upward in a bull market [...] as the leaders go, so goes the entire
+            market.”
           </Typography>
+          - Jesse Livermore
         </Grid>
       </Grid>
     )
@@ -236,6 +205,7 @@ export function LandingPage() {
       <Grid container>
         <Grid
           item
+          justify='center'
           className={classes.background}
           style={{ backgroundColor: '#FFE01B' }}
         >
@@ -246,8 +216,9 @@ export function LandingPage() {
         </Grid>
         <Grid
           item
+          justify='center'
           className={classes.background}
-          style={{ backgroundColor: '#FFE01B' }}
+          style={{ backgroundColor: '#c5e3f6' }}
         >
           <Dev />
         </Grid>
@@ -259,10 +230,23 @@ export function LandingPage() {
           className={classes.background}
         >
           <Grid item>
-            <Typography variant='h1'>Sign Up Today</Typography>
+            <CardMedia
+              src={signup}
+              component='img'
+              title='meeting'
+              className={classes.img}
+            />
           </Grid>
           <Grid item>
             <SignupForm />
+          </Grid>
+          <Grid item>
+            <Typography paragraph>
+              “Watch the Market leaders, the stocks that have led the charge
+              upward in a bull market [...] as the leaders go, so goes the
+              entire market.”
+            </Typography>
+            - Jesse Livermore
           </Grid>
         </Grid>
       </Grid>

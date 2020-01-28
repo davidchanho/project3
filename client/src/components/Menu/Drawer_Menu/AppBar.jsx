@@ -82,8 +82,8 @@ export default function AppBars({ onDrawerToggle }) {
               onClose={handleClose}
             >
               <MenuItem>
-                <Link href='/User' color='inherit'>
-                  Settings
+                <Link href='/About' color='inherit'>
+                  About
                 </Link>
               </MenuItem>
               <MenuItem>

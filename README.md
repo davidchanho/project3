@@ -17,6 +17,7 @@
 - Price Data for both the Sector and Watchlist pages are updated Weekly on Fridays at 18:00 Eastern Standard time. Weekly data pulls are fitting due to the usage of weekly closing prices for price and technical indicator data. 
 
 **Server and Client Side Dependencies**
+
 *Server Side*
 - Data required for the app is stored in an MLab database via Heroku. Communications to and from the database are made using Mongoose. 
 - BCryptJS in coordination with .json Web Token, and JWT-Decode are required for user authentication. JWT Decode is used to decrypt the user's Json Web Token. 
@@ -49,23 +50,24 @@
 - Some team members plan on maintaining the application in the future. Future enhancements in the pipeline for implementation include: additional user settings (lookback for moving average slope, MACD. Daily/monthly periodicity availability, additional technical indicators), additional fundamental/technical data in the user watchlist table, customized sector page with additional fundamental and technical sector information, dark mode, and more! 
 
 **Modules required, and links to documentation**
+
 React 
 - https://reactjs.org/docs/getting-started.html
 
-- Express webframework 
-https://expressjs.com/en/api.html
+Express webframework 
+- https://expressjs.com/en/api.html
 
-- Mongoose
-https://mongoosejs.com/docs/api.html
+Mongoose
+- https://mongoosejs.com/docs/api.html
 
-- BCryptsJS
-https://www.npmjs.com/package/bcryptjs
+BCryptsJS
+- https://www.npmjs.com/package/bcryptjs
 
 Json Web Token
 - https://www.npmjs.com/package/jsonwebtoken
 
 JWT Decode
-https://www.npmjs.com/package/jwt-decode
+- https://www.npmjs.com/package/jwt-decode
 
 CORS
 - https://www.npmjs.com/package/cors
