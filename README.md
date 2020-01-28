@@ -8,12 +8,12 @@
 
 - In order for the user to access the watchlist page and update their user settings, they must create an account. Without an account, only the sector page is available for viewing, with default User Settings. All accounts created are encrypted via BCryptJS. 
 
-- In the user settings, there are two selections to be made. 
+- In the user settings, there are two selections to be made: 
 
 1) The "fast" moving average, and the "slow" moving average.
 2) The weightings to be applied to the scoring metrics. 
 
-Once these settings are confirmed (modified from their default settings, or retained), the user may visit the watchlist and sector pages.
+- Once these settings are confirmed (modified from their default settings, or retained), the user may visit the watchlist and sector pages.
 
 - The sector page displays nine sub sectors of the stock market that are actively followed in investing and "FinTwit (Financial Twitter)" communities. Their Trend Healths are generated using the most actively traded ETFs for that sector. 
 
@@ -46,10 +46,10 @@ Once these settings are confirmed (modified from their default settings, or reta
 - Cron for scheduling specified times in which data is pulled from the Alpha Vantage API and updated in the MLab Database. 
 
 **Link to Heroku**
-!!! PLACE HOLDER: TreandHealth.Heroku.com 
+https://trend-health.herokuapp.com/
 
 **Purpose of this app**
-- This app was a team's final project for the UNC Chapelhill Full Stack Coding Bootcamp, it was fundamental in solidifying the programmers' (Thomas Coughlin, David Chan Ho, Patrick ONeill, and Logan McNulty) knowledge of working with and building full stack react applications. 
+- This app was a team's final project for the UNC Chapel Hill Full Stack Coding Bootcamp. It was fundamental in solidifying the programmers' (Thomas Coughlin, David Chan Ho, Patrick ONeill, and Logan McNulty) knowledge of working with and building full stack react applications. 
 
 **Future Enhancements of the application**
 - Some team members plan on maintaining the application in the future. Future enhancements in the pipeline for implementation include: additional user settings (lookback for moving average slope, MACD. Daily/monthly periodicity availability, additional technical indicators), additional fundamental/technical data in the user watchlist table, customized sector page with additional fundamental and technical sector information, dark mode, and more! 
