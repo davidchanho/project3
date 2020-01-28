@@ -105,7 +105,8 @@ router.route("/api/updateWatchList").put((req, res, next) => {
     }
     db.User.findOneAndUpdate(userData, { "userWatchList": req.body.watchList })
         .then(function () {
-            console.log("Watch List Updated! ")
+            console.log("Watch List Updated!");
+            res.send(true);
             //add response for User watchlist update
         })
         .catch(function (err) {
@@ -114,6 +115,34 @@ router.route("/api/updateWatchList").put((req, res, next) => {
             res.json(err);
         })
 })
+
+router.route("/api/deleteWatchList").put((req, res, next) => {
+    userData = {
+        email: req.body.email
+    }
+    let updatedWatchList = req.body.watchList;
+
+    updatedWatchList.forEach( updWatchListItem => {
+        delete updWatchListItem.tableData;
+        delete updWatchListItem.health;
+        delete updWatchListItem.sector;
+        delete updWatchListItem.marketCap;
+        delete updWatchListItem.price;
+    })
+
+    db.User.findOneAndUpdate(userData, { "userWatchList": updatedWatchList })
+        .then(function () {
+            console.log("Watch List Updated!");
+            res.send(true);
+            //add response for User watchlist update
+        })
+        .catch(function (err) {
+            console.log("ERROR " + err)
+            // If an error occurred, send it to the client
+            res.json(err);
+        })
+})
+
 
 router.route("/api/createSectors").post((req, res) => {
     let sectors = req.body.mainSectors
