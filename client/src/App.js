@@ -3,7 +3,7 @@ import Template from 'templates'
 import Theme from 'themes'
 import Routes from 'routes'
 import auth from './services/authService'
-import { pullSectorData, updateSectorData, cronTest } from './services/pullSectors'
+import { pullSectorData, updateSectorData } from './services/pullSectors'
 import { calcSectorHealth } from './services/calcSectorHealth'
 
 export default function App() {
