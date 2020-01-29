@@ -10,11 +10,14 @@ export const Login = () => {
   <div className="row">
     <div className="col-lg-12">
       <Paper elevation={6} style={{ marginTop: '2%', textAlign:"center", padding:"2%" }}>
-          <h1>Come Back Soon!</h1>
+          <h1>User Login</h1>
             <div  className="row justify-content-around" style={{marginTop:"2%"}}>
-            <div className="col-lg-12">
-              {/* <CardMedia src={loginImg} component='img' title='logging' /> */}
+            <div className="col-lg-6">
+              <CardMedia src={loginImg} component='img' title='logging' />
             </div>
+            <div className="col-lg-6 ml-auto">
+              <LoginForm />
+            </div> 
           </div>
         </Paper>
     </div>
