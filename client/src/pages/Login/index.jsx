@@ -13,7 +13,7 @@ export const Login = () => {
           <h1>User Login</h1>
             <div  className="row justify-content-around" style={{marginTop:"2%"}}>
             <div className="col-lg-6">
-              <CardMedia src={loginImg} component='img' title='logging' />
+              <CardMedia src={loginImg} component='img' title='logging' style={{width:"60%", margin:"auto"}} />
             </div>
             <div className="col-lg-6 ml-auto">
               <LoginForm />
