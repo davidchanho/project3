@@ -17,7 +17,10 @@ router.route("/api/user").post((req, res, next) => {
         })
         .catch(function (err) {
             // If an error occurred, send it to the client
-            res.json(err);
+            res.status(409);
+            res.send("User already exists");
+            // console.log(err);
+            // res.send(err);
         })
 })
 

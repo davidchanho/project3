@@ -18,9 +18,7 @@ export const SignupForm = withFormik({
       auth.loginWithJwt(jwt)
       window.location = '/'
     } catch (ex) {
-      if (ex.response) {
         alert(ex.response.data)
-      }
     }
     console.log(values)
   }
