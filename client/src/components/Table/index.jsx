@@ -6,16 +6,15 @@ import { yahooDataPull } from '../../services/yahooFinance'
 export function WatchTable({ user }) {
   const [state, setState] = useState({
     columns: [
-      { title: 'Id', field: 'id', type: 'numeric' },
       { title: 'Ticker', field: 'indexName' },
       { title: 'Sector', field: 'sector' },
-      { title: 'Price', field: 'price' },
-      { title: 'Market Cap', field: 'marketCap' },
       {
         title: 'Health (%)',
         field: 'health',
         type: 'numeric'
-      }
+      },
+      { title: 'Price', field: 'price' },
+      { title: 'Market Cap', field: 'marketCap' }
     ],
     data: []
   })
@@ -39,10 +38,10 @@ export function WatchTable({ user }) {
               .then(() => {
                 console.log("Yahoo data...")
                 yahooDataPull(stockData.indexName).then((yahooData) => {
-                  console.log(yahooData);
-                  console.log(yahooData.data.summaryProfile.sector)
-                  console.log(yahooData.data.price.marketCap.fmt)
-                  console.log(yahooData.data.price.regularMarketOpen.raw)
+                  // console.log(yahooData);
+                  // console.log(yahooData.data.summaryProfile.sector)
+                  // console.log(yahooData.data.price.marketCap.fmt)
+                  // console.log(yahooData.data.price.regularMarketOpen.raw)
 
                   loadWatchList.data[index].sector = yahooData.data.summaryProfile.sector
                   loadWatchList.data[index].marketCap = `$${yahooData.data.price.marketCap.fmt}`
