@@ -48,7 +48,18 @@ export function LandingPage() {
                           </div>
 
                           <div className="col-lg-6 ml-auto">
-                            <div className="row justify-conent-around" style={{marginTop:"30%"}}>
+                            <div className="row justify-conent-around" style={{marginTop:"10%"}}>
+                              <div className="col-lg-12">
+                                  <h3>Trend Health is where Trend Followers can get a clean summary of the state of the trend of the market as a whole.</h3>
+                              </div>
+                            </div>
+                            <div className="row justify-conent-around" style={{marginTop:"10%"}}>
+                              <div className="col-lg-12">
+                                  <h5>Sign up, modify your user settings, and start adding to your watchlist. For more detail on Trend Health Scoring, visit the About page. </h5>
+                              </div>
+                            </div>
+
+                            <div className="row justify-conent-around" style={{marginTop:"10%"}}>
                               <div className="col-lg-6">
                                 <div>
                                 <a href="/login"> <button type="button" className="btn btn-primary btn-lg btn-block">Login</button></a>
