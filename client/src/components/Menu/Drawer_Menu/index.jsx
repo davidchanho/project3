@@ -163,7 +163,7 @@ export function DrawerMenu({ children }) {
               <Logo />
             </Grid>
             <Grid item>
-              <Typography variant='h6' noWrap>
+              <Typography variant='h5' noWrap>
                 Trend Health
               </Typography>
             </Grid>
@@ -171,19 +171,15 @@ export function DrawerMenu({ children }) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 
-            <IconButton color='white'>
-              <Link href="User" color="white"><SettingsIcon color="white"></SettingsIcon></Link>
-            </IconButton>
-            <IconButton
-              edge='end'
-              aria-label='account of current user'
-              aria-controls={menuId}
-              aria-haspopup='true'
-              onClick={handleProfileMenuOpen}
-              color='inherit'
-            >
-              <AccountCircle />
-            </IconButton>
+          {!userLogged ? (
+            <>
+              <div style={{marginRight:"10%", position:"relative",right:"5%"}}><a href="/login"><h3 style={{color:"white"}}>Login</h3></a></div><div style={{marginRight:"10%", position:"relative",right:"5%"}}><a href="/signup"><h3 style={{color:"white"}}>Signup</h3></a></div>
+            </>
+          )
+          :
+          (<div><a href="/logout"><h3 style={{color:"white"}}>Logout</h3></a></div>)
+          }
+          
 
           </div>
           <div className={classes.sectionMobile}>
@@ -229,6 +225,7 @@ export function DrawerMenu({ children }) {
             </ListItemIcon>
             <ListItemText primary='Sector' />
           </ListItemLink>
+
           <ListItemLink button href='Watchlist' key='Watchlist'>
             <ListItemIcon>
               <ViewListIcon />
@@ -240,49 +237,29 @@ export function DrawerMenu({ children }) {
 
         <div>
         <List>
-        <ListItemLink button href='About' key='About'>
-          <ListItemIcon>
-            <InfoIcon />
-          </ListItemIcon>
-          <ListItemText primary='About' />
-          </ListItemLink>
+
         {userLogged ? 
         (<>
           <ListItemLink button href='User' key='User'>
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>
-          <ListItemText primary='User' />
-          </ListItemLink>
-          <ListItemLink button href='Logout' key='Logout'>
-          <ListItemIcon>
-            <ViewListIcon />
-          </ListItemIcon>
-          <ListItemText primary='Logout' />
+          <ListItemText primary='User Settings' />
           </ListItemLink>
           </>)
         :
         (<>
-          <ListItemLink button href='Login' key='Login'>
-            <ListItemIcon>
-              <CheckBoxOutlineBlankIcon />
-            </ListItemIcon>
-            <ListItemText primary='Login' />
-          </ListItemLink>
-
-          <ListItemLink button href='Signup' key='Signup'>
-            <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText primary='Signup' />
-          </ListItemLink>
         </>)
         }
+          <ListItemLink button href='About' key='About'>
+          <ListItemIcon>
+            <InfoIcon />
+          </ListItemIcon>
+          <ListItemText primary='About' />
+          </ListItemLink>
         </List>
         </div>
-       
       </Drawer>
-
       {children}
     </div>
   )

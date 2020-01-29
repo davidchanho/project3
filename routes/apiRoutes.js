@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 
 router.route("/api/user").post((req, res, next) => {
     db.User.create(req.body)
-    console.log(req.body)
         .then(function () {
             const userDataScrubbed = {};
             userDataScrubbed.email = req.body.email;
