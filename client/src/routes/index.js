@@ -12,8 +12,8 @@ import {
   Logout
 } from 'pages'
 
-export default function Routes({ user, sectorData, sectorHealthDataPass }) {
-  // const { user } = props
+export default function Routes({ user, sectorHealthDataPass }) {
+
   return (
     <Router>
       <Switch>
