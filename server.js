@@ -43,7 +43,8 @@ app.get('*', function(req, res) {
 mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  // useFindAndModify: false
 })
 
 app.listen(PORT, function() {
